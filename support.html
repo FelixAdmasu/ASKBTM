@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+      <!--=============== SWIPER CSS ===============-->
+      <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="assets/css/Support.css">
+      <title>Support - ASKBTM</title>
+   </head>
+   <body>
+      <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+               <img src="assets/img/favicon1.png" alt="image">
+               <span>ASKBTM</span>
+            </a>
+            <div class="nav__buttons">
+               <!-- Theme Button  -->
+                <i class="ri-contrast-2-fill nav__theme" id="theme-button"></i>
+                <!-- Toogle button  -->
+                 <div class="nav__toggle" id="nav-toggle">
+                  <!-- <i class="ri-apps-fill"></i> -->
+                   <i class="ri-menu-line"></i>
+                 </div>
+            </div>
+         </nav>
+      </header>
+      <!--==================== MAIN ====================-->
+      <main class="main">
+         <!-- ===== SUPPORT HERO ===== -->
+         <section class="support__section">
+            <div class="support__grid container">
+               <div class="support__content">
+                  <h1 class="support__title">How Can We Help You?</h1>
+                  <p class="support__description">Our dedicated support team is here to assist you with any questions or concerns you may have. We're committed to providing you with the best possible service.</p>
+                  <div class="support__cta">
+                     <a href="#contact" class="button">Contact Us</a>
+                     <a href="#faq" class="button button--ghost">View FAQs</a>
+                  </div>
+               </div>
+               <div class="support__image">
+                  <img src="assets/img/support-hero.svg" alt="Support illustration" class="support__img">
+               </div>
+            </div>
+         </section>
+         <!-- ===== CONTACT FORM ===== -->
+         <section class="contact__section" id="contact">
+            <div class="contact__container container grid">
+               <div class="contact__form">
+                  <h2 class="section__title">Send Us a Message</h2>
+                  <form id="contactForm" action="https://formsubmit.co/fadm94202@gmail.com" method="POST" class="form">
+                     <!-- FormSubmit helpers -->
+                     <input type="hidden" name="_subject" value="New Message from ASKBTM Website">
+                     <input type="hidden" name="_template" value="table">
+                     <input type="hidden" name="_captcha" value="false">
+                     <!-- Honeypot -->
+                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                     <div class="form__group">
+                        <input type="text" placeholder=" " class="form__input" id="name" name="name" required>
+                        <label for="name" class="form__label">Full Name</label>
+                     </div>
+                     <div class="form__group">
+                        <input type="email" placeholder=" " class="form__input" id="email" name="email" required>
+                        <label for="email" class="form__label">Email</label>
+                     </div>
+                     <div class="form__group">
+                        <select class="form__select" id="subject" name="subject" required>
+                           <option value="" disabled selected>Select a subject</option>
+                           <option value="general">General Inquiry</option>
+                           <option value="donation">Donation Questions</option>
+                           <option value="volunteer">Volunteer Opportunities</option>
+                           <option value="technical">Technical Support</option>
+                           <option value="other">Other</option>
+                        </select>
+                     </div>
+                     <div class="form__group">
+                        <textarea id="message" name="message" class="form__textarea" placeholder=" " required></textarea>
+                        <label for="message" class="form__label">Your Message</label>
+                     </div>
+                     <button type="submit" class="button">Send Message <i class="ri-send-plane-line"></i></button>
+                  </form>
+               </div>
+
+               <div class="contact__info">
+                  <div class="info__card">
+                     <i class="ri-map-pin-line info__icon"></i>
+                     <h3 class="info__title">Our Location</h3>
+                     <p class="info__text">Legatofo, Ethiopia</p>
+                  </div>
+                  <div class="info__card">
+                     <i class="ri-mail-line info__icon"></i>
+                     <h3 class="info__title">Email Us</h3>
+                     <p class="info__text">support@askbtm.org</p>
+                     <p class="info__text">info@askbtm.org</p>
+                  </div>
+                  <div class="info__card">
+                     <i class="ri-phone-line info__icon"></i>
+                     <h3 class="info__title">Call Us</h3>
+                     <p class="info__text">+251 911 111 111</p>
+                     <p class="info__text">+251 922 222 222</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- ===== FAQ SECTION ===== -->
+         <section class="faq__section" id="faq">
+            <div class="container">
+               <h2 class="section__title">Frequently Asked Questions</h2>
+               <p class="section__subtitle">Find answers to common questions about our services</p>
+               
+               <div class="faq__container">
+                  <div class="faq__item">
+                     <div class="faq__question">
+                        <h3>How can I make a donation to support ASKBTM's initiatives?</h3>
+                        <i class="ri-add-line faq__icon"></i>
+                     </div>
+                     <div class="faq__answer">
+                        <p>We offer multiple secure donation methods to support our mission:</p>
+                        <ul>
+                           <li><strong>Online Donation:</strong> Visit our secure donation portal where you can make a one-time or recurring donation using major credit/debit cards or digital wallets.</li>
+                           <li><strong>Bank Transfer:</strong> You can directly transfer funds to our official bank account (account details available upon request).</li>
+                           <li><strong>In-Person:</strong> Visit our office during working hours to make a donation in person.</li>
+                           <li><strong>Check/Money Order:</strong> Mail your contribution to our headquarters.</li>
+                        </ul>
+                        <p>All donations are tax-deductible to the fullest extent allowed by law, and you'll receive a receipt for your records. For donations above $5,000, we offer the opportunity to direct your contribution to specific programs or initiatives.</p>
+                     </div>
+                  </div>
+
+                  <div class="faq__item">
+                     <div class="faq__question">
+                        <h3>What volunteer opportunities are available at ASKBTM?</h3>
+                        <i class="ri-add-line faq__icon"></i>
+                     </div>
+                     <div class="faq__answer">
+                        <p>We offer diverse volunteer opportunities across multiple departments:</p>
+                        <ul>
+                           <li><strong>Program Support:</strong> Assist with our educational and community outreach programs.</li>
+                           <li><strong>Professional Services:</strong> Offer your expertise in areas like marketing, IT, or legal services.</li>
+                           <li><strong>Event Volunteers:</strong> Help organize and run our fundraising and community events.</li>
+                           <li><strong>Administrative Support:</strong> Assist with office tasks, data entry, and donor communications.</li>
+                           <li><strong>Field Work:</strong> Participate in our on-ground initiatives and community development projects.</li>
+                        </ul>
+                        <p>Our volunteer program includes orientation, training, and ongoing support. We require background checks for certain positions. Minimum time commitments vary by role, starting from 4 hours per month. Visit our Volunteer page to view current openings and submit an application.</p>
+                     </div>
+                  </div>
+
+                  <div class="faq__item">
+                     <div class="faq__question">
+                        <h3>What are your operating hours and how can I reach your support team?</h3>
+                        <i class="ri-add-line faq__icon"></i>
+                     </div>
+                     <div class="faq__answer">
+                        <p><strong>Office Hours:</strong></p>
+                        <ul>
+                           <li>Monday - Friday: 9:00 AM to 6:00 PM EAT</li>
+                           <li>Saturday: 10:00 AM to 2:00 PM EAT</li>
+                           <li>Sunday: Closed (Emergency contact available)</li>
+                        </ul>
+                        <p><strong>Contact Methods:</strong></p>
+                        <ul>
+                           <li><strong>Phone:</strong> +251 911 111 111 (General Inquiries)</li>
+                           <li><strong>Emergency:</strong> +251 922 222 222 (24/7 Support)</li>
+                           <li><strong>Email:</strong> support@askbtm.org (Response within 24 hours)</li>
+                           <li><strong>Live Chat:</strong> Available on our website during business hours</li>
+                        </ul>
+                        <p>For specific department contacts or after-hours emergencies, please visit our Contact page. We strive to respond to all inquiries within one business day.</p>
+                     </div>
+                  </div>
+
+                  <div class="faq__item">
+                     <div class="faq__question">
+                        <h3>How does ASKBTM utilize donations and ensure financial transparency?</h3>
+                        <i class="ri-add-line faq__icon"></i>
+                     </div>
+                     <div class="faq__answer">
+                        <p>At ASKBTM, we are committed to financial transparency and accountability:</p>
+                        <p><strong>Financial Allocation:</strong></p>
+                        <ul>
+                           <li>80% of funds directly support our programs and services</li>
+                           <li>12% goes to administrative costs</li>
+                           <li>8% is allocated to fundraising efforts</li>
+                        </ul>
+                        <p><strong>Our Commitment:</strong></p>
+                        <ul>
+                           <li>Annual financial audits conducted by independent firms</li>
+                           <li>Detailed annual reports available on our website</li>
+                           <li>Regular updates to donors about the impact of their contributions</li>
+                           <li>Compliance with all local and international financial regulations</li>
+                        </ul>
+                        <p>We encourage donors to review our annual reports and financial statements available in the 'About Us' section of our website. For specific inquiries about our financials, please contact our Finance Department at finance@askbtm.org.</p>
+                     </div>
+                  </div>
+
+                  <div class="faq__item">
+                     <div class="faq__question">
+                        <h3>What are the requirements and process for becoming a corporate partner?</h3>
+                        <i class="ri-add-line faq__icon"></i>
+                     </div>
+                     <div class="faq__answer">
+                        <p>We welcome partnerships with corporations that share our vision for community development. Our corporate partnership program offers several engagement levels:</p>
+                        <p><strong>Partnership Tiers:</strong></p>
+                        <ul>
+                           <li><strong>Bronze Partner:</strong> Annual contribution of $5,000-$10,000</li>
+                           <li><strong>Silver Partner:</strong> Annual contribution of $10,001-$25,000</li>
+                           <li><strong>Gold Partner:</strong> Annual contribution of $25,001-$50,000</li>
+                           <li><strong>Platinum Partner:</strong> Annual contribution of $50,001+</li>
+                        </ul>
+                        <p><strong>Benefits Include:</strong></p>
+                        <ul>
+                           <li>Brand visibility on our website and marketing materials</li>
+                           <li>Employee engagement opportunities</li>
+                           <li>Customized impact reports</li>
+                           <li>Exclusive event invitations</li>
+                           <li>Media recognition</li>
+                        </ul>
+                        <p>To begin the partnership process, please contact our Corporate Relations team at partnerships@askbtm.org. We'll schedule an initial consultation to discuss alignment of values, partnership goals, and customized engagement opportunities.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!--==================== FOOTER ====================-->
+      <footer class="footer">
+         <div class="footer__container container grid">
+            <a href="#" class="footer__logo">
+               <img src="assets/img/favicon1.png" alt="image" class="footer__logo-img">
+               ASKBTM
+            </a>
+            <div class="footer__content grid">
+               <div class=""><!--1-->
+                  <h3 class="footer__title">About</h3>
+                  <ul class="footer__links">
+                     <!-- <li><a href="#" class="footer__link">About Us</a></li> -->
+                     <!-- <li><a href="Features.html" class="footer__link">Features</a></li> -->
+                     <li><a href="News & Blogs.html" class="footer__link">News & Blogs</a></li>
+                  </ul>
+               </div>
+               <div class=""><!--1-->
+                  <h3 class="footer__title">Contact</h3>
+                  <ul class="footer__links">
+                     <li><a href="#contact" class="footer__link">Call Center</a></li>
+                     <li><a href="Support.html" class="footer__link">Support</a></li>
+                     <li><a href="#contact" class="footer__link">Contact Us</a></li>
+                  </ul>
+               </div>
+               <div class=""><!--1-->
+                  <h3 class="footer__title">Support</h3>
+                  <ul class="footer__links">
+                     <li><a href="Privacy Policy.html" class="footer__link">Privacy Policy</a></li>
+                     <li><a href="Terms & Services.html" class="footer__link">Terms & Services</a></li>
+                     <li><a href="Payments.html" class="footer__link">Payments</a></li>
+                  </ul>
+               </div>
+               <div class=""><!--1-->
+                  <h3 class="footer__title">Social</h3>
+                  <div class="footer__social">
+                     <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-circle-fill"></i>
+                     </a>
+                     <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-fill"></i>
+                     </a>
+                     <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-twitter-fill"></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <span class="footer__copy">
+            2025 &#169; All Rights Reserved By Fraol Admasu
+         </span>
+      </footer>
+      <!--========== SCROLL UP ==========-->
+      <a href="#" class="scrollup" id="scroll-up">
+         <i class="ri-arrow-drop-up-fill"></i>
+      </a>
+      <!--=============== SCROLLREVEAL ===============-->
+      <script src="assets/js/scrollreveal.min.js"></script>
+      <!--=============== SWIPER JS ===============-->
+      <script src="assets/js/swiper-bundle.min.js"></script>
+      <!--=============== SWEETALERT2 ===============-->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!--=============== CONTACT FORM JS ===============-->
+      <script src="assets/js/contact.js"></script>
+      
+      <!--=============== MAIN JS ===============-->
+      <script src="assets/js/main.js"></script>
+     
+   </body>
+</html>
