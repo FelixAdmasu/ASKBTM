@@ -51,7 +51,7 @@ export const INITIAL_STATS: SiteStats = {
 };
 
 export const INITIAL_ANNOUNCEMENT: VisitorAnnouncement = {
-  enabled: true,
+  enabled: false,
   message: 'Visiting Legatafo? Center campus tours are open Mon–Fri 8:30 AM – 5:30 PM & Sat 9:00 AM – 1:00 PM. Call +251 911 89 27 87 to schedule.',
   type: 'yellow',
   actionText: 'Plan Visit',

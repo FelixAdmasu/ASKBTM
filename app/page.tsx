@@ -126,6 +126,7 @@ export default function HomePage() {
     actionText?: string;
     actionLink?: string;
   } | null>(null);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
 
   // Contact Form State
   const [contactForm, setContactForm] = useState({
@@ -217,25 +218,34 @@ export default function HomePage() {
   return (
     <>
       {/* ==================== VISITOR NOTICE BANNER ==================== */}
-      {visitorBanner && visitorBanner.enabled && (
+      {visitorBanner && visitorBanner.enabled && !bannerDismissed && (
         <div
-          className={`fixed top-0 left-0 right-0 z-40 py-2.5 px-4 border-b-2 border-black text-center text-xs sm:text-sm font-bold shadow-md bg-color-${
+          className={`fixed top-0 left-0 right-0 z-40 py-2 px-4 border-b-2 border-black text-center text-xs sm:text-sm font-bold shadow-md bg-color-${
             visitorBanner.type || 'yellow'
           }`}
         >
-          <div className="max-w-[1200px] mx-auto flex flex-wrap items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5">
-              <i className="ri-notification-3-fill"></i>
-              {visitorBanner.message}
-            </span>
-            {visitorBanner.actionText && visitorBanner.actionLink && (
-              <Link
-                href={visitorBanner.actionLink}
-                className="ml-2 px-2.5 py-0.5 bg-white border border-black rounded text-xs font-bold hover:bg-black hover:text-white transition-colors"
-              >
-                {visitorBanner.actionText} &rarr;
-              </Link>
-            )}
+          <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-2">
+            <div className="flex-1 flex flex-wrap items-center justify-center gap-2">
+              <span className="inline-flex items-center gap-1.5">
+                <i className="ri-notification-3-fill"></i>
+                {visitorBanner.message}
+              </span>
+              {visitorBanner.actionText && visitorBanner.actionLink && (
+                <Link
+                  href={visitorBanner.actionLink}
+                  className="ml-2 px-2.5 py-0.5 bg-white border border-black rounded text-xs font-bold hover:bg-black hover:text-white transition-colors"
+                >
+                  {visitorBanner.actionText} &rarr;
+                </Link>
+              )}
+            </div>
+            <button
+              onClick={() => setBannerDismissed(true)}
+              aria-label="Dismiss banner"
+              className="w-6 h-6 flex items-center justify-center rounded-md border border-black bg-white hover:bg-black hover:text-white text-xs font-bold transition-colors ml-2"
+            >
+              &times;
+            </button>
           </div>
         </div>
       )}

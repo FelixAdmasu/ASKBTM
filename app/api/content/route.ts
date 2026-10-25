@@ -12,7 +12,7 @@ import {
 // Server-side persistent storage in memory as fallback
 let storedBlogs: BlogPost[] = [...INITIAL_BLOGS];
 let storedStats: SiteStats = { ...INITIAL_STATS };
-let storedAnnouncement: VisitorAnnouncement = { ...INITIAL_ANNOUNCEMENT };
+let storedAnnouncement: VisitorAnnouncement = { ...INITIAL_ANNOUNCEMENT, enabled: false };
 
 export async function GET(request: Request) {
   try {
