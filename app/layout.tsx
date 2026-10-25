@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   title: "Freminatos Children and Mothers' Resource Center | ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል - ASKBTM",
   description: "Freminatos Children and Mothers' Resource Center (ASKBTM) empowers children and mothers in Legatafo, Ethiopia with daytime care, nutrition, early education, and family support.",
   icons: {
-    icon: '/assets/img/favicon1.png',
+    icon: [
+      { url: '/assets/img/favicon1.png' },
+      { url: '/favicon.ico' },
+      { url: '/favicon.png' },
+    ],
+    shortcut: '/assets/img/favicon1.png',
+    apple: '/assets/img/favicon1.png',
   },
   openGraph: {
     title: "Freminatos Children and Mothers' Resource Center - ASKBTM",
@@ -25,6 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Favicons */}
+        <link rel="icon" href="/assets/img/favicon1.png" type="image/png" />
+        <link rel="shortcut icon" href="/assets/img/favicon1.png" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/assets/img/favicon1.png" />
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
