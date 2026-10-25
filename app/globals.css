@@ -1,12 +1,161 @@
+@import "remixicon/fonts/remixicon.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-[#fcf9f2] text-stone-900 antialiased selection:bg-amber-300 selection:text-stone-900;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  html {
+    scroll-behavior: smooth;
   }
+  body {
+    background-color: #faf8f2;
+    color: #121212;
+    font-family: 'Inter', sans-serif;
+  }
+  ::selection {
+    background-color: #ffe68c;
+    color: #121212;
+  }
+}
+
+/* Background decorative pattern */
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 1v5m0 12v5m11-11h-5m-12 0H1"/></svg>');
+  background-size: 24px;
+  opacity: 0.08;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Star decoration on section titles */
+.section-title::after {
+  content: '';
+  position: absolute;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 50 60" fill="none"><path d="M25 5L30 20H45L35 30L40 45L25 35L10 45L15 30L5 20H20L25 5Z" fill="%23000" stroke="%23000" stroke-width="1"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 42px;
+  height: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -60px;
+}
+
+/* Alternating tilted cards */
+.angled-card:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+.angled-card:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+.angled-card:hover {
+  transform: translateY(-8px) scale(1.02) rotate(0deg) !important;
+}
+
+/* Neo-brutalist buttons & cards */
+.btn-brutal {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+}
+.btn-brutal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+.btn-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.card-brutal {
+  border: 2px solid #121212;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Marquee Track */
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-track-reverse {
+  animation-direction: reverse;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Gallery Card */
+.gallery-thumb {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gallery-thumb:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 1, 1);
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* FAQ accordion styling */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Story Modal */
+.story-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.story-modal.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Custom Neo-Brutalist scrollbars */
@@ -15,13 +164,13 @@
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5eedc;
-  border-left: 2px solid #1c1917;
+  background: #faf8f2;
+  border-left: 2px solid #121212;
 }
 ::-webkit-scrollbar-thumb {
-  background: #f59e0b;
-  border: 2px solid #1c1917;
+  background: #ffe68c;
+  border: 2px solid #121212;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+  background: #ffd94f;
 }

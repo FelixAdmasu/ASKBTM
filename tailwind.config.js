@@ -9,6 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        'color-black': '#121212',
+        'color-white': '#ffffff',
+        'color-yellow': '#ffe68c',
+        'color-green': '#a0e8a0',
+        'color-blue': '#9ddcff',
+        'color-cream': '#faf8f2',
+        'color-pink': '#ffc5d3',
         brand: {
           50: '#fffbeb',
           100: '#fef3c7',
@@ -21,16 +28,23 @@ export default {
           800: '#92400e',
           900: '#78350f',
         },
-        stone: {
-          950: '#0c0a09',
-        }
+      },
+      fontFamily: {
+        'primary': ['"Instrument Serif"', 'serif'],
+        'secondary': ['Inter', 'sans-serif'],
+      },
+      borderRadius: {
+        'sm': '8px',
+        'md': '16px',
+        'lg': '32px',
+        'xl': '48px',
       },
       boxShadow: {
-        'brutal': '4px 4px 0px 0px #1c1917',
-        'brutal-sm': '2px 2px 0px 0px #1c1917',
-        'brutal-lg': '6px 6px 0px 0px #1c1917',
-        'brutal-xl': '8px 8px 0px 0px #1c1917',
-        'brutal-hover': '1px 1px 0px 0px #1c1917',
+        'brutal': '4px 4px 0px 0px rgba(0, 0, 0, 1)',
+        'brutal-sm': '2px 2px 0px 0px rgba(0, 0, 0, 1)',
+        'brutal-lg': '6px 6px 0px 0px rgba(0, 0, 0, 1)',
+        'brutal-xl': '8px 8px 0px 0px rgba(0, 0, 0, 1)',
+        'brutal-hover': '1px 1px 0px 0px rgba(0, 0, 0, 1)',
       }
     },
   },
