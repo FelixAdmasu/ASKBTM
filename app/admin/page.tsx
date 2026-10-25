@@ -46,7 +46,7 @@ export default function AdminPage() {
     fullContent: '',
   });
 
-  // Load data once authenticated
+  // Load data once authenticated & set up polling
   useEffect(() => {
     const savedAuth = sessionStorage.getItem('askbtm_admin_auth');
     if (savedAuth === 'true') {
@@ -54,6 +54,14 @@ export default function AdminPage() {
       fetchAdminData();
     }
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const interval = setInterval(() => {
+      fetchAdminData();
+    }, 15000); // Poll every 15 seconds for new direct messages
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();

@@ -39,10 +39,19 @@ let memoryInquiries: ContactInquiry[] = [
 export async function GET() {
   try {
     if (isSupabaseConfigured && supabase) {
-      const { data, error } = await supabase
-        .from('inquiries')
+      let { data, error } = await supabase
+        .from('contact_inquiries')
         .select('*')
         .order('created_at', { ascending: false });
+
+      if (error || !data) {
+        const fallbackRes = await supabase
+          .from('inquiries')
+          .select('*')
+          .order('created_at', { ascending: false });
+        data = fallbackRes.data;
+        error = fallbackRes.error;
+      }
 
       if (!error && data && data.length > 0) {
         return NextResponse.json({ success: true, inquiries: data });
@@ -83,18 +92,20 @@ export async function POST(request: Request) {
     // 2. Save to Supabase if configured
     if (isSupabaseConfigured && supabase) {
       try {
-        await supabase.from('inquiries').insert([
-          {
-            id: newInquiry.id,
-            name: newInquiry.name,
-            email: newInquiry.email,
-            phone: newInquiry.phone,
-            subject: newInquiry.subject,
-            message: newInquiry.message,
-            created_at: newInquiry.createdAt,
-            status: newInquiry.status,
-          },
-        ]);
+        const payload = {
+          id: newInquiry.id,
+          name: newInquiry.name,
+          email: newInquiry.email,
+          phone: newInquiry.phone || null,
+          subject: newInquiry.subject,
+          message: newInquiry.message,
+          created_at: newInquiry.createdAt,
+          status: newInquiry.status,
+        };
+        const { error } = await supabase.from('contact_inquiries').insert([payload]);
+        if (error) {
+          await supabase.from('inquiries').insert([payload]);
+        }
       } catch (err) {
         console.warn('Supabase inquiry insert note:', err);
       }
@@ -149,7 +160,10 @@ export async function PATCH(request: Request) {
     );
 
     if (isSupabaseConfigured && supabase) {
-      await supabase.from('inquiries').update({ status }).eq('id', id);
+      const { error } = await supabase.from('contact_inquiries').update({ status }).eq('id', id);
+      if (error) {
+        await supabase.from('inquiries').update({ status }).eq('id', id);
+      }
     }
 
     return NextResponse.json({ success: true, message: 'Status updated' });
@@ -170,7 +184,10 @@ export async function DELETE(request: Request) {
     memoryInquiries = memoryInquiries.filter((inq) => inq.id !== id);
 
     if (isSupabaseConfigured && supabase) {
-      await supabase.from('inquiries').delete().eq('id', id);
+      const { error } = await supabase.from('contact_inquiries').delete().eq('id', id);
+      if (error) {
+        await supabase.from('inquiries').delete().eq('id', id);
+      }
     }
 
     return NextResponse.json({ success: true, message: 'Inquiry deleted' });
