@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://askbtm.org'),
   title: "Freminatos Children and Mothers' Resource Center | ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል - ASKBTM",
   description: "Freminatos Children and Mothers' Resource Center (ASKBTM) empowers children and mothers in Legatafo, Ethiopia with daytime care, nutrition, early education, and family support.",
   icons: {
