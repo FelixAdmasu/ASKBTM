@@ -1,247 +1,871 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  ShieldCheck, 
-  PlusCircle, 
-  FileText, 
-  Users, 
-  Heart, 
-  CheckCircle, 
-  Trash2, 
-  Clock,
-  Sparkles
-} from 'lucide-react';
+import { BlogPost, SiteStats, VisitorAnnouncement, ContactInquiry } from '../../lib/siteData';
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'stories' | 'submissions' | 'pledges'>('stories');
-  
-  // Simulated story creator
-  const [newTitle, setNewTitle] = useState('');
-  const [newCategory, setNewCategory] = useState('Education');
-  const [newContent, setNewContent] = useState('');
-  const [publishedNotice, setPublishedNotice] = useState(false);
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [authError, setAuthError] = useState('');
 
-  const [submissions] = useState([
-    { id: 'SUB-1', name: 'Sara Tadesse', email: 'sara.t@example.com', type: 'Volunteer Teaching', date: 'Oct 24, 2026', status: 'Pending Review' },
-    { id: 'SUB-2', name: 'Dr. Michael Chen', email: 'mchen@health.org', type: 'Medical Clinic Support', date: 'Oct 23, 2026', status: 'Approved' },
-    { id: 'SUB-3', name: 'Abebe Gebre', email: 'abebe.g@ethio.com', type: 'CBE Wire Confirmation Ref #99281', date: 'Oct 21, 2026', status: 'Verified' },
-  ]);
+  // Active Tab
+  const [activeTab, setActiveTab] = useState<'inbox' | 'blogs' | 'stats' | 'visitors'>('inbox');
 
-  const [pledges] = useState([
-    { id: 'PLG-991', donor: 'Helen Vance', amount: '$75.00/mo', program: 'Dual Sponsorship', channel: 'Credit Card', status: 'Active' },
-    { id: 'PLG-992', donor: 'Samuel Kassa', amount: '6,000 ETB/mo', program: 'Nutrition Kitchen', channel: 'Telebirr', status: 'Active' },
-    { id: 'PLG-993', donor: 'Marta Wolde', amount: '$100.00/mo', program: 'Maternal Clinic', channel: 'Credit Card', status: 'Active' },
-  ]);
+  // Data states
+  const [inquiries, setInquiries] = useState<ContactInquiry[]>([]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [stats, setStats] = useState<SiteStats>({
+    childrenFed: '387+',
+    mothersEmpowered: '241+',
+    mealsPerDay: '3 / Day',
+    allocationPercent: '100%',
+    targetYear: '2025–2026',
+    targetDescription: 'Providing 3 nutritious meals, early education, daytime shelter, and maternal micro-grants in Legatafo.',
+  });
+  const [announcement, setAnnouncement] = useState<VisitorAnnouncement>({
+    enabled: true,
+    message: 'Visiting Legatafo? Center campus tours are open Mon–Fri 8:30 AM – 5:30 PM & Sat 9:00 AM – 1:00 PM. Call +251 911 89 27 87 to schedule.',
+    type: 'yellow',
+    actionText: 'Plan Visit',
+    actionLink: '/support',
+  });
 
-  const handlePublishStory = (e: React.FormEvent) => {
+  // Action status message
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  // New Blog Form
+  const [newBlog, setNewBlog] = useState({
+    title: '',
+    category: 'education',
+    author: 'Sister Sirgutemikael Teklu',
+    readTime: '4 min read',
+    image: '/assets/img/children learning at askbtm.svg',
+    excerpt: '',
+    fullContent: '',
+  });
+
+  // Load data once authenticated
+  useEffect(() => {
+    const savedAuth = sessionStorage.getItem('askbtm_admin_auth');
+    if (savedAuth === 'true') {
+      setIsAuthenticated(true);
+      fetchAdminData();
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setPublishedNotice(true);
-    setNewTitle('');
-    setNewContent('');
-    setTimeout(() => setPublishedNotice(false), 4000);
+    if (pinInput === 'askbtm2026' || pinInput === 'admin') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('askbtm_admin_auth', 'true');
+      setAuthError('');
+      fetchAdminData();
+    } else {
+      setAuthError('Incorrect access PIN. Default PIN is: askbtm2026');
+    }
   };
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Header */}
-      <div className="bg-stone-900 text-stone-100 rounded-2xl p-6 sm:p-8 border-2 border-stone-900 shadow-[6px_6px_0px_0px_#1c1917] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold mb-1">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            STAFF ADMINISTRATION PORTAL
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('askbtm_admin_auth');
+  };
+
+  const showFeedback = (msg: string) => {
+    setFeedback(msg);
+    setTimeout(() => setFeedback(null), 3500);
+  };
+
+  const fetchAdminData = async () => {
+    try {
+      // Inquiries
+      const resInq = await fetch('/api/contact');
+      const dataInq = await resInq.json();
+      if (dataInq.success && dataInq.inquiries) {
+        setInquiries(dataInq.inquiries);
+      }
+
+      // Content
+      const resContent = await fetch('/api/content');
+      const dataContent = await resContent.json();
+      if (dataContent.success) {
+        if (dataContent.blogs) setBlogs(dataContent.blogs);
+        if (dataContent.stats) setStats(dataContent.stats);
+        if (dataContent.announcement) setAnnouncement(dataContent.announcement);
+      }
+    } catch (err) {
+      console.warn('Data fetch note:', err);
+    }
+  };
+
+  // Inquiry Status Handler
+  const handleUpdateInquiryStatus = async (id: string, status: 'new' | 'in-progress' | 'replied') => {
+    setInquiries((prev) =>
+      prev.map((inq) => (inq.id === id ? { ...inq, status } : inq))
+    );
+    try {
+      await fetch('/api/contact', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      showFeedback(`Message status updated to ${status}`);
+    } catch (e) {
+      // fallback
+    }
+  };
+
+  // Delete Inquiry
+  const handleDeleteInquiry = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this message?')) return;
+    setInquiries((prev) => prev.filter((inq) => inq.id !== id));
+    try {
+      await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
+      showFeedback('Message deleted');
+    } catch (e) {
+      // fallback
+    }
+  };
+
+  // Publish Story Handler
+  const handlePublishStory = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newBlog.title || !newBlog.fullContent) {
+      alert('Please provide a title and story content.');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'create_blog',
+          payload: newBlog,
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.blog) {
+        setBlogs([data.blog, ...blogs]);
+        setNewBlog({
+          title: '',
+          category: 'education',
+          author: 'Sister Sirgutemikael Teklu',
+          readTime: '4 min read',
+          image: '/assets/img/children learning at askbtm.svg',
+          excerpt: '',
+          fullContent: '',
+        });
+        showFeedback('New story published to the website!');
+      }
+    } catch (err) {
+      showFeedback('Error publishing story.');
+    }
+  };
+
+  // Delete Story Handler
+  const handleDeleteStory = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this story from the blog?')) return;
+    setBlogs((prev) => prev.filter((b) => b.id !== id));
+    try {
+      await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'delete_blog',
+          payload: { id },
+        }),
+      });
+      showFeedback('Story deleted from blog.');
+    } catch (err) {
+      // fallback
+    }
+  };
+
+  // Update Stats Handler
+  const handleSaveStats = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'update_stats',
+          payload: stats,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showFeedback('Impact statistics successfully updated on the homepage!');
+      }
+    } catch (err) {
+      showFeedback('Error updating statistics.');
+    }
+  };
+
+  // Update Announcement Handler
+  const handleSaveAnnouncement = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'update_announcement',
+          payload: announcement,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showFeedback('Visitor notice banner updated on the homepage!');
+      }
+    } catch (err) {
+      showFeedback('Error updating announcement.');
+    }
+  };
+
+  // ==================== LOGIN SCREEN ====================
+  if (!isAuthenticated) {
+    return (
+      <div className="pt-36 pb-24 px-6 flex items-center justify-center min-h-[75vh]">
+        <div className="w-full max-w-md bg-white border-2 border-color-black rounded-2xl p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div className="inline-flex items-center gap-2 bg-color-green border border-black px-3 py-1 rounded-md text-xs font-bold uppercase mb-4">
+            <i className="ri-shield-keyhole-line"></i> Authorized Personnel Only
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white">ASKBTM Operations Management</h1>
-          <p className="text-xs text-stone-400 mt-1">Manage field dispatches, review incoming volunteer applications &amp; monitor pledges.</p>
-        </div>
+          <h1 className="font-primary text-3xl font-bold text-color-black mb-2">
+            ASKBTM Staff Portal
+          </h1>
+          <p className="text-xs text-black/70 mb-6 leading-relaxed">
+            Manage field stories, impact statistics, visitor announcements, and direct messages for
+            Sister Sirgutemikael and the Legatafo center.
+          </p>
 
-        <div className="flex gap-2">
-          <Link
-            href="/portal"
-            className="text-xs font-bold text-amber-300 hover:underline px-3 py-2 bg-stone-800 rounded border border-stone-700"
-          >
-            Donor View &rarr;
-          </Link>
-        </div>
-      </div>
-
-      {/* Tabs */}
-      <div className="flex gap-2 border-b-2 border-stone-900 pb-2">
-        {[
-          { id: 'stories', label: 'Publish Field Story', icon: FileText },
-          { id: 'submissions', label: 'Inquiries & Volunteers (3)', icon: Users },
-          { id: 'pledges', label: 'Active Monthly Pledges', icon: Heart },
-        ].map((tab) => {
-          const Icon = tab.icon;
-          return (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2 rounded-lg border-2 border-stone-900 font-black text-xs uppercase flex items-center gap-2 transition-all ${
-                activeTab === tab.id
-                  ? 'bg-amber-300 text-stone-950 shadow-[2px_2px_0px_0px_#1c1917]'
-                  : 'bg-white text-stone-700 hover:bg-stone-100'
-              }`}
-            >
-              <Icon className="w-3.5 h-3.5" />
-              <span>{tab.label}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* TAB 1: STORY PUBLISHER */}
-      {activeTab === 'stories' && (
-        <div className="bg-[#fffdfa] rounded-2xl border-2 border-stone-900 p-6 sm:p-8 shadow-[4px_4px_0px_0px_#1c1917] max-w-3xl space-y-4">
-          <div className="flex justify-between items-center border-b border-stone-200 pb-3">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <h3 className="font-black text-lg text-stone-900">Create New Field Story</h3>
-              <p className="text-xs text-stone-500">Instantly publish news updates to the public site and Supabase database.</p>
+              <label className="block text-xs font-bold uppercase mb-1">
+                Enter Staff PIN / Password
+              </label>
+              <input
+                type="password"
+                value={pinInput}
+                onChange={(e) => setPinInput(e.target.value)}
+                placeholder="askbtm2026"
+                className="w-full px-4 py-3 bg-color-cream border-2 border-color-black rounded-lg text-sm font-mono font-bold outline-none focus:bg-white"
+              />
+              <span className="block text-[11px] text-black/60 mt-1">
+                Default Access PIN: <code>askbtm2026</code>
+              </span>
             </div>
-            <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded border border-emerald-300">
-              Live CMS Ready
-            </span>
+
+            {authError && (
+              <div className="p-3 bg-red-100 border border-red-400 text-red-700 text-xs rounded font-medium">
+                {authError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full py-3.5 bg-color-yellow text-color-black font-bold rounded-lg border-2 border-color-black text-sm btn-brutal flex items-center justify-center gap-2"
+            >
+              <span>Unlock Admin Dashboard</span>
+              <i className="ri-arrow-right-line"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // ==================== MAIN DASHBOARD ====================
+  return (
+    <div className="pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-[1240px] mx-auto space-y-6">
+      {/* Top Banner & Quick Links */}
+      <div className="bg-color-black text-white rounded-2xl p-6 sm:p-8 border-2 border-color-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <div className="inline-flex items-center gap-2 bg-color-green text-black px-2.5 py-0.5 rounded font-bold text-xs uppercase mb-2">
+            <span className="w-2 h-2 rounded-full bg-black"></span>
+            Center Management Operations
+          </div>
+          <h1 className="font-primary text-3xl sm:text-4xl font-normal tracking-tight text-white">
+            ASKBTM Director Dashboard
+          </h1>
+          <p className="text-xs sm:text-sm text-white/75 mt-1">
+            Legatafo Center, Ethiopia · Registered Charitable Resource Organization
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2.5">
+          <Link
+            href="/"
+            target="_blank"
+            className="px-3.5 py-2 bg-white text-black font-bold text-xs rounded-lg border border-white hover:bg-color-yellow transition-colors inline-flex items-center gap-1.5"
+          >
+            <i className="ri-external-link-line"></i>
+            <span>View Live Site</span>
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="px-3.5 py-2 bg-red-600 text-white font-bold text-xs rounded-lg border border-red-700 hover:bg-red-700 transition-colors inline-flex items-center gap-1.5"
+          >
+            <i className="ri-logout-box-r-line"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Navigation Tabs */}
+      <div className="flex flex-wrap gap-2 border-b-2 border-color-black pb-3">
+        {[
+          {
+            id: 'inbox',
+            label: `Messages & Inquiries (${inquiries.length})`,
+            icon: 'ri-mail-unread-line',
+            badge: inquiries.filter((i) => i.status === 'new').length,
+          },
+          { id: 'blogs', label: `Stories & Blogs (${blogs.length})`, icon: 'ri-article-line' },
+          { id: 'stats', label: 'Impact Counts & Goals', icon: 'ri-bar-chart-box-line' },
+          { id: 'visitors', label: 'Visitor Notice Banner', icon: 'ri-notification-3-line' },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActiveTab(tab.id as any)}
+            className={`px-4 py-2.5 rounded-xl border-2 border-color-black font-bold text-xs sm:text-sm flex items-center gap-2 btn-brutal transition-all ${
+              activeTab === tab.id
+                ? 'bg-color-yellow text-color-black font-black'
+                : 'bg-white text-color-black/80 hover:bg-color-cream'
+            }`}
+          >
+            <i className={tab.icon}></i>
+            <span>{tab.label}</span>
+            {tab.badge && tab.badge > 0 ? (
+              <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1">
+                {tab.badge}
+              </span>
+            ) : null}
+          </button>
+        ))}
+      </div>
+
+      {/* Feedback Toast Notification */}
+      {feedback && (
+        <div className="p-4 bg-color-green border-2 border-color-black rounded-xl text-black font-bold text-xs sm:text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
+          <i className="ri-checkbox-circle-fill text-lg"></i>
+          <span>{feedback}</span>
+        </div>
+      )}
+
+      {/* ==================== TAB 1: INBOX & DIRECT MESSAGES ==================== */}
+      {activeTab === 'inbox' && (
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <div>
+              <h2 className="font-primary text-2xl font-bold text-color-black">
+                Direct Inquiries &amp; Messages
+              </h2>
+              <p className="text-xs text-black/70">
+                Messages submitted through the homepage or support contact forms.
+              </p>
+            </div>
+            <button
+              onClick={fetchAdminData}
+              className="px-3 py-1.5 bg-white border-2 border-black rounded-lg text-xs font-bold btn-brutal hover:bg-color-yellow inline-flex items-center gap-1.5"
+            >
+              <i className="ri-refresh-line"></i> Refresh Inbox
+            </button>
           </div>
 
-          {publishedNotice && (
-            <div className="p-3 bg-emerald-100 border border-emerald-400 text-emerald-900 rounded-lg text-xs font-bold flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-emerald-700" />
-              Story successfully published to the live news feed!
+          {inquiries.length === 0 ? (
+            <div className="bg-white border-2 border-color-black rounded-xl p-8 text-center text-sm font-medium text-black/60">
+              No inquiries received yet.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {inquiries.map((inq) => (
+                <div
+                  key={inq.id}
+                  className={`border-2 border-color-black rounded-xl p-5 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row justify-between gap-4 ${
+                    inq.status === 'new' ? 'border-l-8 border-l-yellow-400' : ''
+                  }`}
+                >
+                  <div className="space-y-2 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-mono text-xs font-bold bg-color-cream px-2 py-0.5 rounded border border-black/40">
+                        {inq.id}
+                      </span>
+                      <span className="text-xs font-bold bg-color-blue px-2.5 py-0.5 rounded border border-black uppercase">
+                        {inq.subject}
+                      </span>
+                      <span
+                        className={`text-[11px] font-bold px-2 py-0.5 rounded border border-black ${
+                          inq.status === 'new'
+                            ? 'bg-yellow-200 text-yellow-900'
+                            : inq.status === 'in-progress'
+                            ? 'bg-blue-100 text-blue-900'
+                            : 'bg-green-200 text-green-900'
+                        }`}
+                      >
+                        Status: {inq.status.toUpperCase()}
+                      </span>
+                      <span className="text-[11px] text-black/60 ml-auto">
+                        {new Date(inq.createdAt).toLocaleString()}
+                      </span>
+                    </div>
+
+                    <div className="text-sm">
+                      <strong className="text-black text-base">{inq.name}</strong>{' '}
+                      <span className="text-black/70">(&lt;{inq.email}&gt;)</span>
+                      {inq.phone && (
+                        <span className="ml-2 text-xs font-mono font-bold bg-green-50 px-2 py-0.5 rounded border border-green-300">
+                          Tel: {inq.phone}
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="text-sm text-black/85 leading-relaxed bg-color-cream p-3 rounded-lg border border-black/20">
+                      {inq.message}
+                    </p>
+                  </div>
+
+                  {/* Actions column */}
+                  <div className="flex flex-row md:flex-col justify-end gap-2 flex-shrink-0 pt-2 md:pt-0">
+                    <a
+                      href={`mailto:${inq.email}?subject=Re: ASKBTM Inquiries - ${encodeURIComponent(
+                        inq.subject
+                      )}`}
+                      className="px-3 py-2 bg-color-yellow border-2 border-black rounded-lg text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1"
+                    >
+                      <i className="ri-mail-send-line"></i>
+                      <span>Reply Email</span>
+                    </a>
+
+                    {inq.phone ? (
+                      <a
+                        href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
+                          inq.name
+                        )}%2C%20thank%20you%20for%20contacting%20Freminatos%20Center%20(ASKBTM).`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 bg-color-green border-2 border-black rounded-lg text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1"
+                      >
+                        <i className="ri-whatsapp-line"></i>
+                        <span>WhatsApp</span>
+                      </a>
+                    ) : null}
+
+                    <div className="flex gap-1.5">
+                      <select
+                        value={inq.status}
+                        onChange={(e) =>
+                          handleUpdateInquiryStatus(inq.id, e.target.value as any)
+                        }
+                        className="flex-1 text-xs font-bold p-1.5 border-2 border-black rounded-lg bg-white"
+                      >
+                        <option value="new">New</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="replied">Replied</option>
+                      </select>
+
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteInquiry(inq.id)}
+                        className="p-1.5 text-xs bg-red-100 hover:bg-red-200 border-2 border-black rounded-lg text-red-700"
+                        title="Delete inquiry"
+                      >
+                        <i className="ri-delete-bin-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
+        </div>
+      )}
 
-          <form onSubmit={handlePublishStory} className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold text-stone-800 uppercase mb-1">Article Headline</label>
-              <input
-                type="text"
-                required
-                value={newTitle}
-                onChange={(e) => setNewTitle(e.target.value)}
-                placeholder="e.g. New Science Classrooms Open for 200 Students in Mekelle"
-                className="w-full p-2.5 rounded-lg border-2 border-stone-900 text-xs font-medium bg-white"
-              />
+      {/* ==================== TAB 2: STORIES & BLOGS ==================== */}
+      {activeTab === 'blogs' && (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Create Story Form */}
+          <div className="lg:col-span-5 bg-white border-2 border-color-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] space-y-4">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-color-green border border-black"></span>
+              <h3 className="font-primary text-2xl font-bold">Post New Field Story</h3>
             </div>
+            <p className="text-xs text-black/70">
+              Published articles appear instantly on the News &amp; Blogs page (`/news`).
+            </p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handlePublishStory} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-bold text-stone-800 uppercase mb-1">Category</label>
+                <label className="block text-xs font-bold uppercase mb-1">Story Headline *</label>
+                <input
+                  type="text"
+                  required
+                  value={newBlog.title}
+                  onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
+                  placeholder="e.g. New Nutrition Clinic Launched in Legatafo"
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold uppercase mb-1">Category *</label>
+                  <select
+                    value={newBlog.category}
+                    onChange={(e) => setNewBlog({ ...newBlog, category: e.target.value })}
+                    className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                  >
+                    <option value="education">Education</option>
+                    <option value="events">Events &amp; Gala</option>
+                    <option value="volunteer">Volunteer Spotlight</option>
+                    <option value="success-stories">Success Stories</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase mb-1">Est. Read Time</label>
+                  <input
+                    type="text"
+                    value={newBlog.readTime}
+                    onChange={(e) => setNewBlog({ ...newBlog, readTime: e.target.value })}
+                    placeholder="4 min read"
+                    className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase mb-1">Author Name</label>
+                <input
+                  type="text"
+                  value={newBlog.author}
+                  onChange={(e) => setNewBlog({ ...newBlog, author: e.target.value })}
+                  placeholder="Sister Sirgutemikael Teklu"
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase mb-1">
+                  Card Illustration / Photo
+                </label>
                 <select
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value)}
-                  className="w-full p-2.5 rounded-lg border-2 border-stone-900 text-xs font-medium bg-white"
+                  value={newBlog.image}
+                  onChange={(e) => setNewBlog({ ...newBlog, image: e.target.value })}
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
                 >
-                  <option value="Education">Education</option>
-                  <option value="Nutrition">Nutrition</option>
-                  <option value="Community">Community</option>
-                  <option value="Volunteering">Volunteering</option>
+                  <option value="/assets/img/children learning at askbtm.svg">
+                    Children Learning (SVG)
+                  </option>
+                  <option value="/assets/img/volunteer.svg">Volunteers at Work (SVG)</option>
+                  <option value="/assets/img/community-event.svg">Community Event (SVG)</option>
+                  <option value="/assets/img/education-tech.svg">Education Technology (SVG)</option>
+                  <option value="/assets/img/success-story.svg">Success Story (SVG)</option>
+                  <option value="/assets/img/art-class.svg">Art Class (SVG)</option>
+                  <option value="/assets/img/slideshow1.jpg">Slideshow Photo 1 (Legatafo)</option>
+                  <option value="/assets/img/slideshow6.jpg">Slideshow Photo 6 (Meals)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-800 uppercase mb-1">Author Name</label>
+                <label className="block text-xs font-bold uppercase mb-1">Short Summary (Excerpt)</label>
+                <textarea
+                  rows={2}
+                  value={newBlog.excerpt}
+                  onChange={(e) => setNewBlog({ ...newBlog, excerpt: e.target.value })}
+                  placeholder="Brief preview sentence that shows on the card..."
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                ></textarea>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase mb-1">
+                  Full Story Content (HTML or Paragraphs) *
+                </label>
+                <textarea
+                  rows={6}
+                  required
+                  value={newBlog.fullContent}
+                  onChange={(e) => setNewBlog({ ...newBlog, fullContent: e.target.value })}
+                  placeholder="Share details about the program, quotes from mothers, and impact details..."
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 bg-color-yellow text-color-black font-bold rounded-xl border-2 border-color-black text-sm btn-brutal flex items-center justify-center gap-2"
+              >
+                <i className="ri-upload-cloud-line text-lg"></i>
+                <span>Publish to Live Site</span>
+              </button>
+            </form>
+          </div>
+
+          {/* Existing Blogs List */}
+          <div className="lg:col-span-7 space-y-4">
+            <h3 className="font-primary text-2xl font-bold text-color-black">
+              Current Published Stories ({blogs.length})
+            </h3>
+            <div className="space-y-3">
+              {blogs.map((b) => (
+                <div
+                  key={b.id}
+                  className="bg-white border-2 border-color-black rounded-xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-start justify-between gap-4"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold bg-color-green border border-black px-2 py-0.5 rounded uppercase">
+                        {b.category}
+                      </span>
+                      <span className="text-xs text-black/60">
+                        {b.day} {b.monthYear} · By {b.author}
+                      </span>
+                    </div>
+                    <h4 className="font-primary text-lg font-bold text-black">{b.title}</h4>
+                    <p className="text-xs text-black/75 line-clamp-2">{b.excerpt}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteStory(b.id)}
+                    className="p-2 text-xs bg-red-100 hover:bg-red-200 border-2 border-black rounded-lg text-red-700 flex-shrink-0"
+                    title="Delete story"
+                  >
+                    <i className="ri-delete-bin-line"></i>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ==================== TAB 3: IMPACT COUNTS & STATS ==================== */}
+      {activeTab === 'stats' && (
+        <div className="bg-white border-2 border-color-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] max-w-3xl space-y-6">
+          <div>
+            <h2 className="font-primary text-3xl font-bold text-color-black">
+              Update Live Homepage Impact Numbers
+            </h2>
+            <p className="text-xs text-black/70 mt-1">
+              These counts appear in the 4-box stats bar on the main homepage.
+            </p>
+          </div>
+
+          <form onSubmit={handleSaveStats} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-color-blue/20 p-4 rounded-xl border-2 border-black">
+                <label className="block text-xs font-bold uppercase mb-1">
+                  1. Children Fed &amp; Cared Daily
+                </label>
                 <input
                   type="text"
-                  defaultValue="ASKBTM Field Team"
-                  className="w-full p-2.5 rounded-lg border-2 border-stone-900 text-xs font-medium bg-white"
+                  value={stats.childrenFed}
+                  onChange={(e) => setStats({ ...stats, childrenFed: e.target.value })}
+                  placeholder="387+"
+                  className="w-full px-3 py-2 bg-white border-2 border-black rounded-lg text-lg font-primary font-bold outline-none"
+                />
+              </div>
+
+              <div className="bg-color-yellow/30 p-4 rounded-xl border-2 border-black">
+                <label className="block text-xs font-bold uppercase mb-1">
+                  2. Mothers Empowered
+                </label>
+                <input
+                  type="text"
+                  value={stats.mothersEmpowered}
+                  onChange={(e) => setStats({ ...stats, mothersEmpowered: e.target.value })}
+                  placeholder="241+"
+                  className="w-full px-3 py-2 bg-white border-2 border-black rounded-lg text-lg font-primary font-bold outline-none"
+                />
+              </div>
+
+              <div className="bg-color-green/30 p-4 rounded-xl border-2 border-black">
+                <label className="block text-xs font-bold uppercase mb-1">
+                  3. Nutritious Meals per Day
+                </label>
+                <input
+                  type="text"
+                  value={stats.mealsPerDay}
+                  onChange={(e) => setStats({ ...stats, mealsPerDay: e.target.value })}
+                  placeholder="3 / Day"
+                  className="w-full px-3 py-2 bg-white border-2 border-black rounded-lg text-lg font-primary font-bold outline-none"
+                />
+              </div>
+
+              <div className="bg-color-pink/30 p-4 rounded-xl border-2 border-black">
+                <label className="block text-xs font-bold uppercase mb-1">
+                  4. Program Allocation Percentage
+                </label>
+                <input
+                  type="text"
+                  value={stats.allocationPercent}
+                  onChange={(e) => setStats({ ...stats, allocationPercent: e.target.value })}
+                  placeholder="100%"
+                  className="w-full px-3 py-2 bg-white border-2 border-black rounded-lg text-lg font-primary font-bold outline-none"
                 />
               </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-stone-800 uppercase mb-1">Full Story Body</label>
+            <div className="border-t-2 border-black/10 pt-4">
+              <label className="block text-xs font-bold uppercase mb-1">
+                Strategic Target Headline
+              </label>
+              <input
+                type="text"
+                value={stats.targetYear}
+                onChange={(e) => setStats({ ...stats, targetYear: e.target.value })}
+                placeholder="2025–2026"
+                className="w-full px-3 py-2 bg-color-cream border-2 border-black rounded-lg text-sm font-bold outline-none mb-3"
+              />
+
+              <label className="block text-xs font-bold uppercase mb-1">
+                Strategic Focus Description
+              </label>
               <textarea
-                rows={6}
-                required
-                value={newContent}
-                onChange={(e) => setNewContent(e.target.value)}
-                placeholder="Write the full report here..."
-                className="w-full p-2.5 rounded-lg border-2 border-stone-900 text-xs font-medium bg-white"
+                rows={3}
+                value={stats.targetDescription}
+                onChange={(e) => setStats({ ...stats, targetDescription: e.target.value })}
+                placeholder="Providing 3 nutritious meals, early education..."
+                className="w-full px-3 py-2 bg-color-cream border-2 border-black rounded-lg text-sm font-medium outline-none"
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="bg-emerald-400 hover:bg-emerald-300 text-stone-950 font-black text-xs uppercase tracking-wider px-6 py-3 rounded-lg border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] flex items-center gap-2"
+              className="px-6 py-3 bg-color-green text-color-black font-bold rounded-xl border-2 border-color-black text-sm btn-brutal flex items-center gap-2"
             >
-              <PlusCircle className="w-4 h-4" />
-              <span>Publish Story to Live Site</span>
+              <i className="ri-save-line text-lg"></i>
+              <span>Save &amp; Update Live Homepage</span>
             </button>
           </form>
         </div>
       )}
 
-      {/* TAB 2: INQUIRIES & VOLUNTEERS */}
-      {activeTab === 'submissions' && (
-        <div className="bg-[#fffdfa] rounded-2xl border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917] overflow-hidden">
-          <div className="p-4 border-b border-stone-200">
-            <h3 className="font-black text-base text-stone-900">Recent Applications &amp; Inquiries</h3>
+      {/* ==================== TAB 4: VISITOR NOTICE BANNER ==================== */}
+      {activeTab === 'visitors' && (
+        <div className="bg-white border-2 border-color-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] max-w-3xl space-y-6">
+          <div>
+            <h2 className="font-primary text-3xl font-bold text-color-black">
+              Visitor Notice &amp; Announcement Bar
+            </h2>
+            <p className="text-xs text-black/70 mt-1">
+              Broadcast urgent announcements, tour visiting hours, or donation drives at the very top of
+              the website.
+            </p>
           </div>
-          <table className="w-full text-left text-xs font-medium">
-            <thead className="bg-stone-50 border-b-2 border-stone-900 font-mono text-stone-600 uppercase text-[11px]">
-              <tr>
-                <th className="py-3 px-4">Applicant</th>
-                <th className="py-3 px-4">Email</th>
-                <th className="py-3 px-4">Category / Note</th>
-                <th className="py-3 px-4">Date</th>
-                <th className="py-3 px-4">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-200">
-              {submissions.map((s) => (
-                <tr key={s.id} className="hover:bg-amber-50/50">
-                  <td className="py-3 px-4 font-bold text-stone-900">{s.name}</td>
-                  <td className="py-3 px-4 font-mono text-stone-600">{s.email}</td>
-                  <td className="py-3 px-4">{s.type}</td>
-                  <td className="py-3 px-4 text-stone-500 font-mono text-[11px]">{s.date}</td>
-                  <td className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded font-bold text-[10px] bg-amber-100 text-amber-900 border border-amber-300">
-                      {s.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
 
-      {/* TAB 3: PLEDGES */}
-      {activeTab === 'pledges' && (
-        <div className="bg-[#fffdfa] rounded-2xl border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917] overflow-hidden">
-          <div className="p-4 border-b border-stone-200">
-            <h3 className="font-black text-base text-stone-900">Live Active Sponsorships</h3>
-          </div>
-          <table className="w-full text-left text-xs font-medium">
-            <thead className="bg-stone-50 border-b-2 border-stone-900 font-mono text-stone-600 uppercase text-[11px]">
-              <tr>
-                <th className="py-3 px-4">Pledge ID</th>
-                <th className="py-3 px-4">Donor</th>
-                <th className="py-3 px-4">Commitment</th>
-                <th className="py-3 px-4">Designated Program</th>
-                <th className="py-3 px-4">Payment Channel</th>
-                <th className="py-3 px-4">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-200">
-              {pledges.map((p) => (
-                <tr key={p.id} className="hover:bg-amber-50/50">
-                  <td className="py-3 px-4 font-mono font-bold text-stone-900">{p.id}</td>
-                  <td className="py-3 px-4 font-bold">{p.donor}</td>
-                  <td className="py-3 px-4 font-mono font-bold text-emerald-800">{p.amount}</td>
-                  <td className="py-3 px-4">{p.program}</td>
-                  <td className="py-3 px-4 text-stone-600">{p.channel}</td>
-                  <td className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded font-bold text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-300">
-                      {p.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <form onSubmit={handleSaveAnnouncement} className="space-y-4">
+            <div className="flex items-center gap-3 p-3 bg-color-cream rounded-xl border-2 border-black">
+              <input
+                type="checkbox"
+                id="enableBanner"
+                checked={announcement.enabled}
+                onChange={(e) =>
+                  setAnnouncement({ ...announcement, enabled: e.target.checked })
+                }
+                className="w-5 h-5 accent-yellow-400"
+              />
+              <label htmlFor="enableBanner" className="font-bold text-sm cursor-pointer select-none">
+                Enable Visitor Alert Bar on Homepage
+              </label>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase mb-1">Banner Accent Color</label>
+              <div className="flex gap-3">
+                {[
+                  { id: 'yellow', label: 'Yellow (Warm Alert)', bg: 'bg-color-yellow' },
+                  { id: 'green', label: 'Green (Good News / Open)', bg: 'bg-color-green' },
+                  { id: 'blue', label: 'Blue (Info)', bg: 'bg-color-blue' },
+                  { id: 'pink', label: 'Pink (Urgent Need)', bg: 'bg-color-pink' },
+                ].map((c) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() =>
+                      setAnnouncement({ ...announcement, type: c.id as any })
+                    }
+                    className={`px-3 py-1.5 rounded-lg border-2 border-black text-xs font-bold ${c.bg} ${
+                      announcement.type === c.id ? 'ring-2 ring-black font-black scale-105' : 'opacity-70'
+                    }`}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase mb-1">
+                Announcement Message for Visitors *
+              </label>
+              <textarea
+                rows={3}
+                required
+                value={announcement.message}
+                onChange={(e) =>
+                  setAnnouncement({ ...announcement, message: e.target.value })
+                }
+                placeholder="e.g. Visitor notice: Campus open for visiting tours this Saturday from 9 AM to 1 PM. Call +251 911 89 27 87 to reserve."
+                className="w-full px-4 py-3 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+              ></textarea>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold uppercase mb-1">
+                  Optional Button Label
+                </label>
+                <input
+                  type="text"
+                  value={announcement.actionText || ''}
+                  onChange={(e) =>
+                    setAnnouncement({ ...announcement, actionText: e.target.value })
+                  }
+                  placeholder="Plan Visit"
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold uppercase mb-1">Button Link</label>
+                <input
+                  type="text"
+                  value={announcement.actionLink || ''}
+                  onChange={(e) =>
+                    setAnnouncement({ ...announcement, actionLink: e.target.value })
+                  }
+                  placeholder="/support"
+                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Live Preview */}
+            <div className="p-4 bg-gray-50 border-2 border-dashed border-black/40 rounded-xl space-y-2">
+              <span className="text-[11px] font-bold uppercase text-black/60">Live Preview:</span>
+              <div
+                className={`p-3 rounded-lg border-2 border-black flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm font-bold bg-color-${announcement.type}`}
+              >
+                <span>{announcement.message}</span>
+                {announcement.actionText && (
+                  <span className="px-3 py-1 bg-white border border-black rounded text-xs">
+                    {announcement.actionText} &rarr;
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="px-6 py-3 bg-color-yellow text-color-black font-bold rounded-xl border-2 border-color-black text-sm btn-brutal flex items-center gap-2"
+            >
+              <i className="ri-broadcast-line text-lg"></i>
+              <span>Publish Banner Notice</span>
+            </button>
+          </form>
         </div>
       )}
     </div>

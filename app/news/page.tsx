@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface BlogPost {
   category: string;
@@ -145,14 +146,30 @@ const BLOGS_DATA: BlogPost[] = [
 ];
 
 export default function NewsPage() {
+  const [blogs, setBlogs] = useState<BlogPost[]>(BLOGS_DATA);
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [activeStory, setActiveStory] = useState<BlogPost | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    async function loadBlogs() {
+      try {
+        const res = await fetch('/api/content?type=blogs');
+        const data = await res.json();
+        if (data.blogs && Array.isArray(data.blogs) && data.blogs.length > 0) {
+          setBlogs(data.blogs);
+        }
+      } catch (e) {
+        console.error('Failed to fetch dynamic blogs:', e);
+      }
+    }
+    loadBlogs();
+  }, []);
+
   const filteredBlogs =
     selectedFilter === 'all'
-      ? BLOGS_DATA
-      : BLOGS_DATA.filter(
+      ? blogs
+      : blogs.filter(
           (b) =>
             b.category.toLowerCase().replace('-', ' ') ===
               selectedFilter.toLowerCase().replace('-', ' ') ||
@@ -192,7 +209,7 @@ export default function NewsPage() {
             accomplishments, and community celebrations directly from our Legatafo center.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-3xl mx-auto mb-4">
             {[
               { id: 'all', label: 'All Stories' },
               { id: 'education', label: 'Education' },
@@ -211,6 +228,15 @@ export default function NewsPage() {
                 {tab.label}
               </button>
             ))}
+
+            <Link
+              href="/admin"
+              className="px-3.5 py-2 bg-color-pink text-color-black border-2 border-black rounded-xl font-bold text-xs btn-brutal inline-flex items-center gap-1.5 hover:bg-pink-200"
+              title="Staff Publisher Portal (PIN protected)"
+            >
+              <i className="ri-add-line text-sm font-bold"></i>
+              <span>Post New Story</span>
+            </Link>
           </div>
         </div>
       </section>

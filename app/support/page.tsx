@@ -64,6 +64,57 @@ export default function SupportPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
+  // Direct Message Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: 'donation',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error';
+    message: string;
+    details?: string;
+  } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been received.',
+          details: 'Our Legatafo care team will reply to ' + formData.email + ' shortly. Reference: #' + data.inquiry.id,
+        });
+        setFormData({ name: '', email: '', phone: '', subject: 'donation', message: '' });
+      } else {
+        throw new Error(data.error || 'Failed to submit message');
+      }
+    } catch (err: any) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Unable to deliver message right now.',
+        details: 'You can also reach us immediately on WhatsApp at +251 911 89 27 87.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleCopy = (text: string, key: string) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
@@ -71,6 +122,10 @@ export default function SupportPage() {
       setTimeout(() => setCopiedKey(null), 2000);
     }
   };
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello ASKBTM Team! I am contacting you from your support center regarding ${formData.subject || 'general support'}.`
+  );
 
   return (
     <>
@@ -130,7 +185,7 @@ export default function SupportPage() {
               </div>
               <h3 className="font-primary text-2xl font-bold mb-1">Electronic Mail</h3>
               <p className="text-xs text-black/70 mb-3">Average response time under 24 hours</p>
-              <p className="font-bold text-sm text-color-black truncate">support@askbtm.org</p>
+              <p className="font-bold text-sm text-color-black truncate">fadm94202@gmail.com</p>
               <p className="text-xs text-black/80 truncate">info@askbtm.org</p>
             </div>
           </div>
@@ -143,30 +198,51 @@ export default function SupportPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Contact Form */}
             <div className="lg:col-span-7 bg-white border-2 border-color-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="inline-block bg-color-pink px-3 py-1 rounded-md border-2 border-black font-bold text-xs uppercase mb-3">
-                Direct Contact
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div className="inline-block bg-color-pink px-3 py-1 rounded-md border-2 border-black font-bold text-xs uppercase">
+                  Direct In-App Message
+                </div>
+                <a
+                  href={`https://wa.me/251911892787?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold bg-[#25D366] text-white px-3 py-1 rounded-md border-2 border-black hover:opacity-90 btn-brutal"
+                >
+                  <i className="ri-whatsapp-line text-sm"></i>
+                  <span>Chat on WhatsApp</span>
+                </a>
               </div>
-              <h2 className="font-primary text-3xl sm:text-4xl font-normal tracking-tight mb-3">
+
+              <h2 className="font-primary text-3xl sm:text-4xl font-normal tracking-tight mb-2">
                 Send Our Team a Message
               </h2>
               <p className="text-sm text-black/70 mb-6 leading-relaxed">
-                Have questions regarding donations, child sponsorship, volunteer onboarding, or
-                visiting Legatafo? Fill out the form below and we'll connect with you directly.
+                Messages are saved directly into our staff inbox and forwarded securely to our management team. We typically respond within a few hours.
               </p>
 
-              <form
-                action="https://formsubmit.co/fadm94202@gmail.com"
-                method="POST"
-                className="space-y-4"
-              >
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="New Inquiry from ASKBTM Support Center"
-                />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
+              {submitStatus && (
+                <div
+                  className={`mb-6 p-4 rounded-xl border-2 border-black font-medium text-sm ${
+                    submitStatus.type === 'success'
+                      ? 'bg-color-green text-color-black'
+                      : 'bg-red-100 text-red-900'
+                  }`}
+                >
+                  <div className="font-bold mb-1 flex items-center gap-2">
+                    <i
+                      className={`text-lg ${
+                        submitStatus.type === 'success'
+                          ? 'ri-checkbox-circle-fill'
+                          : 'ri-error-warning-fill'
+                      }`}
+                    ></i>
+                    {submitStatus.message}
+                  </div>
+                  {submitStatus.details && <p className="text-xs">{submitStatus.details}</p>}
+                </div>
+              )}
 
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -178,8 +254,9 @@ export default function SupportPage() {
                     <input
                       type="text"
                       id="name"
-                      name="name"
                       required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Abebe Bikila"
                       className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
                     />
@@ -194,37 +271,53 @@ export default function SupportPage() {
                     <input
                       type="email"
                       id="email"
-                      name="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="abebe@example.com"
                       className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-xs font-bold uppercase tracking-wider mb-1.5"
-                  >
-                    Inquiry Topic *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    defaultValue=""
-                    className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
-                  >
-                    <option value="" disabled>
-                      Select an inquiry category
-                    </option>
-                    <option value="donation">Donation &amp; Bank Transfer Verification</option>
-                    <option value="volunteer">Volunteer Opportunities &amp; Internships</option>
-                    <option value="visit">Center Visitation &amp; Tours in Legatafo</option>
-                    <option value="corporate">Corporate Partnership &amp; CSR Initiatives</option>
-                    <option value="other">General Community Inquiry</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-xs font-bold uppercase tracking-wider mb-1.5"
+                    >
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+251 911 00 00 00"
+                      className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="subject"
+                      className="block text-xs font-bold uppercase tracking-wider mb-1.5"
+                    >
+                      Inquiry Topic *
+                    </label>
+                    <select
+                      id="subject"
+                      required
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                    >
+                      <option value="donation">Donation &amp; Bank Transfer Verification</option>
+                      <option value="volunteer">Volunteer Opportunities &amp; Internships</option>
+                      <option value="visit">Center Visitation &amp; Tours in Legatafo</option>
+                      <option value="corporate">Corporate Partnership &amp; CSR Initiatives</option>
+                      <option value="other">General Community Inquiry</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -236,21 +329,44 @@ export default function SupportPage() {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
                     rows={5}
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Please provide any details about how we can help or collaborate..."
                     className="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"
                   ></textarea>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-color-yellow text-color-black font-bold py-3.5 px-6 rounded-xl border-2 border-color-black text-base btn-brutal flex items-center justify-center gap-2 hover:bg-yellow-300"
-                >
-                  <span>Send Message</span>
-                  <i className="ri-send-plane-2-fill text-lg"></i>
-                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:flex-1 bg-color-yellow text-color-black font-bold py-3.5 px-6 rounded-xl border-2 border-color-black text-base btn-brutal flex items-center justify-center gap-2 hover:bg-yellow-300 disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <i className="ri-loader-4-line animate-spin text-lg"></i>
+                        <span>Sending message...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Direct Message</span>
+                        <i className="ri-send-plane-2-fill text-lg"></i>
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href="https://t.me/your_channel"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto bg-color-blue text-color-black font-bold py-3.5 px-5 rounded-xl border-2 border-color-black text-sm btn-brutal flex items-center justify-center gap-2"
+                  >
+                    <i className="ri-telegram-fill text-lg"></i>
+                    <span>Telegram</span>
+                  </a>
+                </div>
               </form>
             </div>
 

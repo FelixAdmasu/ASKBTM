@@ -110,6 +110,81 @@ export default function HomePage() {
   const [donorName, setDonorName] = useState('');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
+  // Dynamic Site Content & Visitor Banner
+  const [liveStats, setLiveStats] = useState({
+    childrenFed: '387+',
+    mothersEmpowered: '241+',
+    mealsPerDay: '3 / Day',
+    allocationPercent: '100%',
+    targetYear: '2025–2026',
+    targetDescription: 'Providing 3 nutritious meals, early education, daytime shelter, and maternal micro-grants in Legatafo.',
+  });
+  const [visitorBanner, setVisitorBanner] = useState<{
+    enabled: boolean;
+    message: string;
+    type: string;
+    actionText?: string;
+    actionLink?: string;
+  } | null>(null);
+
+  // Contact Form State
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: 'Donation & Sponsorship',
+    message: '',
+  });
+  const [formLoading, setFormLoading] = useState(false);
+  const [formSuccess, setFormSuccess] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch('/api/content?type=all')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          if (data.stats) setLiveStats(data.stats);
+          if (data.announcement && data.announcement.enabled) {
+            setVisitorBanner(data.announcement);
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormLoading(true);
+    setFormSuccess(null);
+    setFormError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactForm),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setFormSuccess(data.message || 'Thank you! Your message has been received.');
+        setContactForm({
+          name: '',
+          email: '',
+          phone: '',
+          subject: 'Donation & Sponsorship',
+          message: '',
+        });
+      } else {
+        setFormError(data.error || 'Failed to send message. Please try again or WhatsApp us.');
+      }
+    } catch (err: any) {
+      setFormError('Network error. Please try again or reach Sister Sirgutemikael at +251 911 89 27 87.');
+    } finally {
+      setFormLoading(false);
+    }
+  };
+
   const cleanName = donorName.trim().replace(/[^a-zA-Z0-9]/g, '') || 'Donation';
   const referenceCode = `FREM-2025-${selectedTier.code}-${cleanName}`;
 
@@ -141,6 +216,29 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ==================== VISITOR NOTICE BANNER ==================== */}
+      {visitorBanner && visitorBanner.enabled && (
+        <div
+          className={`fixed top-0 left-0 right-0 z-40 py-2.5 px-4 border-b-2 border-black text-center text-xs sm:text-sm font-bold shadow-md bg-color-${
+            visitorBanner.type || 'yellow'
+          }`}
+        >
+          <div className="max-w-[1200px] mx-auto flex flex-wrap items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5">
+              <i className="ri-notification-3-fill"></i>
+              {visitorBanner.message}
+            </span>
+            {visitorBanner.actionText && visitorBanner.actionLink && (
+              <Link
+                href={visitorBanner.actionLink}
+                className="ml-2 px-2.5 py-0.5 bg-white border border-black rounded text-xs font-bold hover:bg-black hover:text-white transition-colors"
+              >
+                {visitorBanner.actionText} &rarr;
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
       {/* ==================== HERO SECTION ==================== */}
       <section className="pt-32 md:pt-40 pb-20 px-6 relative overflow-hidden" id="home">
         <div className="max-w-[1200px] mx-auto">
@@ -257,19 +355,19 @@ export default function HomePage() {
           {/* ==================== STATS BAR ==================== */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16 md:mt-24">
             <div className="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-blue text-center btn-brutal">
-              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">387+</p>
+              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">{liveStats.childrenFed}</p>
               <p className="text-sm md:text-base font-semibold">Children Fed &amp; Cared Daily</p>
             </div>
             <div className="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-yellow text-center btn-brutal">
-              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">241+</p>
+              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">{liveStats.mothersEmpowered}</p>
               <p className="text-sm md:text-base font-semibold">Mothers Empowered</p>
             </div>
             <div className="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-green text-center btn-brutal">
-              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">3 / Day</p>
+              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">{liveStats.mealsPerDay}</p>
               <p className="text-sm md:text-base font-semibold">Nutritious Daily Meals</p>
             </div>
             <div className="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-pink text-center btn-brutal">
-              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">100%</p>
+              <p className="font-primary text-4xl md:text-5xl font-normal mb-1">{liveStats.allocationPercent}</p>
               <p className="text-sm md:text-base font-semibold">Direct Program Allocation</p>
             </div>
           </div>
@@ -430,7 +528,7 @@ export default function HomePage() {
           <div className="border-2 border-color-black rounded-xl p-6 md:p-10 bg-color-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
               <div className="inline-flex items-center gap-2 bg-color-yellow border-2 border-color-black rounded-lg px-3.5 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <i className="ri-flag-2-line"></i> 2025–2026 Strategic Expansion Goals
+                <i className="ri-flag-2-line"></i> {liveStats.targetYear} Strategic Expansion Goals
               </div>
             </div>
 
@@ -970,56 +1068,111 @@ export default function HomePage() {
                 Inquiries regarding child enrollment, sponsorships, volunteer opportunities, and partnerships.
               </p>
 
-              <form action="https://formsubmit.co/fadm94202@gmail.com" method="POST" className="space-y-4">
-                <input type="hidden" name="_subject" value="New Message from ASKBTM Website" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
+              {/* Success Banner */}
+              {formSuccess && (
+                <div className="mb-6 p-4 bg-color-green border-2 border-black rounded-xl text-black font-bold text-sm shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
+                  <i className="ri-checkbox-circle-fill text-xl"></i>
+                  <span>{formSuccess}</span>
+                </div>
+              )}
 
-                <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase mb-1">
-                    Your Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Abebe Kebede"
-                    className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
-                  />
+              {/* Error Banner */}
+              {formError && (
+                <div className="mb-6 p-4 bg-red-100 border-2 border-red-500 rounded-xl text-red-800 font-bold text-sm shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
+                  <i className="ri-error-warning-fill text-xl"></i>
+                  <span>{formError}</span>
+                </div>
+              )}
+
+              {/* WhatsApp Quick Connect Pill */}
+              <div className="mb-6 p-3.5 bg-color-white border-2 border-black rounded-xl flex flex-wrap items-center justify-between gap-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-lg">
+                    <i className="ri-whatsapp-fill"></i>
+                  </span>
+                  <div>
+                    <strong className="block text-xs uppercase tracking-wider">Prefer Instant Messaging?</strong>
+                    <span className="text-xs text-black/75">Chat directly with Sister Sirgutemikael &amp; team</span>
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/251911892787?text=Hello%20Sister%20Sirgutemikael%2C%20I%20am%20reaching%20out%20from%20the%20ASKBTM%20website%20regarding..."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-1.5 bg-color-green text-black border-2 border-black rounded-lg text-xs font-bold btn-brutal inline-flex items-center gap-1.5 hover:bg-green-300"
+                >
+                  <i className="ri-whatsapp-line text-sm"></i>
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+
+              <form onSubmit={handleContactSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-xs font-bold uppercase mb-1">
+                      Your Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={contactForm.name}
+                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                      placeholder="Abebe Kebede"
+                      className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-xs font-bold uppercase mb-1">
+                      Phone / WhatsApp Number
+                    </label>
+                    <input
+                      type="text"
+                      id="phone"
+                      name="phone"
+                      value={contactForm.phone}
+                      onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                      placeholder="+251 911 23 45 67"
+                      className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="email" className="block text-xs font-bold uppercase mb-1">
-                      Email Address
+                      Email Address *
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       required
+                      value={contactForm.email}
+                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                       placeholder="name@example.com"
                       className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
                     />
                   </div>
+
                   <div>
                     <label htmlFor="subject" className="block text-xs font-bold uppercase mb-1">
-                      Inquiry Topic
+                      Inquiry Topic *
                     </label>
                     <select
                       id="subject"
                       name="subject"
                       required
-                      defaultValue=""
+                      value={contactForm.subject}
+                      onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
                       className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
                     >
-                      <option value="" disabled>
-                        Select topic
-                      </option>
                       <option value="Donation & Sponsorship">Donation &amp; Sponsorship</option>
                       <option value="Volunteer Work">Volunteer Opportunity</option>
                       <option value="Child Enrollment">Child Enrollment</option>
+                      <option value="Center Tour & Visit">Center Tour &amp; Visit Request</option>
                       <option value="Corporate Partnership">Corporate Partnership</option>
                       <option value="General Question">General Question</option>
                     </select>
@@ -1028,13 +1181,15 @@ export default function HomePage() {
 
                 <div>
                   <label htmlFor="message" className="block text-xs font-bold uppercase mb-1">
-                    Your Message
+                    Your Message *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
                     required
+                    value={contactForm.message}
+                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                     placeholder="How can we assist you or collaborate?"
                     className="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"
                   ></textarea>
@@ -1042,9 +1197,20 @@ export default function HomePage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-color-black text-color-white font-bold rounded-lg border-2 border-color-black text-base btn-brutal"
+                  disabled={formLoading}
+                  className="w-full py-4 bg-color-black text-color-white font-bold rounded-lg border-2 border-color-black text-base btn-brutal flex items-center justify-center gap-2 hover:bg-neutral-800 disabled:opacity-60"
                 >
-                  Send Message <i className="ri-send-plane-fill ml-2"></i>
+                  {formLoading ? (
+                    <>
+                      <i className="ri-loader-4-line animate-spin"></i>
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message Directly</span>
+                      <i className="ri-send-plane-fill"></i>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
