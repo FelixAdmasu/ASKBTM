@@ -1,907 +1,1496 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!--=============== FAVICON ===============-->
-      <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
-      <!--=============== REMIXICONS ===============-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-      <!--=============== SWIPER CSS ===============-->
-      <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/styles.css">
-      <title>Freminatos Children and Mothers' Resource Center <br>
-         ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል Website - ASKBTM</title>
-   </head>
-   <body>
-      <div id="page-loader" class="page-loader" aria-hidden="true">
-         <div class="loader__inner">
-            <div class="loader__cube">
-               <span class="loader__face loader__face--front"><img src="assets/img/favicon1.png" alt="" /></span>
-               <span class="loader__face loader__face--back"><img src="assets/img/favicon1.png" alt="" /></span>
-               <span class="loader__face loader__face--left"><img src="assets/img/favicon1.png" alt="" /></span>
-               <span class="loader__face loader__face--right"><img src="assets/img/favicon1.png" alt="" /></span>
-               <span class="loader__face loader__face--top"><img src="assets/img/favicon1.png" alt="" /></span>
-               <span class="loader__face loader__face--bottom"><img src="assets/img/favicon1.png" alt="" /></span>
-            </div>
-            <div class="loader__ring loader__ring--outer"></div>
-            <div class="loader__ring loader__ring--inner"></div>
-         </div>
-      </div>
-      <!--==================== HEADER ====================-->
-      <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">
-               <img src="assets/img/favicon1.png" alt="image">
-               <span>ASKBTM</span>
-            </a>
-            <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                  <li class="nav__item"><a href="#about" class="nav__link">About</a> </li>
-                  <!-- <li class="nav__item"><a href="#destination" class="nav__link">Destination</a></li> -->
-                  <li class="nav__item"><a href="#testimonial" class="nav__link">Testimonial</a></li>
-                  <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
-                  <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
-                  <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-               </ul>
-               <!--Close button-->
-               <div class="nav__close" id="nav-close">
-                  <i class="ri-close-circle-fill"></i>
-               </div>
-            </div>
-            <div class="nav__buttons">
-               <!-- Theme Button  -->
-                <i class="ri-contrast-2-fill nav__theme" id="theme-button"></i>
-                <!-- Toogle button  -->
-                 <div class="nav__toggle" id="nav-toggle">
-                  <!-- <i class="ri-apps-fill"></i> -->
-                   <i class="ri-menu-line"></i>
-                 </div>
-            </div>
-         </nav>
-      </header>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freminatos Children and Mothers' Resource Center | ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል - ASKBTM</title>
+  <meta name="description" content="Freminatos Children and Mothers' Resource Center (ASKBTM) empowers children and mothers in Legatafo, Ethiopia with daytime care, nutrition, early education, and family support.">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
 
-      <!--==================== MAIN ====================-->
-      <main class="main">
-         <!--==================== HOME ====================-->
-         <section class="home section" id="home">
-            <img src="assets/img/home-bg.png" alt="image" class="home__bg">
-            <div class="home__blur"></div>
-            <div class="home__container container grid">
-               <div class="home__data">
-                  <h1 class="home__title">Freminatos Children and Mothers' Resource Center</h1>
-                  <p class="home__description">ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል</p>
-                  <p class="home__description">Aba Selama Kesate Brihan Terado Mehaber</p>
-                  <a href="#about" class="button button__opa-30">Read More
-                     <i class="ri-arrow-drop-right-fill"></i>
-                  </a>
-               </div>
-               <div class="home__swiper swiper">
-                  <div class="swiper-wrapper">
-                     <article class="home__article swiper-slide"> <!--1-->
-                        <img src="assets/img/SlideShow25.jpg" alt="image" class="home__img">
-                     </article> 
-                     <article class="home__article swiper-slide"> <!--2-->
-                        <img src="assets/img/SlideShow22.jpg" alt="image" class="home__img">
-                     </article> 
-                     <article class="home__article swiper-slide"> <!--3-->
-                        <img src="assets/img/SlideShow16.jpg" alt="image" class="home__img">
-                     </article> 
-                     <article class="home__article swiper-slide"> <!--4-->
-                        <img src="assets/img/SlideShow20.jpg" alt="image" class="home__img">
-                     </article> 
-                     <article class="home__article swiper-slide"> <!--5-->
-                        <img src="assets/img/SlideShow18.jpg" alt="image" class="home__img">
-                     </article> 
-                  </div>
-                  <!--Navigation buttons-->
-                     <div class="swiper-button-prev">
-                        <i class="ri-arrow-drop-left-fill"></i>
-                     </div>
-                     <div class="swiper-button-next">
-                        <i class="ri-arrow-drop-right-fill"></i>
-                     </div>
-               </div>
-            </div>
-         </section>
-         <!--==================== ABOUT ====================-->
-         <section class="about section" id="about">
-            <!-- <h2 class="section__title">About Us</h2> -->
-            <div class="about__container container">
-               <div class="about__content">
-                  <h2 class="about__title">Aba Selama Kesate Brihan Terado Mehaber (ASKBTM)</h2>
-                  <p class="about__description">
-                     We are dedicated to the belief that family unity is paramount in a child's upbringing. Our founder, Mother Sirgutemikael Teklu, emphasizes that the well-being of children should never come at the expense of their connection to their parents. We strive to create an environment where children can thrive while remaining with their families.
-                  </p>
-                  
-                  <div class="about__cards">
-                     <div class="about__vision" data-sr="fade-up">
-                     <h3 class="about__subtitle">Our Vision</h3>
-                     <p>We aspire to break the cycle of poverty by ensuring that every child grows up in a nurturing family environment supported by a caring community.</p>
-                     <ul class="about__list">
-                        <li><strong>Family Unity:</strong> Strengthen the parent-child bond through day-time care that never replaces families.</li>
-                        <li><strong>Holistic Development:</strong> Address physical, cognitive and emotional growth during the most formative years.</li>
-                        <li><strong>Inclusive Community:</strong> Build a support network where neighbours, volunteers and local businesses work together for children's success.</li>
-                     </ul>
-                                       </div>
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Freminatos Children and Mothers' Resource Center - ASKBTM">
+  <meta property="og:description" content="Empowering children and mothers through daytime care, nutrition, and education in Legatafo, Ethiopia.">
+  <meta property="og:image" content="assets/img/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-                  <div class="about__daycare">
-                     <h3 class="about__subtitle">Day Care Center in Legatofo</h3>
-                     <p>To realize this vision, ASKBTM operates a Day Care Center in Legatofo, offering a safe and nurturing space for children. Our comprehensive approach includes:</p>
-                     <ul class="about__list">
-                        <li><strong>Morning Reception:</strong> Children are warmly welcomed each morning, setting a positive tone for the day ahead.</li>
-                        <li><strong>Nutritious Meals:</strong> We provide balanced meals—breakfast, lunch, and dinner—to support the children's physical and mental development.</li>
-                        <li><strong>Full-Day Care:</strong> Engaging educational and recreational activities are designed to foster overall development.</li>
-                        <li><strong>Evening Reunification:</strong> Children are reunited with their parents, reinforcing family bonds.</li>
-                        <li><strong>Parent Assistance:</strong> We offer guidance, financial assistance, and resources to help families thrive.</li>
-                     </ul>
-                  </div>
+  <!-- Google Fonts: Instrument Serif + Inter (as requested in design guide) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-                  <div class="about__mission" data-sr="fade-up" data-sr-delay="100">
-                     <h3 class="about__subtitle">Why We Do It</h3>
-                     <p>Children flourish when surrounded by love, stability and opportunity. Unfortunately, economic hardship often forces parents to choose between work and quality childcare. ASKBTM exists to make that choice unnecessary.</p>
-                     <ul class="about__list">
-                        <li><strong>Child Well-Being:</strong> Protect children from neglect, malnutrition and unsafe environments.</li>
-                        <li><strong>Parental Empowerment:</strong> Give caregivers the freedom to work or study, knowing their children are safe.</li>
-                        <li><strong>Community Impact:</strong> Reduce school drop-outs and improve long-term socio-economic outcomes.</li>
-                     </ul>
-                     <p>Together we create a future where every child can dream, learn and grow while staying close to the people who matter most.</p>
-                                       </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-         
-         <!--==================== VIDEO ====================-->
-         <section class="video section" id="video">
-            <div class="video__container container">
-               <h2 class="section__title">Our Story in Motion</h2>
-               <p class="section__subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-color);">
-                  Watch how we're making a difference in the lives of children and families every day.
-               </p>
-               <div class="video__wrapper">
-                  <div class="video__player">
-                     <!-- <iframe 
-                        width="100%" 
-                        height="500" 
-                        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                        title="Our Impact at ASKBTM" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                     </iframe> -->
-                     <video id="slowVideo" src="assets/vid/Freminatos  Children & Mothers.webm" autoplay loop muted controls controlsList="nodownload" style="width: 100%; max-width: fit-content; border-radius: 10px;"></video>
-                     <!-- <video id="slowVideo" src="assets/vid/Freminatos  Children & Mothers.webm" autoplay loop muted controls style="width: 100%; max-width: fit-content; border-radius: 10px;"></video> -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--==================== PARTNERS ====================-->
-        <section class="partners" id="partners">
-           <div class="container">
-             <h2 class="section__title">Our Partners</h2>
-             <p class="section__subtitle">We collaborate with organisations and companies committed to empowering children, supporting mothers, and uplifting communities.</p>
+  <!-- Remix Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 
-             <div class="partners__marquee">
-               <div class="partners__track">
-                 <span class="partners__item"><i class="ri-hand-heart-line"></i> Health Alliance</span>
-                 <span class="partners__item"><i class="ri-bank-line"></i> Community Bank</span>
-                 <span class="partners__item"><i class="ri-graduation-cap-line"></i> EduTech</span>
-                 <span class="partners__item"><i class="ri-community-line"></i> Mothers United</span>
-                 <span class="partners__item"><i class="ri-restaurant-line"></i> Food For All</span>
-                 <span class="partners__item"><i class="ri-home-heart-line"></i> ChildCare Network</span>
-                 <span class="partners__item"><i class="ri-leaf-line"></i> Green Growth</span>
-                 <span class="partners__item"><i class="ri-government-line"></i> City Council</span>
-                 <!-- duplicate set for seamless loop -->
-                 <span class="partners__item"><i class="ri-hand-heart-line"></i> Health Alliance</span>
-                 <span class="partners__item"><i class="ri-bank-line"></i> Community Bank</span>
-                 <span class="partners__item"><i class="ri-graduation-cap-line"></i> EduTech</span>
-                 <span class="partners__item"><i class="ri-community-line"></i> Mothers United</span>
-                 <span class="partners__item"><i class="ri-restaurant-line"></i> Food For All</span>
-                 <span class="partners__item"><i class="ri-home-heart-line"></i> ChildCare Network</span>
-                 <span class="partners__item"><i class="ri-leaf-line"></i> Green Growth</span>
-                 <span class="partners__item"><i class="ri-government-line"></i> City Council</span>
-               </div>
-             </div>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
-             <div class="partners__marquee partners__marquee--reverse">
-               <div class="partners__track">
-                 <span class="partners__item"><i class="ri-hospital-line"></i> Saint Mary Hospital</span>
-                 <span class="partners__item"><i class="ri-team-line"></i> Hope Foundation</span>
-                 <span class="partners__item"><i class="ri-ancient-gate-line"></i> Heritage Trust</span>
-                 <span class="partners__item"><i class="ri-global-line"></i> Global Relief</span>
-                 <span class="partners__item"><i class="ri-book-open-line"></i> Learning Bridge</span>
-                 <span class="partners__item"><i class="ri-store-2-line"></i> Local Market Co.</span>
-                 <span class="partners__item"><i class="ri-user-heart-line"></i> Care Givers Assoc.</span>
-                 <span class="partners__item"><i class="ri-shield-check-line"></i> Safe Kids Org</span>
-                 <!-- duplicate set for seamless loop -->
-                 <span class="partners__item"><i class="ri-hospital-line"></i> Saint Mary Hospital</span>
-                 <span class="partners__item"><i class="ri-team-line"></i> Hope Foundation</span>
-                 <span class="partners__item"><i class="ri-ancient-gate-line"></i> Heritage Trust</span>
-                 <span class="partners__item"><i class="ri-global-line"></i> Global Relief</span>
-                 <span class="partners__item"><i class="ri-book-open-line"></i> Learning Bridge</span>
-                 <span class="partners__item"><i class="ri-store-2-line"></i> Local Market Co.</span>
-                 <span class="partners__item"><i class="ri-user-heart-line"></i> Care Givers Assoc.</span>
-                 <span class="partners__item"><i class="ri-shield-check-line"></i> Safe Kids Org</span>
-               </div>
-             </div>
+  <!-- Tailwind CSS via CDN with customized guide palette -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'color-black': '#121212',
+            'color-white': '#ffffff',
+            'color-yellow': '#ffe68c',
+            'color-green': '#a0e8a0',
+            'color-blue': '#9ddcff',
+            'color-cream': '#faf8f2',
+            'color-pink': '#ffc5d3',
+          },
+          fontFamily: {
+            'primary': ['"Instrument Serif"', 'serif'],
+            'secondary': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'sm': '8px',
+            'md': '16px',
+            'lg': '32px',
+            'xl': '48px',
+          },
+          transitionDuration: {
+            'fast': '250ms',
+            'medium': '400ms',
+          },
+        }
+      }
+    };
+  </script>
 
-             <div class="partners__cta">
-               <a href="#contact" class="button" id="partnerButton">Become A Partner</a>
-               <a href="#contact" class="button button--ghost" id="partnerDeckButton">Request Partner Deck</a>
-             </div>
-           </div>
-        </section>
-         <!--==================== SUPPORT US ====================-->
-         <section class="support section" id="support">
-            <h2 class="section__title">Support Our Cause</h2>
-            <p class="section__subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-color);">
-               Join us in making a difference in the lives of children and families. Your support helps us continue our mission of providing quality care and education.
-            </p>
-            <div class="support__container container grid">
-               <article class="support__card" data-sr-id="1" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.4s ease;">
-                  <div class="support__img-container">
-                     <img src="assets/img/volunteer.svg" alt="Volunteer" class="support__img">
-                     <div class="support__overlay">
-                        <a href="#volunteer" class="button button--flex">
-                           Learn More <i class="ri-arrow-right-line"></i>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="support__data">
-                     <h3 class="support__title">Become a Volunteer</h3>
-                     <p class="support__description">
-                        Share your time and skills to make a direct impact on children's lives.
-                     </p>
-                     <ul class="support__list">
-                        <li><i class="ri-check-line"></i> Mentor children</li>
-                        <li><i class="ri-check-line"></i> Assist with activities</li>
-                        <li><i class="ri-check-line"></i> Share your expertise</li>
-                     </ul>
-                  </div>
-               </article>
+  <style>
+    /* Neo-Brutalist & Guide specific styles */
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 1v5m0 12v5m11-11h-5m-12 0H1"/></svg>');
+      background-size: 24px;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-               <article class="support__card" data-sr-id="2" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.4s ease 0.1s;">
-                  <div class="support__img-container">
-                     <img src="assets/img/fundraiser.svg" alt="Fundraiser" class="support__img">
-                     <div class="support__overlay">
-                        <a href="#fundraise" class="button button--flex">
-                           Start Fundraising <i class="ri-arrow-right-line"></i>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="support__data">
-                     <h3 class="support__title">Be a Fundraiser</h3>
-                     <p class="support__description">
-                        Organize events or campaigns to support our programs and initiatives.
-                     </p>
-                     <ul class="support__list">
-                        <li><i class="ri-check-line"></i> Host events</li>
-                        <li><i class="ri-check-line"></i> Create campaigns</li>
-                        <li><i class="ri-check-line"></i> Engage your network</li>
-                     </ul>
-                  </div>
-               </article>
+    .section-title::after {
+      content: '';
+      position: absolute;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 50 60" fill="none"><path d="M25 5L30 20H45L35 30L40 45L25 35L10 45L15 30L5 20H20L25 5Z" fill="%23000" stroke="%23000" stroke-width="1"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 42px;
+      height: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -60px;
+    }
 
-               <article class="support__card" data-sr-id="3" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.4s ease 0.2s;">
-                  <div class="support__img-container">
-                     <img src="assets/img/gifts.svg" alt="Donate" class="support__img">
-                     <div class="support__overlay">
-                        <a href="#donate" class="button button--flex">
-                           Donate Now <i class="ri-heart-line"></i>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="support__data">
-                     <h3 class="support__title">Make a Donation</h3>
-                     <p class="support__description">
-                        Your financial support helps us provide essential services to children in need.
-                     </p>
-                     <ul class="support__list">
-                        <li><i class="ri-check-line"></i> One-time gifts</li>
-                        <li><i class="ri-check-line"></i> Monthly support</li>
-                        <li><i class="ri-check-line"></i> Sponsor a child</li>
-                     </ul>
-                  </div>
-               </article>
-            </div>
-         </section>
-         <!--==================== FAQ ====================-->
-         <section class="faq section" id="faq">
-            <h2 class="section__title">Frequently Asked Questions</h2>
-            <p class="section__subtitle">
-               Answers to the most common questions about our work, programmes and how you can get involved.
-            </p>
-            <div class="faq__container container">
-               <div class="faq__item" data-sr="fade-up">
-                  <button class="faq__question">How do I enrol my child in the day-care programme? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                        Visit our centre or complete the online pre-registration form. Our staff will then schedule an orientation and help with the paperwork. <br><br>
-                        To enroll your child in our day-care program, we invite you to visit our center in person, where you can get a feel for our environment and  <br>
-                        meet our caring staff. Alternatively, you can complete the convenient online pre-registration form available on our website. Once we receive your information, <br>
-                        our dedicated staff will reach out to schedule an informative orientation session, guiding you through all necessary paperwork and answering any questions you may have about our program. 
-                        We look forward to welcoming you and your child to our community!
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="100">
-                  <button class="faq__question">Is there a fee for your services? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                       Our services operate on a sliding scale model, designed to accommodate the diverse financial situations of families. We encourage those who are able to contribute to do so, as their support helps sustain our programs. For families facing financial difficulties, we offer scholarships that are generously funded by our dedicated donors, ensuring that everyone has access to the resources they need.
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="200">
-                  <button class="faq__question">What age groups do you accept? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                        We currently provide nurturing care for children ranging from 6 months to 6 years of age. Our tailored programs are designed to support the developmental needs of young learners. Additionally, we are excited to announce that we will soon be introducing after-school tutoring services for older children, allowing us to expand our support to a wider age range. Stay tuned for more details on this upcoming offering!
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="300">
-                  <button class="faq__question">How can I volunteer? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                       If you’re interested in making a difference through volunteering, we’d love to have you on board! To get started, please fill out our volunteer form, which will give us insight into your skills and availability. Alternatively, you can reach out to us directly at volunteer@askbtm.org. Once we receive your information, we will carefully match your unique talents with our current needs. Additionally, we will provide you with a comprehensive orientation to ensure you feel prepared and confident in your role. Thank you for considering this opportunity to contribute to our community!
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="400">
-                  <button class="faq__question">What curriculum or daily activities do the children follow? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                        Our program is designed to provide a rich and engaging environment for children, seamlessly blending play-based learning with essential early literacy and numeracy skills. Each day begins with a vibrant circle time, where children gather to share their thoughts and participate in interactive discussions. Throughout the day, they explore themed learning centers that inspire curiosity and creativity, allowing them to dive into hands-on activities that spark their imagination.
-                        <br><br>
-                        In addition to our focus on academics, we incorporate creative arts, enabling children to express themselves through various mediums, from painting to music. Outdoor exploration is also a vital part of our curriculum, encouraging children to connect with nature and foster their physical development through active play.
-                        <br><br>
-                        Nutrition is a priority, and we serve wholesome meals that fuel their bodies and minds. After a busy morning of learning and exploration, children enjoy a restful nap time to recharge. At the end of the day, we value connection with families; thus, we take time for reflection during pick-up, sharing highlights and insights about each child's day. This thoughtful approach ensures a well-rounded experience that nurtures their growth and development.
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="500">
-                  <button class="faq__question">How do you ensure the safety and health of the children? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                       To ensure the utmost safety and health of the children in our care, we take a comprehensive approach. All staff members are not only first-aid certified but are also rigorously vetted to guarantee a safe environment. Our facility boasts secure entry systems and is under continuous surveillance through CCTV monitoring, providing an extra layer of security. We prioritize cleanliness with routine sanitation procedures throughout the center and have an on-call pediatric nurse available to address any health concerns. Additionally, we maintain a favorable educator-to-child ratio of 1:6, allowing for personalized attention and care, while strictly adhering to national child-care guidelines to create a nurturing and safe atmosphere for all children.
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="600">
-                  <button class="faq__question">Can I donate supplies or equipment instead of money? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                        Absolutely! We warmly welcome a wide range of donations that can significantly enhance the lives of children in need. You can contribute engaging picture books that spark children's imaginations, educational toys that promote critical thinking and problem-solving skills, or art materials like crayons, paints, and craft supplies that encourage creativity and self-expression. Additionally, we accept hygiene kits stocked with essential items such as soap, toothbrushes, and feminine hygiene products, as well as gently-used children's clothing that can be passed on to little ones who will benefit from them. If you’re interested in making a tangible difference, please reach out by emailing <a href="mailto:donations@askbtm.org">donations@askbtm.org</a> for our current wish list and drop-off schedule. Your generosity has the power to brighten a child’s day!
-                  </div>
-               </div>
-               <div class="faq__item" data-sr="fade-up" data-sr-delay="700">
-                  <button class="faq__question">What are your operating hours and holiday schedule? <i class="ri-add-line faq__icon"></i></button>
-                  <div class="faq__answer">
-                        We are open Monday–Friday, 7:30 AM – 6:00 PM. We observe major public holidays and a two-week maintenance break in August. Exact dates are published every January on our notice board and website.
-                  </div>
-               </div>
-            </div>
-         </section>
+    /* Alternating tilted cards */
+    .angled-card:nth-child(odd) {
+      transform: rotate(-1.5deg);
+    }
+    .angled-card:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+    .angled-card:hover {
+      transform: translateY(-8px) scale(1.02) rotate(0deg) !important;
+    }
 
-         <!--==================== TESTIMONIAL ====================-->
-         <section class="testimonial section" id="testimonial">
-            <h2 class="section__title">What Are <br> They Saying</h2>
-            <div class="testimonial__container container grid">
-               <img src="assets/img/testimonial-img.svg" alt="image" class="testimonial__img">
-               <div class="testimonial__swiper swiper">
-                  <div class="swiper-wrapper">
-                     <div class="testimonial__card swiper-slide"><!--1-->
-                        <h2 class="testimonial__title">Faithful Parent</h2>
-                        <p class="testimonial__description">Our family has found such peace and community here. The spiritual guidance and support have truly strengthened our family bonds and deepened our faith journey together..</p>
-                           <div class="testimonial__profile">
-                              <img src="assets/img/testimonial-profile-1.png" alt="image" class="">
-                              <div class="testimonial__info">
-                                 <h3>Michael T.</h3>
-                                 <p>Parent of Two</p>
-                              </div>
-                           </div>
-                     </div>
-                     <div class="testimonial__card swiper-slide"><!--2-->
-                        <h2 class="testimonial__title">Spiritual Growth</h2>
-                        <p class="testimonial__description">The children's programs have been transformative for our little ones. They come home excited about what they've learned and it's brought our family closer through shared spiritual growth.</p>
-                           <div class="testimonial__profile">
-                              <img src="assets/img/testimonial-profile-2.png" alt="image" class="">
-                              <div class="testimonial__info">
-                                 <h3>Sarah J.</h3>
-                                 <p>Mother of Three</p>
-                              </div>
-                           </div>
-                     </div>
-                     <div class="testimonial__card swiper-slide"><!--3-->
-                        <h2 class="testimonial__title">Community Support</h2>
-                        <p class="testimonial__description">In times of need, this community has been our rock. The love and support we've received have been a true testament to the power of faith and fellowship.</p>
-                           <div class="testimonial__profile">
-                              <img src="assets/img/testimonial-profile-3.png" alt="image" class="">
-                              <div class="testimonial__info">
-                                 <h3>David & Maria L.</h3>
-                                 <p>Family of Four</p>
-                              </div>
-                           </div>
-                     </div>
-                     <div class="testimonial__card swiper-slide"><!--4-->
-                        <h2 class="testimonial__title">Blessed Journey</h2>
-                        <p class="testimonial__description">Watching our children grow in their faith and build meaningful relationships here has been our greatest blessing. This community truly embodies the love of Christ.</p>
-                           <div class="testimonial__profile">
-                              <img src="assets/img/testimonial-profile-3.png" alt="image" class="">
-                              <div class="testimonial__info">
-                                 <h3>The Johnson Family</h3>
-                                 <p>Active Members</p>
-                              </div>
-                           </div>
-                     </div>
-                  </div>
-                  <!--Navigation button-->
-                  <div class="swiper-button-prev">
-                     <i class="ri-arrow-drop-left-fill"></i>
-                  </div>
-                  <div class="swiper-button-next">
-                     <i class="ri-arrow-drop-right-fill"></i>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--==================== GALLERY ====================-->
-         <section class="gallery section" id="gallery">
-            <h2 class="section__title">Gallery</h2>
-            <div class="gallery__wrapper">
-              <div class="gallery__container">
-                 <article class="gallery__card"><img src="assets/img/SlideShow1.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow2.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow3.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow4.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow5.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow6.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow7.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow8.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow9.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow10.jpg" alt="image" class="gallery__img"></article>
-                 <!-- Duplicate the set for seamless loop -->
-                 <article class="gallery__card"><img src="assets/img/SlideShow1.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow2.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow3.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow4.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow5.jpg" alt="image" class="gallery__img"></article>
-              </div>
-           </div>
-           <div class="gallery__wrapper">
-              <div class="gallery__container gallery__container--reverse">
-                 <!-- Duplicate the set for seamless loop -->
-                 <article class="gallery__card"><img src="assets/img/SlideShow1.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow2.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow3.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow4.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow5.jpg" alt="image" class="gallery__img"></article>
-                 <!-- Duplicate the set for seamless loop -->
-                 <article class="gallery__card"><img src="assets/img/SlideShow1.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow2.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow3.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow4.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow5.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow6.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow7.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow8.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow9.jpg" alt="image" class="gallery__img"></article>
-                 <article class="gallery__card"><img src="assets/img/SlideShow10.jpg" alt="image" class="gallery__img"></article>
-              </div>
-           </div>
-         </section>
+    /* Scroll Animation classes */
+    .animate-on-scroll-hidden {
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+      transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .animate-on-scroll-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .animate-on-load {
+      opacity: 0;
+      transform: scale(0.94);
+      animation: appear 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .animate-on-load[data-delay='100'] { animation-delay: 0.1s; }
+    .animate-on-load[data-delay='200'] { animation-delay: 0.2s; }
+    .animate-on-load[data-delay='300'] { animation-delay: 0.3s; }
+    .animate-on-load[data-delay='400'] { animation-delay: 0.4s; }
+
+    /* Neo-brutalist buttons */
+    .btn-brutal {
+      box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+      transition: all 0.2s ease;
+    }
+    .btn-brutal:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    /* Marquee Track */
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marqueeScroll 35s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .marquee-track-reverse {
+      animation-direction: reverse;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Gallery Card */
+    .gallery-thumb {
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery-thumb:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* FAQ accordion styling */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 400px;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Hero Swiper Left & Right Navigation Buttons */
+    .home__swiper .swiper-button-prev::after,
+    .home__swiper .swiper-button-next::after {
+      display: none !important;
+    }
+
+    .home__swiper .swiper-nav-btn {
+      width: 2.85rem !important;
+      height: 2.85rem !important;
+      background-color: #ffffff !important;
+      color: #121212 !important;
+      border: 2px solid #121212 !important;
+      border-radius: 9999px !important;
+      box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+      margin-top: 0 !important;
+      transform: translateY(-50%) !important;
+      z-index: 30 !important;
+      outline: none !important;
+      user-select: none !important;
+    }
+
+    .home__swiper .swiper-nav-btn:hover {
+      background-color: #ffe68c !important;
+      transform: translateY(-50%) scale(1.12) !important;
+      box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 1) !important;
+    }
+
+    .home__swiper .swiper-nav-btn:active,
+    .home__swiper .swiper-nav-btn.clicked {
+      background-color: #a0e8a0 !important;
+      transform: translateY(calc(-50% + 2px)) scale(0.9) !important;
+      box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 1) !important;
+      animation: btnPulse 0.3s ease-out;
+    }
+
+    @keyframes btnPulse {
+      0% { box-shadow: 0 0 0 0 rgba(160, 232, 160, 0.8), 1px 1px 0px 0px rgba(0, 0, 0, 1); }
+      70% { box-shadow: 0 0 0 8px rgba(160, 232, 160, 0), 1px 1px 0px 0px rgba(0, 0, 0, 1); }
+      100% { box-shadow: 0 0 0 0 rgba(160, 232, 160, 0), 1px 1px 0px 0px rgba(0, 0, 0, 1); }
+    }
+
+    .home__swiper .swiper-button-prev {
+      left: 0.75rem !important;
+    }
+    .home__swiper .swiper-button-next {
+      right: 0.75rem !important;
+    }
+  </style>
+</head>
+
+<body class="font-secondary bg-color-white text-color-black overflow-x-hidden selection:bg-color-yellow selection:text-color-black">
+
+  <!-- Background decorative pattern -->
+  <div class="background-pattern"></div>
+
+  <!--==================== FLOATING HEADER ====================-->
+  <header class="fixed top-4 left-0 right-0 w-full max-w-[1140px] mx-auto px-4 z-50">
+    <div class="header-wrapper">
+      <div class="flex justify-between items-center bg-color-white border-2 border-color-black rounded-xl px-4 md:px-8 py-3.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <!-- Brand Logo -->
+        <a href="#home" class="flex items-center gap-2.5 bg-color-green border-2 border-color-black px-3.5 py-1.5 rounded-lg text-lg font-bold font-primary transition-transform hover:scale-105">
+          <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-6 h-6 object-contain">
+          <span class="tracking-wide">ASKBTM</span>
+        </a>
         
-
-        <!--==================== BLOG ====================-->
-         <section class="blog section" id="blog">
-            <h2 class="section__title">Latest News &amp; Updates</h2>
-            <p class="section__subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-color);">
-               Stay updated with our latest activities, success stories, and upcoming events at ASKBTM.
-            </p>
-            <img>
-            <div class="blog__container container grid">
-               <!-- Blog Post 1 -->
-               <article class="blog__card" data-sr-id="1">
-                  <div class="blog__img-container">
-                     <img src="assets/img/Celebrates.svg" alt="Children at ASKBTM Day Care" class="blog__img">
-               
-                     <div class="blog__date">
-                        <span>15</span>
-                        <span>Nov 2025</span>
-                     </div>
-                  </div>
-                  <div class="blog__data">
-                     <div class="blog__meta">
-                        <span><i class="ri-user-line"></i> By Admin</span>
-                        <!-- <span><i class="ri-chat-3-line"></i> 12 Comments</span> -->
-                     </div>
-                     <h3 class="blog__title">ASKBTM Celebrates Another Year of Impact</h3>
-                     <p class="blog__excerpt">
-                        This year, we've reached over 200 children through our programs, providing them with quality education and care...
-                     </p>
-                     <a href="#read-more" class="blog__link">
-                        Read More <i class="ri-arrow-right-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               <!-- Blog Post 2 -->
-               <article class="blog__card" data-sr-id="2">
-                  <div class="blog__img-container">
-                     <img src="assets/img/Volunteer Support.svg" alt="Volunteer Program" class="blog__img">
-                     <div class="blog__date">
-                        <span>05</span>
-                        <span>Nov 2025</span>
-                     </div>
-                  </div>
-                  <div class="blog__data">
-                     <div class="blog__meta">
-                        <span><i class="ri-user-line"></i> By Volunteer Team</span>
-                        <!-- <span><i class="ri-chat-3-line"></i> 8 Comments</span> -->
-                     </div>
-                     <h3 class="blog__title">Join Our Volunteer Program</h3>
-                     <p class="blog__excerpt">
-                        We're looking for passionate individuals to join our volunteer team. Make a difference in children's lives today...
-                     </p>
-                     <a href="#read-more" class="blog__link">
-                        Read More <i class="ri-arrow-right-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               <!-- Blog Post 3 -->
-               <article class="blog__card" data-sr-id="3">
-                  <div class="blog__img-container">
-                     <img src="assets/img/gifts.svg" alt="Community Event" class="blog__img">
-                     <div class="blog__date">
-                        <span>25</span>
-                        <span>Oct 2025</span>
-                     </div>
-                  </div>
-                  <div class="blog__data">
-                     <div class="blog__meta">
-                        <span><i class="ri-user-line"></i> By Event Team</span>
-                        <!-- <span><i class="ri-chat-3-line"></i> 15 Comments</span> -->
-                     </div>
-                     <h3 class="blog__title">Annual Community Day Success</h3>
-                     <p class="blog__excerpt">
-                        Our annual community day brought together over 300 participants for a day of fun, learning, and community building...
-                     </p>
-                     <a href="#read-more" class="blog__link">
-                        Read More <i class="ri-arrow-right-line"></i>
-                     </a>
-                  </div>
-               </article>
-            </div>
-
-            <div class="blog__cta">
-               <a href="News & Blogs.html" class="button">View All Posts</a>
-            </div>
-         </section>
-         <!--==================== JOIN ====================-->
-         <section class="join section" id="join">
-            <div class="join__container container grid">
-               <div class="join__data">
-                  <h2 class="section__title">Your Journey <br> Starts Here</h2>
-                  <p class="join__description">Get up to date with the latest travel and information from us.</p>
-                  <div class="join__cta">
-                     <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" class="join__button button">
-                        Join our Telegram Channel
-                        <i class="ri-telegram-fill"></i>
-                     </a>
-                  </div>
-               </div>
-               <img src="assets/img/join-img.svg" alt="image" class="join__img">
-            </div>
-         </section>
-
-         <!--==================== CONTACT ====================-->
-         <section class="contact section" id="contact">
-            <h2 class="section__title">Get In Touch</h2>
-            <p class="section__subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-color);">
-               Don't be afraid to reach out. You + us = awesome.
-            </p>
-            
-            <div class="contact__container container grid">
-               <div class="contact__info">
-                  <h3 class="contact__title">Contact Us</h3>
-                  <div class="contact__details">
-                     <div class="contact__items-container">
-                        <div class="contact__item">
-                           <i class="ri-map-pin-line" aria-hidden="true"></i>
-                           <div>
-                              <h4 class="contact__subtitle">Our Location</h4>
-                              <a href="https://maps.app.goo.gl/sP6YGTt5H9NfxpSJA" target="_blank" rel="noopener noreferrer" class="contact__link">
-                                 P.O. Box 20461, Addis Ababa, Ethiopia
-                              </a>
-                              <p class="contact__note">Click to open in Google Maps</p>
-                           </div>
-                        </div>
-                     
-                     <div class="contact__item">
-                        <i class="ri-phone-line" aria-hidden="true"></i>
-                        <div>
-                           <h4 class="contact__subtitle">Call Us</h4>
-                           <a href="tel:+251911892787" class="contact__link">+251 911 89 27 87</a>
-                           <p class="contact__hours">Mon-Fri: 9:00 AM - 5:00 PM (EAT)</p>
-                        </div>
-                     </div>
-                        
-                        <div class="contact__item">
-                           <i class="ri-mail-line" aria-hidden="true"></i>
-                           <div>
-                              <h4 class="contact__subtitle">Email Us</h4>
-                              <a href="mailto:abaselamatradeo@yahoo.com" class="contact__link">abaselamatradeo@yahoo.com</a>
-                              <p class="contact__note">We'll respond within 24 hours</p>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <div class="bank-details">
-                        <h3 class="contact__title">Bank Transfer</h3>
-                        
-                        <div class="bank-details__item">
-                           <i class="ri-bank-card-line" aria-hidden="true"></i>
-                           <div>
-                              <h4 class="bank-details__label">Bank Name</h4>
-                              <p>Commercial Bank of Ethiopia</p>
-                           </div>
-                        </div>
-                        
-                        <div class="bank-details__grid">
-                           <div class="bank-details__item">
-                              <i class="ri-shield-check-line" aria-hidden="true"></i>
-                              <div>
-                                 <h4 class="bank-details__label">SWIFT Code</h4>
-                                 <p>CBETETAA</p>
-                                 <button class="copy-btn" data-text="CBETETAA" aria-label="Copy SWIFT code">
-                                    <i class="ri-file-copy-line"></i> Copy
-                                 </button>
-                              </div>
-                           </div>
-                           
-                           <div class="bank-details__item">
-                              <i class="ri-wallet-3-line" aria-hidden="true"></i>
-                              <div>
-                                 <h4 class="bank-details__label">Account Number</h4>
-                                 <p>0171855001900</p>
-                                 <button class="copy-btn" data-text="0171855001900" aria-label="Copy account number">
-                                    <i class="ri-file-copy-line"></i> Copy
-                                 </button>
-                              </div>
-                           </div>
-                        </div>
-                        
-                        <div class="bank-notes">
-                           <p><i class="ri-information-line"></i> Please include "Donation" in the reference field</p>
-                        </div>
-                        
-                        <a href="assets/document/Freminatos Children and Mothers’ Resource Center.pdf" class="button button--outline" style="margin-top: 1.5rem;">
-                           <i class="ri-download-line"></i> Download Bank Details (PDF)
-                        </a>
-                     </div>
-
-                     <!-- Donation Button -->
-                     <div class="visa-payment" style="margin-top: 2.5rem; text-align: center;">
-                        <h3 class="contact__title">Donate with Credit Card</h3>
-                        <!-- From Uiverse.io by vinodjangid07 --> 
-                        <div class="visa-card">
-                        <div class="logoContainer">
-                           <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0px"
-                              y="0px"
-                              width="23"
-                              height="23"
-                              viewBox="0 0 48 48"
-                              class="svgLogo"
-                           >
-                              <path
-                              fill="#ff9800"
-                              d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z"
-                              ></path>
-                              <path
-                              fill="#d50000"
-                              d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z"
-                              ></path>
-                              <path
-                              fill="#ff3d00"
-                              d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z"
-                              ></path>
-                           </svg>
-                        </div>
-                        <div class="number-container">
-                           <label class="input-label" for="cardNumber">CARD NUMBER</label>
-                           <input
-                              class="inputstyle"
-                              id="cardNumber"
-                              placeholder="XXXX XXXX XXXX XXXX"
-                              name="cardNumber"
-                              type="text"
-                           />
-                        </div>
-
-                        <div class="name-date-cvv-container">
-                           <div class="name-wrapper">
-                              <label class="input-label" for="holderName">CARD HOLDER</label>
-                              <input
-                              class="inputstyle"
-                              id="holderName"
-                              placeholder="NAME"
-                              type="text"
-                              />
-                           </div>
-
-                           <div class="expiry-wrapper">
-                              <label class="input-label" for="expiry">VALID THRU</label>
-                              <input class="inputstyle" id="expiry" placeholder="MM/YY" type="text" />
-                           </div>
-                           <div class="cvv-wrapper">
-                              <label class="input-label" for="cvv">CVV</label>
-                              <input
-                              class="inputstyle"
-                              placeholder="***"
-                              maxlength="3"
-                              id="cvv"
-                              type="password"
-                              />
-                           </div>
-                        </div>
-                        </div>
-                        <p style="margin-bottom: 1.5rem;">You will be redirected to our secure payment partner to complete your donation.</p>
-                        <button type="button" class="button" style="width: 100%; max-width: 300px; margin: 0 auto;" onclick="window.open('https://www.wegenfund.com/', '_blank')">
-                           <i class="ri-bank-card-line"></i> Proceed to Donation
-                        </button>
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 0.5rem; text-align: center;">
-                           <i class="ri-shield-check-line"></i> Secure payment processing
-                        </p>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="contact__form-container">
-                  <div class="contact__form">
-                  <h2 class="section__title">Send Us a Message</h2>
-                  <form id="contactForm" action="https://formsubmit.co/fadm94202@gmail.com" method="POST" class="form">
-                     <!-- FormSubmit helpers -->
-                     <input type="hidden" name="_subject" value="New Message from ASKBTM Website">
-                     <input type="hidden" name="_template" value="table">
-                     <input type="hidden" name="_captcha" value="false">
-                     <!-- Honeypot -->
-                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                     <div class="form__group">
-                        <input type="text" placeholder=" " class="form__input" id="name" name="name" required>
-                        <label for="name" class="form__label">Full Name</label>
-                     </div>
-                     <div class="form__group">
-                        <input type="email" placeholder=" " class="form__input" id="email" name="email" required>
-                        <label for="email" class="form__label">Email</label>
-                     </div>
-                     <div class="form__group">
-                        <select class="form__select" id="subject" name="subject" required>
-                           <option value="" disabled selected>Select a subject</option>
-                           <option value="general">General Inquiry</option>
-                           <option value="donation">Donation Questions</option>
-                           <option value="volunteer">Volunteer Opportunities</option>
-                           <option value="technical">Technical Support</option>
-                           <option value="other">Other</option>
-                        </select>
-                     </div>
-                     <div class="form__group">
-                        <textarea id="message" name="message" class="form__textarea" placeholder=" " required></textarea>
-                        <label for="message" class="form__label">Your Message</label>
-                     </div>
-                     <button type="submit" class="button">Send Message <i class="ri-send-plane-line"></i></button>
-                  </form>
-               </div>
-                  <div class="contact__image">
-                     <img src="assets/img/contact-image.svg" alt="Contact Us" class="contact__img">
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--==================== MAP ====================-->
-         <section class="map section" id="location">
-            <div class="map__container container">
-               <div class="map__header">
-                  <h2 class="section__title">Our Location</h2>
-                  <p class="section__subtitle">Find us easily with the map below</p>
-               </div>
-               <div class="map__wrapper">
-                  <iframe 
-                     src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3939.5712172329654!2d38.94571!3d9.102767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDYnMTAuMCJOIDM4wrA1Nic0NC42IkU!5e0!3m2!1sen!2set!4v1762429431323!5m2!1sen!2set" 
-                     width="100%" 
-                     height="500" 
-                     style="border:0; border-radius: 1rem;" 
-                     allowfullscreen="" 
-                     loading="lazy" 
-                     referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                  <div class="map__info">
-                     <div class="map__info-item">
-                        <i class="ri-map-pin-line"></i>
-                        <div>
-                              <h4>Address</h4>
-                              <p>P.O. Box 20461, Addis Ababa, Ethiopia</p>
-                              <a href="https://maps.app.goo.gl/sP6YGTt5H9NfxpSJA" target="_blank" class="map__direction">
-                                 <i class="ri-route-line"></i> Get Directions
-                              </a>
-                        </div>
-                     </div>
-                     <div class="map__info-item">
-                        <i class="ri-time-line"></i>
-                        <div>
-                              <h4>Working Hours</h4>
-                              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                              <p>Saturday: 10:00 AM - 2:00 PM</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-         
-      </main>
-      <!--==================== FOOTER ====================-->
-      <footer class="footer">
-         <div class="footer__container container grid">
-            <a href="#" class="footer__logo">
-               <img src="assets/img/favicon1.png" alt="image" class="footer__logo-img">
-               ASKBTM
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-7">
+          <ul class="flex gap-6 font-medium text-base">
+            <li><a href="#home" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Home</a></li>
+            <li><a href="#about" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">About</a></li>
+            <li><a href="#video" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Our Story</a></li>
+            <li><a href="#programs" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Programs</a></li>
+            <li><a href="#gallery" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Gallery</a></li>
+            <li><a href="news-blogs.html" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Blog</a></li>
+            <li><a href="#contact" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Contact</a></li>
+          </ul>
+          
+          <div class="flex items-center gap-3">
+            <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-9 h-9 flex items-center justify-center rounded-lg border-2 border-color-black bg-color-blue hover:scale-105 transition-transform btn-brutal">
+              <i class="ri-telegram-fill text-lg"></i>
             </a>
-            <div class="footer__content grid">
-               <div class=""><!--1-->
-                  <h3 class="footer__title">About</h3>
-                  <ul class="footer__links">
-                     <li><a href="#about" class="footer__link">About Us</a></li>
-                     <!-- <li><a href="#" class="footer__link">Features</a></li> -->
-                     <li><a href="News & Blogs.html" class="footer__link">News & Blogs</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Contact</h3>
-                  <ul class="footer__links">
-                     <li><a href="#contact" class="footer__link">Call Center</a></li>
-                     <li><a href="Support.html" class="footer__link">Support</a></li>
-                     <li><a href="#contact" class="footer__link">Contact Us</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Support</h3>
-                  <ul class="footer__links">
-                     <li><a href="Privacy Policy.html" class="footer__link">Privacy Policy</a></li>
-                     <li><a href="Terms & Services.html" class="footer__link">Terms & Services</a></li>
-                     <li><a href="#contact" class="footer__link">Payments</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Social</h3>
-                  <div class="footer__social">
-                     <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-facebook-circle-fill"></i>
-                     </a>
-                     <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-instagram-fill"></i>
-                     </a>
-                     <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-twitter-fill"></i>
-                     </a>
-                  </div>
-               </div>
+            <a href="#donate" class="bg-color-yellow text-color-black font-semibold px-4 py-2 rounded-lg border-2 border-color-black text-sm btn-brutal">
+              <i class="ri-heart-line mr-1"></i> Donate
+            </a>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-8 border-2 border-color-black rounded-md p-1 bg-color-yellow nav-toggle btn-brutal" aria-label="Toggle navigation menu">
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-opacity duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <nav class="mobile-nav hidden lg:hidden mt-3 bg-color-white border-2 border-color-black rounded-xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <ul class="flex flex-col gap-4 font-semibold text-lg">
+          <li><a href="#home" class="block py-1 hover:text-blue-600">Home</a></li>
+          <li><a href="#about" class="block py-1 hover:text-blue-600">About ASKBTM</a></li>
+          <li><a href="#video" class="block py-1 hover:text-blue-600">Our Story in Motion</a></li>
+          <li><a href="#programs" class="block py-1 hover:text-blue-600">Programs &amp; Support</a></li>
+          <li><a href="#gallery" class="block py-1 hover:text-blue-600">Photo Gallery</a></li>
+          <li><a href="news-blogs.html" class="block py-1 hover:text-blue-600">News &amp; Blogs</a></li>
+          <li><a href="#contact" class="block py-1 hover:text-blue-600">Contact &amp; Banking</a></li>
+        </ul>
+        <div class="mt-6 pt-5 border-t-2 border-color-black flex gap-3">
+          <a href="#donate" class="flex-1 bg-color-yellow text-center py-2.5 rounded-lg border-2 border-color-black font-bold btn-brutal">
+            <i class="ri-heart-line"></i> Donate Now
+          </a>
+          <a href="support.html" class="px-4 py-2.5 bg-color-blue text-center rounded-lg border-2 border-color-black font-bold btn-brutal">
+            Help
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!--==================== HERO SECTION ====================-->
+    <section class="pt-32 md:pt-40 pb-20 px-6 relative overflow-hidden" id="home">
+      <div class="max-w-[1200px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative">
+          
+          <!-- Left Hero Column -->
+          <div class="lg:col-span-7 space-y-6 animate-on-load z-10">
+            <!-- Pulsing Location & Status Badge -->
+            <div class="inline-flex items-center gap-2.5 bg-color-green border-2 border-color-black rounded-lg px-3.5 py-1.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+              <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-color-black opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-color-black"></span>
+              </span>
+              <span class="text-xs md:text-sm font-semibold tracking-wide uppercase">
+                Legatafo Center · Daytime Care &amp; Nutrition
+              </span>
             </div>
-         </div>
-         <span class="footer__copy">
-            2025 &#169; All Rights Reserved By Fraol Admasu
-         </span>
-      </footer>
-      <!--========== SCROLL UP ==========-->
-      <a href="#" class="scrollup" id="scroll-up">
-         <i class="ri-arrow-drop-up-fill"></i>
-      </a>
-      <!--=============== SCROLLREVEAL ===============-->
-      <script src="assets/js/scrollreveal.min.js"></script>
-      <!--=============== SWIPER JS ===============-->
-      <script src="assets/js/swiper-bundle.min.js"></script>
-      <!--=============== SWEETALERT2 ===============-->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <!--=============== CONTACT FORM JS ===============-->
-      <script src="assets/js/contact.js"></script>
-      <!--=============== LOADER JS ===============-->
-      <script src="assets/js/loader.js"></script>
-      <!--=============== MAIN JS ===============-->
-      <script src="assets/js/main.js"></script>
-      <!--=============== VIDEO SPEED JS ===============-->
-      <script src="assets/js/videospeed.js"></script>
-   </body>
+
+            <!-- Main Editorial Heading -->
+            <h1 class="font-primary font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+              Where children 
+              <span class="inline-block bg-color-yellow px-3 py-0.5 -rotate-1 border-2 border-color-black mx-1 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                thrive
+              </span>
+              and mothers rise together.
+              <span class="block mt-3 text-2xl sm:text-3xl md:text-4xl text-color-black/85 italic font-normal">
+                ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል
+              </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg md:text-xl text-color-black/90 max-w-xl leading-relaxed">
+              <strong>Aba Selama Kesate Brihan Terado Mehaber (ASKBTM)</strong>. Founded by Mother Sirgutemikael Teklu, we protect family unity through comprehensive daycare, 3 daily fortified meals, early education, and maternal micro-loans in Legatafo, Ethiopia.
+            </p>
+
+            <!-- CTAs with Neobrutalist buttons -->
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="#donate" class="btn-brutal inline-flex items-center justify-center px-6 py-3.5 text-base md:text-lg font-bold rounded-lg bg-color-black text-color-white border-2 border-color-black">
+                <span>Support Our Cause</span>
+                <i class="ri-heart-fill ml-2 text-color-yellow"></i>
+              </a>
+              <a href="#video" class="btn-brutal inline-flex items-center justify-center px-6 py-3.5 text-base md:text-lg font-bold rounded-lg bg-color-white text-color-black border-2 border-color-black">
+                <span>Watch Story in Motion</span>
+                <i class="ri-play-circle-line ml-2"></i>
+              </a>
+            </div>
+
+            <!-- Location & Center Verification -->
+            <div class="flex items-center gap-3 text-sm md:text-base pt-4 border-t-2 border-color-black/20 text-color-black/80 font-medium">
+              <i class="ri-map-pin-2-fill text-xl text-red-600"></i>
+              <span>Legatafo Town, Oromia Special Zone · 10 km East of Addis Ababa · Reg. No. 3220</span>
+            </div>
+          </div>
+
+          <!-- Right Showcase Image / Slideshow with playful neo-brutalist accents -->
+          <div class="lg:col-span-5 relative animate-on-load pt-4" data-delay="200">
+            <!-- Main Photo Container -->
+            <div class="relative w-full max-w-[480px] mx-auto aspect-[4/3] sm:aspect-[1.15/1] bg-color-yellow border-2 border-color-black rounded-xl p-2.5 sm:p-3.5 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] md:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1">
+              
+              <!-- Swiper Slideshow inside brutal frame -->
+              <div class="home__swiper swiper w-full h-full rounded-lg overflow-hidden border-2 border-color-black bg-color-black">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide w-full h-full">
+                    <img src="assets/img/slideshow25.jpg" alt="Children at ASKBTM" class="w-full h-full object-cover">
+                  </div>
+                  <div class="swiper-slide w-full h-full">
+                    <img src="assets/img/slideshow22.jpg" alt="Learning activities in Legatafo" class="w-full h-full object-cover">
+                  </div>
+                  <div class="swiper-slide w-full h-full">
+                    <img src="assets/img/slideshow16.jpg" alt="Nutritious meals for children" class="w-full h-full object-cover">
+                  </div>
+                  <div class="swiper-slide w-full h-full">
+                    <img src="assets/img/slideshow20.jpg" alt="Mothers and daycare staff" class="w-full h-full object-cover">
+                  </div>
+                  <div class="swiper-slide w-full h-full">
+                    <img src="assets/img/slideshow18.jpg" alt="Playtime and companionship" class="w-full h-full object-cover">
+                  </div>
+                </div>
+                <!-- Improved Swiper Navigation Arrows with tactile click feedback -->
+                <button type="button" class="swiper-button-prev swiper-nav-btn" aria-label="Previous Slide">
+                  <i class="ri-arrow-left-s-line text-2xl font-bold"></i>
+                </button>
+                <button type="button" class="swiper-button-next swiper-nav-btn" aria-label="Next Slide">
+                  <i class="ri-arrow-right-s-line text-2xl font-bold"></i>
+                </button>
+
+                <!-- Slide counter indicator badge -->
+                <div class="absolute bottom-3 right-3 z-20 bg-color-white/95 text-color-black border-2 border-color-black px-2.5 py-1 rounded-md text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-1.5 pointer-events-none select-none">
+                  <i class="ri-image-2-line text-xs"></i>
+                  <span id="heroSlideCounter">1 / 5</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playful floating accents around the frame -->
+            <div class="absolute -top-4 -left-4 w-12 h-12 md:w-16 md:h-16 bg-color-blue border-2 border-color-black rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center font-bold">
+              <i class="ri-heart-pulse-fill text-xl"></i>
+            </div>
+            <div class="absolute -bottom-4 right-6 w-12 h-12 md:w-16 md:h-16 bg-color-green border-2 border-color-black rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center font-bold">
+              <i class="ri-sun-fill text-xl"></i>
+            </div>
+
+            <!-- Custom Sparkle Accents -->
+            <svg class="absolute -top-8 right-2 w-10 h-10 fill-color-yellow animate-on-load" data-delay="350" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,1));">
+              <use href="#accent-large"></use>
+            </svg>
+            <svg class="absolute bottom-6 -left-6 w-8 h-8 fill-color-blue animate-on-load" data-delay="450" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,1));">
+              <use href="#accent-small"></use>
+            </svg>
+
+            <!-- Rotating dashed orbital ring -->
+            <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[118%] h-[118%] -z-10 opacity-30 pointer-events-none" viewBox="0 0 400 400">
+              <circle cx="200" cy="200" r="185" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="8 12" class="text-color-black">
+                <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="50s" repeatCount="indefinite"></animateTransform>
+              </circle>
+            </svg>
+          </div>
+        </div>
+
+        <!--==================== STATS BAR ====================-->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16 md:mt-24 animate-on-load" data-delay="400">
+          <div class="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-blue text-center btn-brutal">
+            <p class="font-primary text-4xl md:text-5xl font-normal mb-1">387+</p>
+            <p class="text-sm md:text-base font-semibold">Children Fed &amp; Cared Daily</p>
+          </div>
+          <div class="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-yellow text-center btn-brutal">
+            <p class="font-primary text-4xl md:text-5xl font-normal mb-1">241+</p>
+            <p class="text-sm md:text-base font-semibold">Mothers Empowered</p>
+          </div>
+          <div class="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-green text-center btn-brutal">
+            <p class="font-primary text-4xl md:text-5xl font-normal mb-1">3 / Day</p>
+            <p class="text-sm md:text-base font-semibold">Nutritious Daily Meals</p>
+          </div>
+          <div class="border-2 border-color-black rounded-xl p-5 md:p-6 bg-color-pink text-center btn-brutal">
+            <p class="font-primary text-4xl md:text-5xl font-normal mb-1">100%</p>
+            <p class="text-sm md:text-base font-semibold">Direct Program Allocation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== VIDEO: OUR STORY IN MOTION ====================-->
+    <section class="py-20 px-6 bg-color-cream/40 border-y-2 border-color-black" id="video">
+      <div class="max-w-[1100px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-14 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Our Story in Motion
+        </h2>
+        <p class="text-center text-base sm:text-lg text-color-black/80 max-w-2xl mb-8 -mt-6">
+          Witness daily life at our Legatafo campus—warm morning greetings, wholesome nutrition, classroom growth, and joyful evening parent reunifications.
+        </p>
+
+        <!-- Video Player in Neo-brutalist Cinema Frame -->
+        <div class="w-full border-2 border-color-black rounded-xl p-3 md:p-5 bg-color-yellow shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]" data-animation-on-scroll="fadeInUp">
+          <div class="relative w-full overflow-hidden rounded-lg border-2 border-color-black bg-color-black">
+            <video id="slowVideo" src="assets/vid/freminatos  children & mothers.webm" autoplay loop muted controls playsinline class="w-full h-auto max-h-[580px] mx-auto block object-cover"></video>
+          </div>
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm font-semibold text-color-black/80">
+            <span><i class="ri-video-line mr-1"></i> Recorded on-site at Legatafo Center</span>
+            <span><i class="ri-speed-line mr-1"></i> Normal speed playback active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== ABOUT & MISSION ====================-->
+    <section class="py-24 px-6" id="about">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-20 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          About &amp; Mission
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-12">
+          <!-- Card 1: Family Unity -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-6 bg-color-blue shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-color-white border-2 border-color-black flex items-center justify-center text-2xl mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <i class="ri-home-heart-line"></i>
+              </div>
+              <h3 class="font-primary text-2xl md:text-3xl font-normal mb-3">Family Unity First</h3>
+              <p class="text-color-black/85 leading-relaxed text-sm md:text-base">
+                We believe a child's well-being should never come at the cost of separation from parents. Daytime care allows mothers to work while ensuring children return home each evening.
+              </p>
+            </div>
+            <ul class="mt-6 pt-4 border-t border-color-black/20 text-xs md:text-sm font-semibold space-y-1.5">
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Morning reception &amp; check-in</li>
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Evening happy reunification</li>
+            </ul>
+          </article>
+
+          <!-- Card 2: Holistic Care & Nutrition -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-6 bg-color-yellow shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-color-white border-2 border-color-black flex items-center justify-center text-2xl mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <i class="ri-restaurant-line"></i>
+              </div>
+              <h3 class="font-primary text-2xl md:text-3xl font-normal mb-3">Holistic Nutrition</h3>
+              <p class="text-color-black/85 leading-relaxed text-sm md:text-base">
+                Nutrition is the foundation of cognitive and physical development. We provide balanced, fortified meals daily so hunger never interferes with a child's dream or learning.
+              </p>
+            </div>
+            <ul class="mt-6 pt-4 border-t border-color-black/20 text-xs md:text-sm font-semibold space-y-1.5">
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Breakfast, hot lunch &amp; dinner</li>
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Pediatric health monitoring</li>
+            </ul>
+          </article>
+
+          <!-- Card 3: Maternal Economic Independence -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-6 bg-color-green shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-color-white border-2 border-color-black flex items-center justify-center text-2xl mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <i class="ri-women-line"></i>
+              </div>
+              <h3 class="font-primary text-2xl md:text-3xl font-normal mb-3">Maternal Empowerment</h3>
+              <p class="text-color-black/85 leading-relaxed text-sm md:text-base">
+                A mother's economic independence is the greatest safeguard against poverty. We provide micro-loans, vocational training, and business mentorship for self-reliance.
+              </p>
+            </div>
+            <ul class="mt-6 pt-4 border-t border-color-black/20 text-xs md:text-sm font-semibold space-y-1.5">
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Revolving micro-credit loans</li>
+              <li><i class="ri-check-line font-bold text-green-700 mr-1"></i> Skills training in coffee &amp; sewing</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Founder Quote Banner -->
+        <div data-animation-on-scroll="fadeInUp" class="w-full border-2 border-color-black rounded-xl p-6 md:p-8 bg-color-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center gap-6">
+          <div class="w-20 h-20 rounded-full border-2 border-color-black overflow-hidden flex-shrink-0 bg-color-yellow shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+            <img src="assets/img/testimonial-profile-2.png" alt="Sister Sirgutemikael Teklu" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 text-center md:text-left">
+            <p class="font-primary text-2xl md:text-3xl italic text-color-black leading-snug">
+              “No child should ever be left behind while their mother works. No mother should lose her child to poverty.”
+            </p>
+            <p class="mt-2 text-sm md:text-base font-bold text-color-black/75">
+              Sister Sirgutemikael Teklu (MSc Public Health) — Founder &amp; Executive Director
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== 2025–2026 STRATEGIC TARGET ====================-->
+    <section class="py-16 px-6 bg-color-cream/40 border-y-2 border-color-black">
+      <div class="max-w-[1100px] mx-auto">
+        <div class="border-2 border-color-black rounded-xl p-6 md:p-10 bg-color-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" data-animation-on-scroll="fadeInUp">
+          <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+            <div class="inline-flex items-center gap-2 bg-color-yellow border-2 border-color-black rounded-lg px-3.5 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <i class="ri-flag-2-line"></i> 2025–2026 Strategic Expansion Goals
+            </div>
+          </div>
+
+          <h3 class="font-primary text-3xl md:text-4xl font-normal mb-6">
+            Empowering Children &amp; Mothers in Legatafo
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Progress Item 1 -->
+            <div class="border-2 border-color-black rounded-lg p-4 bg-color-blue/20">
+              <div class="flex justify-between items-center font-bold text-sm md:text-base mb-2">
+                <span><i class="ri-user-smile-line mr-1 text-blue-700"></i> Children Supported Daily</span>
+                <span>Active Care Program</span>
+              </div>
+              <p class="text-xs text-color-black/75 mt-1">Providing 3 nutritious meals, early education, and daytime shelter.</p>
+            </div>
+
+            <!-- Progress Item 2 -->
+            <div class="border-2 border-color-black rounded-lg p-4 bg-color-yellow/20">
+              <div class="flex justify-between items-center font-bold text-sm md:text-base mb-2">
+                <span><i class="ri-women-line mr-1 text-yellow-700"></i> Mothers Reached with Support</span>
+                <span>Empowerment Initiative</span>
+              </div>
+              <p class="text-xs text-color-black/75 mt-1">Providing micro-loans, vocational training, and business mentorship.</p>
+            </div>
+          </div>
+
+          <p class="text-xs md:text-sm text-color-black/75 flex items-center gap-2 pt-4 border-t-2 border-color-black/20">
+            <i class="ri-shield-check-line text-lg text-green-700"></i>
+            <span>Every single donation directly funds nutritious meals, educational supplies, and maternal micro-grants.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== PROGRAMS & WAYS TO SUPPORT ====================-->
+    <section class="py-24 px-6" id="programs">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-20 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Ways to Get Involved
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-12">
+          <!-- Volunteer Card -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-5 bg-color-blue shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center transition-all">
+            <div class="w-full aspect-[1.6/1] border-2 border-color-black rounded-lg overflow-hidden bg-white mb-5 p-4 flex items-center justify-center">
+              <img src="assets/img/volunteer.svg" alt="Volunteer" class="max-h-full object-contain">
+            </div>
+            <h3 class="font-primary text-2xl font-normal mb-2">Become a Volunteer</h3>
+            <p class="text-sm text-color-black/85 mb-4">
+              Share your skills in teaching, art, pediatric healthcare, or recreational activities with our children.
+            </p>
+            <a href="#contact" class="mt-auto btn-brutal bg-color-white text-color-black font-bold px-4 py-2 border-2 border-color-black rounded-lg text-sm">
+              Apply to Volunteer
+            </a>
+          </article>
+
+          <!-- Fundraiser Card -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-5 bg-color-yellow shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center transition-all">
+            <div class="w-full aspect-[1.6/1] border-2 border-color-black rounded-lg overflow-hidden bg-white mb-5 p-4 flex items-center justify-center">
+              <img src="assets/img/fundraiser.svg" alt="Fundraise" class="max-h-full object-contain">
+            </div>
+            <h3 class="font-primary text-2xl font-normal mb-2">Host a Campaign</h3>
+            <p class="text-sm text-color-black/85 mb-4">
+              Mobilize your family, company, or diaspora network to sponsor classrooms and safe house units.
+            </p>
+            <a href="#contact" class="mt-auto btn-brutal bg-color-white text-color-black font-bold px-4 py-2 border-2 border-color-black rounded-lg text-sm">
+              Start a Campaign
+            </a>
+          </article>
+
+          <!-- Child Sponsorship Card -->
+          <article data-animation-on-scroll="fadeInUp" class="angled-card border-2 border-color-black rounded-xl p-5 bg-color-green shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center transition-all">
+            <div class="w-full aspect-[1.6/1] border-2 border-color-black rounded-lg overflow-hidden bg-white mb-5 p-4 flex items-center justify-center">
+              <img src="assets/img/gifts.svg" alt="Gifts and Donations" class="max-h-full object-contain">
+            </div>
+            <h3 class="font-primary text-2xl font-normal mb-2">Child Sponsorship</h3>
+            <p class="text-sm text-color-black/85 mb-4">
+              Direct 1:1 sponsorship ensuring full-year nutrition, textbooks, uniform, and maternal vocational mentorship.
+            </p>
+            <a href="#donate" class="mt-auto btn-brutal bg-color-black text-color-white font-bold px-4 py-2 border-2 border-color-black rounded-lg text-sm">
+              Sponsor Now
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== PARTNERS MARQUEE ====================-->
+    <section class="py-14 bg-color-yellow border-y-2 border-color-black overflow-hidden">
+      <div class="max-w-[1200px] mx-auto px-6 mb-6 text-center">
+        <h3 class="font-primary text-3xl font-normal">Our Dedicated Partners &amp; Supporters</h3>
+      </div>
+      
+      <!-- Track 1: Forward -->
+      <div class="overflow-hidden w-full mb-4">
+        <div class="marquee-track">
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-hand-heart-line text-lg"></i> Health Alliance
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-bank-line text-lg"></i> Commercial Bank of Ethiopia
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-graduation-cap-line text-lg"></i> EduTech Africa
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-community-line text-lg"></i> Mothers United
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-restaurant-line text-lg"></i> Food For All Network
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-home-heart-line text-lg"></i> ChildCare Network
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-leaf-line text-lg"></i> Green Growth Initiative
+          </span>
+          <!-- Duplicate for seamless loop -->
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-hand-heart-line text-lg"></i> Health Alliance
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-bank-line text-lg"></i> Commercial Bank of Ethiopia
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-graduation-cap-line text-lg"></i> EduTech Africa
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-community-line text-lg"></i> Mothers United
+          </span>
+        </div>
+      </div>
+
+      <!-- Track 2: Reverse -->
+      <div class="overflow-hidden w-full">
+        <div class="marquee-track marquee-track-reverse">
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-hospital-line text-lg"></i> Saint Mary Hospital
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-team-line text-lg"></i> Hope Foundation
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-global-line text-lg"></i> Global Relief Network
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-book-open-line text-lg"></i> Learning Bridge
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-shield-check-line text-lg"></i> Safe Kids Org
+          </span>
+          <!-- Duplicate for seamless loop -->
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-hospital-line text-lg"></i> Saint Mary Hospital
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-team-line text-lg"></i> Hope Foundation
+          </span>
+          <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
+            <i class="ri-global-line text-lg"></i> Global Relief Network
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== DUAL ROW PHOTO GALLERY ====================-->
+    <section class="py-24 px-6 overflow-hidden" id="gallery">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center mb-12">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-8 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Life at ASKBTM Center
+        </h2>
+        <p class="text-center text-sm md:text-base text-color-black/80 max-w-xl">
+          Click any photo to zoom in. Real smiles, real nourishment, and real growth at our Legatafo center.
+        </p>
+      </div>
+
+      <!-- Row 1: Forward -->
+      <div class="overflow-hidden w-full mb-6">
+        <div class="marquee-track">
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow1.jpg" alt="Children learning together" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow2.jpg" alt="Creative play at Legatafo" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow3.jpg" alt="Daycare activity session" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow4.jpg" alt="Outdoor playground fun" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow5.jpg" alt="Group reading hour" class="w-full h-full object-cover">
+          </div>
+          <!-- Loop duplicates -->
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow1.jpg" alt="Children learning together" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow2.jpg" alt="Creative play at Legatafo" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow3.jpg" alt="Daycare activity session" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Reverse -->
+      <div class="overflow-hidden w-full">
+        <div class="marquee-track marquee-track-reverse">
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow6.jpg" alt="Nutritious lunchtime meal" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow7.jpg" alt="Art & drawing lesson" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow8.jpg" alt="Mothers & children circle" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow9.jpg" alt="Celebration event" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow10.jpg" alt="Community support session" class="w-full h-full object-cover">
+          </div>
+          <!-- Loop duplicates -->
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow6.jpg" alt="Nutritious lunchtime meal" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow7.jpg" alt="Art & drawing lesson" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-thumb w-64 md:w-80 h-48 md:h-56 border-2 border-color-black rounded-lg overflow-hidden flex-shrink-0 bg-white">
+            <img src="assets/img/slideshow8.jpg" alt="Mothers & children circle" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== TESTIMONIALS ====================-->
+    <section class="py-24 px-6 bg-color-cream/40 border-y-2 border-color-black" id="testimonial">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-20 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Voices of Impact
+        </h2>
+
+        <div class="w-full max-w-3xl flex flex-col gap-6">
+          <article data-animation-on-scroll="fadeInUp" class="border-2 border-color-black rounded-xl p-8 flex flex-col gap-4 bg-color-blue relative btn-brutal">
+            <div class="absolute top-5 left-6 text-7xl font-primary leading-none opacity-20">"</div>
+            <p class="text-lg md:text-xl leading-relaxed italic pl-6 text-color-black/90">
+              “Thanks to Freminatos, I now earn 450 ETB net daily selling vegetables. My children eat three meals every day and learn English. I return home with pride, not worry.”
+            </p>
+            <div class="flex items-center gap-4 mt-2">
+              <div class="h-0.5 flex-1 bg-color-black"></div>
+              <h3 class="font-primary text-xl font-normal">
+                Selamawit Gebreyes, Mother of Three (Legatafo)
+              </h3>
+            </div>
+          </article>
+
+          <article data-animation-on-scroll="fadeInUp" class="border-2 border-color-black rounded-xl p-8 flex flex-col gap-4 bg-color-yellow relative btn-brutal">
+            <div class="absolute top-5 left-6 text-7xl font-primary leading-none opacity-20">"</div>
+            <p class="text-lg md:text-xl leading-relaxed italic pl-6 text-color-black/90">
+              “Before, my stomach hurt every night. Now I eat porridge, injera, shiro, and fruit. Teacher Ruth says if I keep reading, I can fly airplanes. I believe her!”
+            </p>
+            <div class="flex items-center gap-4 mt-2">
+              <div class="h-0.5 flex-1 bg-color-black"></div>
+              <h3 class="font-primary text-xl font-normal">
+                Elias Tadesse, age 6 (Day Care Student)
+              </h3>
+            </div>
+          </article>
+
+          <article data-animation-on-scroll="fadeInUp" class="border-2 border-color-black rounded-xl p-8 flex flex-col gap-4 bg-color-green relative btn-brutal">
+            <div class="absolute top-5 left-6 text-7xl font-primary leading-none opacity-20">"</div>
+            <p class="text-lg md:text-xl leading-relaxed italic pl-6 text-color-black/90">
+              “I audited pediatric wards across East Africa. Freminatos achieves what few dare attempt: zero severe acute malnutrition in 5 consecutive years. That is medicine without borders.”
+            </p>
+            <div class="flex items-center gap-4 mt-2">
+              <div class="h-0.5 flex-1 bg-color-black"></div>
+              <h3 class="font-primary text-xl font-normal">
+                Dr. Henrik Larsen, Pediatrician &amp; Monthly Supporter
+              </h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== BANK TRANSFER & GIVING TIERS ====================-->
+    <section class="py-24 px-6" id="donate">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-20 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Bank Transfer &amp; Giving
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full max-w-5xl">
+          
+          <!-- Bank Coordinates Box -->
+          <div class="lg:col-span-7 border-2 border-color-black rounded-xl p-6 md:p-8 bg-color-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" data-animation-on-scroll="fadeInUp">
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-2 bg-color-green border-2 border-color-black rounded-md px-3 py-1 font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <i class="ri-bank-card-line"></i> Official Account
+              </span>
+              <span class="text-xs text-color-black/70 font-semibold">CBE Lideta Main Branch</span>
+            </div>
+
+            <h3 class="font-primary text-3xl font-normal mb-2">Commercial Bank of Ethiopia</h3>
+            <p class="text-sm text-color-black/80 mb-6">
+              Account Name: <strong>Freminatos Children and Mothers' Resource Center</strong>
+            </p>
+
+            <!-- Giving Impact Buttons -->
+            <div class="mb-6">
+              <label class="block text-xs font-bold uppercase tracking-wider mb-2">
+                <i class="ri-heart-pulse-fill text-red-500 mr-1"></i> Choose Giving Level:
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <button type="button" class="impact-tier-btn active border-2 border-color-black rounded-lg p-2.5 text-center bg-color-yellow btn-brutal" data-amount="$18 / ~2,400 ETB" data-purpose="30 days nutritious meals (3 meals + 2 snacks) for 1 child" data-code="Meals">
+                  <span class="block text-lg font-bold font-primary">$18</span>
+                  <span class="block text-[11px] font-semibold text-color-black/80">1 Mo Meals</span>
+                </button>
+                <button type="button" class="impact-tier-btn border-2 border-color-black rounded-lg p-2.5 text-center bg-white btn-brutal" data-amount="$34 / ~4,500 ETB" data-purpose="Maternal micro-loan + 3-month business mentorship" data-code="MicroLoan">
+                  <span class="block text-lg font-bold font-primary">$34</span>
+                  <span class="block text-[11px] font-semibold text-color-black/80">Mother Loan</span>
+                </button>
+                <button type="button" class="impact-tier-btn border-2 border-color-black rounded-lg p-2.5 text-center bg-white btn-brutal" data-amount="$65 / ~8,500 ETB" data-purpose="Full school uniform, shoes, backpack &amp; textbooks for 1 year" data-code="SchoolKit">
+                  <span class="block text-lg font-bold font-primary">$65</span>
+                  <span class="block text-[11px] font-semibold text-color-black/80">1 Yr School Kit</span>
+                </button>
+                <button type="button" class="impact-tier-btn border-2 border-color-black rounded-lg p-2.5 text-center bg-white btn-brutal" data-amount="$350 / ~45,000 ETB" data-purpose="Full 12-month child nutrition &amp; mother vocational sponsorship" data-code="FullSponsor">
+                  <span class="block text-lg font-bold font-primary">$350</span>
+                  <span class="block text-[11px] font-semibold text-color-black/80">Full Sponsor</span>
+                </button>
+              </div>
+              <div class="mt-3 p-3 bg-color-cream border-2 border-color-black rounded-lg text-xs md:text-sm font-medium" id="tierDescription">
+                <strong>Impact:</strong> <span>30 days nutritious meals (3 meals + 2 snacks) for 1 child ($18 / ~2,400 ETB)</span>
+              </div>
+            </div>
+
+            <!-- Transfer Credentials with Copy Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <div class="p-3.5 border-2 border-color-black rounded-lg bg-color-blue/25 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs uppercase font-bold text-color-black/70">SWIFT / BIC</span>
+                  <strong class="text-base tracking-wider font-mono">CBETETAA</strong>
+                </div>
+                <button type="button" class="copy-btn px-2.5 py-1.5 text-xs bg-white border-2 border-color-black rounded font-bold btn-brutal" data-text="CBETETAA">
+                  <i class="ri-file-copy-line"></i> Copy
+                </button>
+              </div>
+
+              <div class="p-3.5 border-2 border-color-black rounded-lg bg-color-green/25 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs uppercase font-bold text-color-black/70">Account Number</span>
+                  <strong class="text-base tracking-wider font-mono">0171855001900</strong>
+                </div>
+                <button type="button" class="copy-btn px-2.5 py-1.5 text-xs bg-white border-2 border-color-black rounded font-bold btn-brutal" data-text="0171855001900">
+                  <i class="ri-file-copy-line"></i> Copy
+                </button>
+              </div>
+            </div>
+
+            <!-- Auto Tracking Reference Generator -->
+            <div class="p-4 border-2 border-color-black rounded-lg bg-color-yellow/20 mb-6">
+              <label for="donorNameInput" class="block text-xs font-bold uppercase mb-1.5">
+                <i class="ri-barcode-line mr-1"></i> Auto-Tracking Reference Generator:
+              </label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input type="text" id="donorNameInput" placeholder="Enter your name (e.g. Abebe Kebede)" class="flex-1 px-3 py-2 border-2 border-color-black rounded-md text-sm font-medium outline-none">
+                <div class="flex items-center gap-2 bg-white px-3 py-1.5 border-2 border-color-black rounded-md">
+                  <code id="generatedRefCode" class="text-xs font-bold font-mono">FREM-2025-Meals-Donation</code>
+                  <button type="button" id="copyRefBtn" class="copy-btn px-2 py-1 text-xs bg-color-yellow border border-color-black rounded font-bold hover:bg-yellow-300" data-text="FREM-2025-Meals-Donation">
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <small class="block text-[11px] text-color-black/70 mt-1.5">
+                Add this code to your bank transfer memo to receive your official tax receipt within 72 hours.
+              </small>
+            </div>
+
+            <!-- PDF Download Link -->
+            <a href="assets/document/freminatos children and mothers’ resource center.pdf" target="_blank" class="w-full text-center block py-3 bg-color-white text-color-black border-2 border-color-black rounded-lg font-bold text-sm btn-brutal">
+              <i class="ri-file-download-line mr-1"></i> Download Official Bank Details PDF (3 Pages)
+            </a>
+          </div>
+
+          <!-- International & Card Giving Box -->
+          <div class="lg:col-span-5 flex flex-col gap-6" data-animation-on-scroll="fadeInUp">
+            
+            <!-- International Correspondent Routing -->
+            <div class="border-2 border-color-black rounded-xl p-6 bg-color-blue shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h4 class="font-primary text-2xl font-normal mb-3">International Wire Transfer</h4>
+              <p class="text-xs md:text-sm text-color-black/80 leading-relaxed mb-4">
+                Accepted currencies: <strong>ETB · USD · EUR · GBP · CAD</strong>. Auto-converted at CBE central rate with zero hidden spread.
+              </p>
+              <ul class="text-xs space-y-2 font-medium">
+                <li class="bg-white/70 p-2 rounded border border-color-black">
+                  <strong>USA:</strong> Citibank N.A., New York (SWIFT <code class="font-bold">CITIUS33</code>)
+                </li>
+                <li class="bg-white/70 p-2 rounded border border-color-black">
+                  <strong>Europe:</strong> Commerzbank AG, Frankfurt (SWIFT <code class="font-bold">COBADEFF</code>)
+                </li>
+                <li class="bg-white/70 p-2 rounded border border-color-black">
+                  <strong>UK:</strong> Barclays Bank PLC, London (SWIFT <code class="font-bold">BARCGB22</code>)
+                </li>
+              </ul>
+            </div>
+
+            <!-- Online Payment Redirect -->
+            <div class="border-2 border-color-black rounded-xl p-6 bg-color-yellow shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] text-center flex flex-col justify-between flex-1">
+              <div>
+                <h4 class="font-primary text-2xl font-normal mb-2">Online Card Donations</h4>
+                <p class="text-xs md:text-sm text-color-black/85 mb-4">
+                  For secure instant contributions using Visa, Mastercard, or Telebirr via our verified partner platform.
+                </p>
+                <div class="flex justify-center gap-3 text-3xl mb-4">
+                  <i class="ri-visa-line"></i>
+                  <i class="ri-mastercard-line"></i>
+                  <i class="ri-bank-card-2-line"></i>
+                </div>
+              </div>
+              <a href="https://www.wegenfund.com/" target="_blank" rel="noopener noreferrer" class="btn-brutal bg-color-black text-color-white py-3 px-6 rounded-lg font-bold text-sm block">
+                Proceed to Secure Gateway <i class="ri-external-link-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== FAQ SECTION ====================-->
+    <section class="py-20 px-6 bg-color-cream/40 border-t-2 border-color-black" id="faq">
+      <div class="max-w-[900px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-16 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Frequently Asked Questions
+        </h2>
+
+        <div class="w-full flex flex-col gap-4">
+          <!-- FAQ 1 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-white btn-brutal">
+            <button class="faq-question w-full flex justify-between items-center text-left font-primary text-xl md:text-2xl font-normal">
+              <span>How do families enroll children in the Legatafo daycare?</span>
+              <span class="faq-icon text-2xl font-bold transition-transform"><i class="ri-add-line"></i></span>
+            </button>
+            <div class="faq-answer text-color-black/85 text-sm md:text-base leading-relaxed">
+              Families can visit our center in Legatafo behind the health post or submit our pre-registration inquiry. Our admissions team conducts a friendly family orientation and guides caregivers through necessary documentation.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-white btn-brutal">
+            <button class="faq-question w-full flex justify-between items-center text-left font-primary text-xl md:text-2xl font-normal">
+              <span>What ages are supported at ASKBTM?</span>
+              <span class="faq-icon text-2xl font-bold transition-transform"><i class="ri-add-line"></i></span>
+            </button>
+            <div class="faq-answer text-color-black/85 text-sm md:text-base leading-relaxed">
+              We provide nurturing care, nutrition, and early childhood education for infants and children aged 6 months to 6 years, with emerging after-school tutoring for primary school students.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-white btn-brutal">
+            <button class="faq-question w-full flex justify-between items-center text-left font-primary text-xl md:text-2xl font-normal">
+              <span>Are services free for families facing hardship?</span>
+              <span class="faq-icon text-2xl font-bold transition-transform"><i class="ri-add-line"></i></span>
+            </button>
+            <div class="faq-answer text-color-black/85 text-sm md:text-base leading-relaxed">
+              Yes. Daycare, meals, and maternal training are supported by generous donor sponsorships so that no mother is turned away due to financial difficulty.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-white btn-brutal">
+            <button class="faq-question w-full flex justify-between items-center text-left font-primary text-xl md:text-2xl font-normal">
+              <span>How can volunteers get involved?</span>
+              <span class="faq-icon text-2xl font-bold transition-transform"><i class="ri-add-line"></i></span>
+            </button>
+            <div class="faq-answer text-color-black/85 text-sm md:text-base leading-relaxed">
+              Volunteers are welcome both on-site at Legatafo and remotely! Simply submit a message below or reach Sister Sirgutemikael directly at +251 911 89 27 87.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== CONTACT & MAP SECTION ====================-->
+    <section class="py-24 px-6" id="contact">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <h2 class="font-primary text-4xl md:text-5xl font-normal bg-color-yellow px-4 py-1.5 border-2 border-color-black rounded-md inline-block relative mb-20 section-title shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          Get in Touch
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+          
+          <!-- Contact Form Box -->
+          <div class="lg:col-span-7 border-2 border-color-black rounded-xl p-6 md:p-8 bg-color-blue shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" data-animation-on-scroll="fadeInUp">
+            <h3 class="font-primary text-3xl font-normal mb-2">Send Us a Direct Message</h3>
+            <p class="text-sm text-color-black/80 mb-6">
+              Inquiries regarding child enrollment, sponsorships, volunteer opportunities, and partnerships.
+            </p>
+
+            <form id="contactForm" action="https://formsubmit.co/fadm94202@gmail.com" method="POST" class="space-y-4">
+              <input type="hidden" name="_subject" value="New Message from ASKBTM Website">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+              <div>
+                <label for="name" class="block text-xs font-bold uppercase mb-1">Your Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Abebe Kebede" class="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="email" class="block text-xs font-bold uppercase mb-1">Email Address</label>
+                  <input type="email" id="email" name="email" required placeholder="name@example.com" class="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none">
+                </div>
+                <div>
+                  <label for="subject" class="block text-xs font-bold uppercase mb-1">Inquiry Topic</label>
+                  <select id="subject" name="subject" required class="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none">
+                    <option value="" disabled selected>Select topic</option>
+                    <option value="Donation & Sponsorship">Donation &amp; Sponsorship</option>
+                    <option value="Volunteer Work">Volunteer Opportunity</option>
+                    <option value="Child Enrollment">Child Enrollment</option>
+                    <option value="Corporate Partnership">Corporate Partnership</option>
+                    <option value="General Question">General Question</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-bold uppercase mb-1">Your Message</label>
+                <textarea id="message" name="message" rows="4" required placeholder="How can we assist you or collaborate?" class="w-full px-4 py-3 bg-white border-2 border-color-black rounded-lg text-sm font-medium outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 bg-color-black text-color-white font-bold rounded-lg border-2 border-color-black text-base btn-brutal">
+                Send Message <i class="ri-send-plane-fill ml-2"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Details & Map Embed -->
+          <div class="lg:col-span-5 flex flex-col gap-6" data-animation-on-scroll="fadeInUp">
+            <!-- Contact Info Card -->
+            <div class="border-2 border-color-black rounded-xl p-6 bg-color-yellow shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] space-y-4">
+              <div class="flex items-start gap-3">
+                <i class="ri-map-pin-line text-2xl flex-shrink-0 text-red-600"></i>
+                <div>
+                  <h4 class="font-bold text-sm">Center Location</h4>
+                  <p class="text-xs text-color-black/80">Legatafo Town (10 km east of Addis Ababa), P.O. Box 20461</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="ri-phone-line text-2xl flex-shrink-0 text-green-700"></i>
+                <div>
+                  <h4 class="font-bold text-sm">Direct Phone &amp; WhatsApp</h4>
+                  <a href="tel:+251911892787" class="text-xs font-bold hover:underline">+251 911 89 27 87</a>
+                  <p class="text-[11px] text-color-black/70">Sister Sirgutemikael (24/7)</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="ri-mail-line text-2xl flex-shrink-0 text-blue-700"></i>
+                <div>
+                  <h4 class="font-bold text-sm">Email Address</h4>
+                  <a href="mailto:freminatos.center@gmail.com" class="text-xs font-bold hover:underline">freminatos.center@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Embed -->
+            <div class="border-2 border-color-black rounded-xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex-1 min-h-[220px]">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3939.5712172329654!2d38.94571!3d9.102767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDYnMTAuMCJOIDM4wrA1Nic0NC42IkU!5e0!3m2!1sen!2set!4v1762429431323!5m2!1sen!2set" 
+                width="100%" 
+                height="100%" 
+                style="border:0; min-height: 240px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--==================== FOOTER ====================-->
+  <footer class="bg-color-black text-color-white rounded-t-xl border-t-2 border-color-black pt-14 pb-8">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+        <!-- Logo & Mission Summary -->
+        <div class="space-y-3 max-w-sm">
+          <a href="#home" class="bg-color-green text-color-black border-2 border-color-white px-4 py-1.5 rounded-lg text-lg font-bold font-primary inline-flex items-center gap-2">
+            <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-5 h-5 object-contain">
+            <span>ASKBTM</span>
+          </a>
+          <p class="text-white/80 text-xs md:text-sm leading-relaxed">
+            Freminatos Children and Mothers' Resource Center · ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል. Protecting children, empowering mothers, and keeping families united in Legatafo.
+          </p>
+        </div>
+        
+        <!-- Navigation Columns -->
+        <div class="flex flex-wrap gap-8 md:gap-14">
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Explore</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="#home" class="hover:text-white transition-colors">Home</a>
+              <a href="#about" class="hover:text-white transition-colors">About Us</a>
+              <a href="#programs" class="hover:text-white transition-colors">Programs</a>
+              <a href="#gallery" class="hover:text-white transition-colors">Photo Gallery</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Resources</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="news-blogs.html" class="hover:text-white transition-colors">News &amp; Blogs</a>
+              <a href="support.html" class="hover:text-white transition-colors">Support Center</a>
+              <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="terms-services.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Connect</h4>
+            <div class="text-sm text-white/80 space-y-1">
+              <p>Legatafo Town, Ethiopia</p>
+              <p>+251 911 89 27 87</p>
+              <div class="flex items-center gap-3 pt-2">
+                <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-telegram-fill"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-instagram-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-t border-white/20 pt-6 text-xs text-white/60 gap-3">
+        <p>© 2026 ASKBTM (Freminatos Children and Mothers' Resource Center). All rights reserved.</p>
+        <p>Built with love in Legatafo, Ethiopia 🇪🇹</p>
+      </div>
+    </div>
+  </footer>
+
+  <!--==================== GALLERY LIGHTBOX MODAL ====================-->
+  <div id="galleryLightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop fixed inset-0 bg-black/85 backdrop-blur-sm"></div>
+    <div class="relative z-10 max-w-4xl max-h-[85vh] p-4 flex flex-col items-center">
+      <button id="lightboxClose" class="absolute -top-10 right-0 text-white text-3xl hover:text-color-yellow transition-colors" aria-label="Close Lightbox">
+        <i class="ri-close-circle-fill"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Enlarged view" class="max-w-full max-h-[75vh] object-contain rounded-xl border-2 border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,0.4)]">
+      <p id="lightboxCaption" class="text-white text-sm md:text-base font-medium mt-3 text-center"></p>
+    </div>
+  </div>
+
+  <!-- SVG Icon Definitions (as in the guide) -->
+  <svg style="display: none;">
+    <defs>
+      <symbol id="accent-small" viewBox="0 0 16 16">
+        <path d="M 6.655 3.182 C 6.61 2.929 6.577 2.674 6.554 2.417 C 6.521 2.037 6.542 1.653 6.53 1.272 C 6.525 1.111 6.505 0.69 6.513 0.629 C 6.586 0.101 7.029 0.021 7.159 0.006 C 7.222 -0.003 7.866 -0.072 8.004 0.614 C 8.174 1.441 8.229 2.286 8.169 3.127 C 8.311 3.835 8.546 4.521 8.868 5.167 C 10.132 7.691 12.541 7.936 15.151 7.913 C 15.553 7.907 15.886 8.21 15.907 8.593 C 15.928 8.98 15.629 9.315 15.229 9.35 C 13.771 9.485 11.182 10.61 10.287 11.781 C 10.1 12.026 9.992 12.618 9.848 13.197 C 9.646 14.002 9.407 14.798 9.139 15.133 C 9.099 15.185 8.611 15.716 8.465 15.793 C 8.114 15.978 7.834 15.871 7.674 15.773 C 7.515 15.675 7.335 15.482 7.263 15.162 C 7.187 14.827 7.251 14.141 7.24 13.994 C 7.197 13.46 7.086 12.413 6.859 11.513 C 6.737 11.028 6.607 10.581 6.392 10.359 C 5.594 9.537 4.319 9.658 3.245 9.793 C 3.122 9.808 2.999 9.825 2.876 9.84 C 2.42 9.968 1.955 10.059 1.484 10.111 C 0.744 10.194 0.621 9.54 0.615 9.496 C 0.601 9.401 0.55 8.911 1.108 8.715 C 1.169 8.694 1.619 8.599 1.792 8.562 C 2.034 8.511 2.277 8.468 2.522 8.432 C 5.05 7.676 6.424 5.553 6.655 3.182 Z"></path>
+      </symbol>
+      <symbol id="accent-large" viewBox="0 0 50 50">
+        <path d="M 20.797 9.783 C 20.657 8.992 20.552 8.195 20.482 7.394 C 20.379 6.205 20.443 5.006 20.406 3.816 C 20.39 3.311 20.327 1.995 20.353 1.806 C 20.582 0.156 21.967 -0.096 22.373 -0.142 C 22.569 -0.169 24.58 -0.385 25.014 1.76 C 25.542 4.342 25.716 6.984 25.528 9.613 C 25.973 11.824 26.707 13.967 27.713 15.985 C 31.664 23.873 39.192 24.639 47.348 24.567 C 48.603 24.549 49.644 25.495 49.71 26.694 C 49.775 27.902 48.841 28.948 47.592 29.057 C 43.033 29.479 34.945 32.995 32.148 36.655 C 31.564 37.422 31.224 39.27 30.774 41.081 C 30.145 43.596 29.398 46.084 28.561 47.13 C 28.435 47.292 26.908 48.951 26.453 49.194 C 25.357 49.772 24.48 49.437 23.982 49.131 C 23.485 48.825 22.922 48.221 22.696 47.22 C 22.461 46.175 22.66 44.029 22.624 43.57 C 22.49 41.902 22.143 38.629 21.435 35.817 C 21.054 34.302 20.647 32.905 19.975 32.211 C 17.482 29.642 13.498 30.021 10.142 30.444 C 9.757 30.489 9.372 30.543 8.987 30.588 C 7.563 30.99 6.109 31.274 4.638 31.436 C 2.325 31.697 1.942 29.651 1.923 29.516 C 1.879 29.219 1.719 27.686 3.464 27.073 C 3.654 27.01 5.059 26.713 5.599 26.595 C 6.355 26.437 7.116 26.302 7.88 26.189 C 15.782 23.827 20.075 17.193 20.797 9.783 Z"></path>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Swiper JS -->
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Contact Form Handler -->
+  <script src="assets/js/contact.js"></script>
+  <!-- Video Speed Controller -->
+  <script src="assets/js/videospeed.js"></script>
+
+  <!-- Interactive Scripts (Menu, Swiper, Lightbox, Tiers, Scroll Animations) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+          const lines = navToggle.querySelectorAll('span');
+          lines[0].classList.toggle('rotate-45');
+          lines[0].classList.toggle('translate-y-2');
+          lines[1].classList.toggle('opacity-0');
+          lines[2].classList.toggle('-rotate-45');
+          lines[2].classList.toggle('-translate-y-2');
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('hidden');
+            const lines = navToggle.querySelectorAll('span');
+            lines[0].classList.remove('rotate-45', 'translate-y-2');
+            lines[1].classList.remove('opacity-0');
+            lines[2].classList.remove('-rotate-45', '-translate-y-2');
+          });
+        });
+      }
+
+      // 2. Swiper Hero Slideshow
+      if (typeof Swiper !== 'undefined') {
+        const heroSwiper = new Swiper('.home__swiper', {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 0,
+          grabCursor: true,
+          speed: 450,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            init: function () {
+              const counter = document.getElementById('heroSlideCounter');
+              if (counter) {
+                counter.textContent = `${this.realIndex + 1} / 5`;
+              }
+            },
+            slideChange: function () {
+              const counter = document.getElementById('heroSlideCounter');
+              if (counter) {
+                counter.textContent = `${this.realIndex + 1} / 5`;
+              }
+            }
+          }
+        });
+
+        // Add tactile click feedback to prev and next buttons
+        const swiperNavButtons = document.querySelectorAll('.home__swiper .swiper-nav-btn');
+        swiperNavButtons.forEach(btn => {
+          btn.addEventListener('click', function () {
+            this.classList.add('clicked');
+            setTimeout(() => {
+              this.classList.remove('clicked');
+            }, 250);
+          });
+        });
+      }
+
+      // 3. Scroll Reveal Observer (from the guide)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-on-scroll-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('[data-animation-on-scroll]').forEach(el => {
+        el.classList.add('animate-on-scroll-hidden');
+        observer.observe(el);
+      });
+
+      // 4. FAQ Accordion Toggle
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+          item.classList.toggle('active');
+          faqItems.forEach(other => {
+            if (other !== item) other.classList.remove('active');
+          });
+        });
+      });
+
+      // 5. Gallery Lightbox Modal
+      const lightbox = document.getElementById('galleryLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+
+      if (lightbox && lightboxImg) {
+        galleryThumbs.forEach(thumb => {
+          thumb.addEventListener('click', () => {
+            const img = thumb.querySelector('img');
+            if (img) {
+              lightboxImg.src = img.src;
+              lightboxCaption.textContent = img.alt || 'ASKBTM Center - Legatafo, Ethiopia';
+              lightbox.classList.add('active');
+              lightbox.setAttribute('aria-hidden', 'false');
+            }
+          });
+        });
+
+        const closeLightbox = () => {
+          lightbox.classList.remove('active');
+          lightbox.setAttribute('aria-hidden', 'true');
+        };
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        const backdrop = lightbox.querySelector('.lightbox-backdrop');
+        if (backdrop) backdrop.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+          }
+        });
+      }
+
+      // 6. Impact Giving Tiers & Reference Generator
+      const tierButtons = document.querySelectorAll('.impact-tier-btn');
+      const tierDesc = document.getElementById('tierDescription');
+      const donorInput = document.getElementById('donorNameInput');
+      const generatedRefCode = document.getElementById('generatedRefCode');
+      const copyRefBtn = document.getElementById('copyRefBtn');
+
+      let currentTierCode = 'Meals';
+
+      const updateReference = () => {
+        if (!generatedRefCode) return;
+        const rawName = donorInput ? donorInput.value.trim().replace(/[^a-zA-Z0-9]/g, '') : '';
+        const namePart = rawName ? rawName : 'Donation';
+        const code = `FREM-2025-${currentTierCode}-${namePart}`;
+        generatedRefCode.textContent = code;
+        if (copyRefBtn) {
+          copyRefBtn.setAttribute('data-text', code);
+        }
+      };
+
+      if (tierButtons.length > 0) {
+        tierButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            tierButtons.forEach(b => {
+              b.classList.remove('active', 'bg-color-yellow');
+              b.classList.add('bg-white');
+            });
+            btn.classList.add('active', 'bg-color-yellow');
+            btn.classList.remove('bg-white');
+
+            currentTierCode = btn.getAttribute('data-code') || 'Donation';
+            const purpose = btn.getAttribute('data-purpose');
+            const amount = btn.getAttribute('data-amount');
+            if (tierDesc) {
+              const span = tierDesc.querySelector('span');
+              if (span) span.textContent = `${purpose} (${amount})`;
+            }
+            updateReference();
+          });
+        });
+      }
+
+      if (donorInput) {
+        donorInput.addEventListener('input', updateReference);
+      }
+
+      // 7. Clipboard Copy Helper
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+          const textToCopy = this.getAttribute('data-text');
+          const originalHtml = this.innerHTML;
+
+          if (navigator.clipboard && textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              this.innerHTML = '<i class="ri-check-line text-green-600"></i> Copied!';
+              setTimeout(() => {
+                this.innerHTML = originalHtml;
+              }, 2000);
+            }).catch(() => {
+              // fallback
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Scroll to Top / Back Up Button -->
+  <button id="scrollToTopBtn" aria-label="Back to top" class="fixed bottom-6 right-6 z-50 bg-color-yellow text-color-black p-3.5 rounded-full shadow-lg border-2 border-black opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 btn-brutal flex items-center justify-center">
+    <i class="ri-arrow-up-line text-xl font-bold"></i>
+  </button>
+  <script>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+          scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+          scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+          scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+        }
+      });
+
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  </script>
+</body>
 </html>

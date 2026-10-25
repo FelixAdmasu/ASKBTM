@@ -1,0 +1,714 @@
+Below is the component for your context <!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Maya Rivera – Creative Director</title>
+
+  
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+  <style>
+    .animate-on-scroll-hidden {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .animate-on-load {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: appear 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .animate-on-load[data-delay='100'] {
+      animation-delay: 0.1s;
+    }
+    .animate-on-load[data-delay='200'] {
+      animation-delay: 0.2s;
+    }
+    .animate-on-load[data-delay='300'] {
+      animation-delay: 0.3s;
+    }
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/></svg>');
+      background-size: 24px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 50 60" fill="none"><path d="M25 5L30 20H45L35 30L40 45L25 35L10 45L15 30L5 20H20L25 5Z" fill="%23000" stroke="%23000" stroke-width="1"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 60px;
+      left: 45%;
+      bottom: -68px;
+    }
+    .project-card:nth-child(odd) {
+      transform: rotate(-2deg);
+    }
+    .project-card:nth-child(even) {
+      transform: rotate(2deg);
+    }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.05) rotate(0deg) !important;
+    }
+    .service-item::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/></svg>');
+      background-color: white;
+      background-size: 24px;
+      opacity: 0.5;
+    }
+  </style>
+<style type="text/tailwindcss">/**
+ * This is the master CSS file. Do not add any other CSS here.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;</style><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config = {
+  content: [
+    "./_layout.html",
+    "./content/**/*.html",
+  ],
+  theme: {
+    extend: {
+      // Add all theme colors here
+      colors: {
+        'color-black': '#000',
+        'color-white': '#fff',
+        'color-yellow': '#ffe68c',
+        'color-green': '#a0e8a0',
+        'color-blue': '#9ddcff',
+      },
+      // Add all theme fonts here
+      fontFamily: {
+        'primary': ['Instrument Serif', 'serif'],
+        'secondary': ['Inter', 'sans-serif'],
+      },
+      // Add other theme values (spacing, radius) here
+      spacing: {
+        's': '16px',
+        'm': '24px',
+        'l': '32px',
+        'xl': '48px',
+      },
+      borderRadius: {
+        'sm': '8px',
+        'md': '16px',
+        'lg': '40px',
+        'xl': '60px',
+      },
+      transitionDuration: {
+        'fast': '300ms',
+        'medium': '500ms',
+      },
+    }
+  }
+}</script></head>
+
+<body class="font-secondary bg-color-white text-color-black overflow-x-hidden">
+
+  <div class="background-pattern"></div>
+
+  <header class="fixed top-4 left-0 right-0 w-full max-w-[1136px] mx-auto px-4 z-50">
+    <div class="header-wrapper">
+      <div data-editable="header" class="flex justify-between items-center bg-color-white border border-color-black rounded-xl px-4 md:px-8 py-4">
+        <a data-editable="text" data-path="header.logo.text" class="bg-color-green px-4 py-1 rounded-lg text-xl font-semibold font-primary" href="/">
+          Maya Rivera
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-8">
+          <ul class="flex gap-8" data-editable-list="header.navLinks">
+            <li>
+              <a data-editable="text" data-path="header.navLinks[0].text" class="text-xl relative overflow-hidden hover:text-color-black transition-colors duration-fast" href="#work">
+                Work
+              </a>
+            </li>
+            <li>
+              <a data-editable="text" data-path="header.navLinks[1].text" class="text-xl relative overflow-hidden hover:text-color-black transition-colors duration-fast" href="#about">
+                About
+              </a>
+            </li>
+            <li>
+              <a data-editable="text" data-path="header.navLinks[2].text" class="text-xl relative overflow-hidden hover:text-color-black transition-colors duration-fast" href="#contact">
+                Contact
+              </a>
+            </li>
+          </ul>
+          
+          <div class="flex items-center gap-4">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="transition-transform duration-fast hover:scale-110">
+              <svg width="24" height="24" viewBox="0 0 24 24"><use href="#icon-instagram"></use></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="transition-transform duration-fast hover:scale-110">
+              <svg width="24" height="24" viewBox="0 0 24 24"><use href="#icon-linkedin"></use></svg>
+            </a>
+          </div>
+        </nav>
+
+        <button class="md:hidden flex flex-col gap-1.5 w-8 h-6 nav-toggle" aria-label="Toggle navigation menu">
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-opacity duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <nav class="mobile-nav hidden md:hidden mt-4 bg-color-white border border-color-black rounded-xl p-6 shadow-lg">
+        <ul class="flex flex-col gap-6" data-editable-list="header.mobileNavLinks">
+          <li>
+            <a data-editable="text" data-path="header.mobileNavLinks[0].text" class="text-xl font-semibold hover:text-color-black transition-colors duration-fast block" href="#work">
+              Work
+            </a>
+          </li>
+          <li>
+            <a data-editable="text" data-path="header.mobileNavLinks[1].text" class="text-xl font-semibold hover:text-color-black transition-colors duration-fast block" href="#about">
+              About
+            </a>
+          </li>
+          <li>
+            <a data-editable="text" data-path="header.mobileNavLinks[2].text" class="text-xl font-semibold hover:text-color-black transition-colors duration-fast block" href="#contact">
+              Contact
+            </a>
+          </li>
+        </ul>
+        
+        <div class="flex items-center gap-6 mt-8 pt-6 border-t border-color-black/20">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="transition-transform duration-fast hover:scale-110">
+            <svg width="24" height="24" viewBox="0 0 24 24"><use href="#icon-instagram"></use></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="transition-transform duration-fast hover:scale-110">
+            <svg width="24" height="24" viewBox="0 0 24 24"><use href="#icon-linkedin"></use></svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main><section class="pt-32 md:pt-40 pb-24 px-6 relative overflow-hidden">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-start relative">
+      <!-- Left Content -->
+      <div class="space-y-6 md:space-y-8 lg:space-y-10 animate-on-load z-10" data-editable="hero">
+        <div class="space-y-4 md:space-y-6">
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2 md:gap-3 bg-color-green border border-color-black rounded-lg px-3 py-1.5 md:px-4 md:py-2">
+            <span class="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-color-black opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 md:h-3 md:w-3 bg-color-black"></span>
+            </span>
+            <span data-editable="text" data-path="hero.availability" class="text-sm md:text-base lg:text-lg font-semibold">
+              Available for new projects
+            </span>
+          </div>
+          
+          <!-- Main Heading with Mixed Styles -->
+          <h1 data-editable="text" data-path="hero.heading" class="font-primary font-normal text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] text-color-black leading-[0.95] tracking-tight">
+            Crafting
+            <span class="inline-block bg-color-yellow px-2 py-0.5 md:px-3 md:py-1 -rotate-1 border border-color-black mx-1 md:mx-2 text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]">bold brands</span>
+            <span class="block mt-1 md:mt-2 italic">that resonate</span>
+          </h1>
+          
+          <!-- Subheading -->
+          <p data-editable="text" data-path="hero.description" class="text-base sm:text-lg md:text-xl lg:text-2xl text-color-black max-w-lg leading-relaxed">
+            15+ years leading campaigns across fashion, tech, and lifestyle. Turning creative vision into cultural moments.
+          </p>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-3 md:gap-4">
+          <a data-editable="text" data-path="hero.primaryCTA" href="#work" class="group relative inline-flex items-center justify-center px-5 py-2.5 md:px-8 md:py-4 text-base md:text-lg lg:text-xl font-semibold rounded-lg bg-color-black text-color-white border-2 border-color-black overflow-hidden transition-all duration-medium hover:scale-105 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <span class="relative z-10">View My Work</span>
+          </a>
+          <a data-editable="text" data-path="hero.secondaryCTA" href="#contact" class="group relative inline-flex items-center justify-center px-5 py-2.5 md:px-8 md:py-4 text-base md:text-lg lg:text-xl font-semibold rounded-lg bg-color-white text-color-black border-2 border-color-black overflow-hidden transition-all duration-medium hover:scale-105 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <span class="relative z-10">Let's Talk</span>
+          </a>
+        </div>
+
+        <!-- Location with Icon -->
+        <div data-editable="text" data-path="hero.location" class="flex items-center gap-2 text-base md:text-lg lg:text-xl pt-3 md:pt-4 border-t border-color-black/20">
+          <svg class="w-5 h-5 md:w-6 md:h-6" width="24" height="24"><use href="#icon-location"></use></svg>
+          <span class="font-medium">New York, NY</span>
+        </div>
+      </div>
+
+      <!-- Right Image Area with Decorative Elements -->
+      <div class="relative animate-on-load h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px] xl:h-[500px] px-8 sm:px-10 md:px-6" data-delay="200">
+        <!-- Main Image Container -->
+        <div data-editable="image" data-path="hero.image" class="relative w-full h-full mx-auto bg-color-green border-2 border-color-black rounded-md p-2 sm:p-3 md:p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-medium hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&amp;w=2761&amp;auto=format&amp;fit=crop" alt="Maya Rivera - Creative Director" class="w-full h-full object-cover rounded-sm">
+        </div>
+        
+        <!-- Decorative Accent Elements -->
+        <div class="absolute -top-3 sm:-top-6 md:-top-8 left-0 sm:-left-6 md:-left-8 w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-color-blue border-2 border-color-black rounded-full animate-on-load shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" data-delay="300"></div>
+        
+        <div class="absolute -bottom-3 sm:-bottom-5 md:-bottom-6 left-8 sm:left-16 md:left-20 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-color-yellow border-2 border-color-black rotate-45 animate-on-load shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" data-delay="400"></div>
+        
+        <div class="absolute top-1/3 right-0 sm:-right-5 md:-right-6 w-12 h-12 sm:w-18 sm:h-18 md:w-24 md:h-24 bg-color-green border-2 border-color-black rounded-full animate-on-load shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" data-delay="500"></div>
+
+        <!-- Custom SVG Accents -->
+        <svg class="absolute -top-8 sm:-top-12 md:-top-16 right-4 sm:right-10 md:right-12 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 fill-color-yellow animate-on-load" data-delay="350" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,1)) md:drop-shadow(3px 3px 0px rgba(0,0,0,1));">
+          <use href="#accent-large"></use>
+        </svg>
+        
+        <svg class="absolute bottom-1/4 left-0 sm:-left-10 md:-left-12 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 fill-color-blue animate-on-load" data-delay="450" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,1)) md:drop-shadow(3px 3px 0px rgba(0,0,0,1));">
+          <use href="#accent-small"></use>
+        </svg>
+
+        <!-- Animated Dashed Circle -->
+        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10 opacity-30 animate-on-load" data-delay="250" viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 10" class="text-color-black sm:stroke-[2] sm:stroke-dasharray-[8_12]">
+            <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="60s" repeatCount="indefinite"></animateTransform>
+          </circle>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24 animate-on-load" data-delay="700">
+      <div class="border-2 border-color-black rounded-lg p-6 bg-color-blue text-center transition-all duration-medium hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <p class="font-primary text-4xl font-normal mb-2">150+</p>
+        <p class="text-lg">Projects</p>
+      </div>
+      <div class="border-2 border-color-black rounded-lg p-6 bg-color-yellow text-center transition-all duration-medium hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <p class="font-primary text-4xl font-normal mb-2">25+</p>
+        <p class="text-lg">Awards</p>
+      </div>
+      <div class="border-2 border-color-black rounded-lg p-6 bg-color-green text-center transition-all duration-medium hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <p class="font-primary text-4xl font-normal mb-2">50+</p>
+        <p class="text-lg">Clients</p>
+      </div>
+      <div class="border-2 border-color-black rounded-lg p-6 bg-color-blue text-center transition-all duration-medium hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <p class="font-primary text-4xl font-normal mb-2">15+</p>
+        <p class="text-lg">Years</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6" id="work">
+  <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+    <h2 data-editable="text" data-path="work.title" class="font-primary text-4xl font-normal bg-color-yellow px-2 py-1 inline-block relative mb-24 section-title">
+      Featured Work
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-10" data-editable-list="work.projects">
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-blue transition-all duration-medium" data-path="work.projects[0]">
+        <div data-editable="image" data-path="work.projects[0].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Luxury Fashion Campaign" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[0].title" class="font-primary text-2xl font-normal">
+          Luxury Fashion Campaign
+        </h3>
+        <p data-editable="text" data-path="work.projects[0].category" class="text-lg">
+          Art Direction • Brand Strategy
+        </p>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-yellow transition-all duration-medium" data-path="work.projects[1]">
+        <div data-editable="image" data-path="work.projects[1].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&amp;w=2074&amp;auto=format&amp;fit=crop" alt="Tech Product Launch" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[1].title" class="font-primary text-2xl font-normal">
+          Tech Product Launch
+        </h3>
+        <p data-editable="text" data-path="work.projects[1].category" class="text-lg">
+          Creative Direction • Digital
+        </p>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-green transition-all duration-medium" data-path="work.projects[2]">
+        <div data-editable="image" data-path="work.projects[2].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Lifestyle Brand Identity" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[2].title" class="font-primary text-2xl font-normal">
+          Lifestyle Brand Identity
+        </h3>
+        <p data-editable="text" data-path="work.projects[2].category" class="text-lg">
+          Branding • Photography
+        </p>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-yellow transition-all duration-medium" data-path="work.projects[3]">
+        <div data-editable="image" data-path="work.projects[3].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&amp;w=2074&amp;auto=format&amp;fit=crop" alt="Global Advertising Campaign" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[3].title" class="font-primary text-2xl font-normal">
+          Global Ad Campaign
+        </h3>
+        <p data-editable="text" data-path="work.projects[3].category" class="text-lg">
+          Campaign Strategy • Video
+        </p>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-blue transition-all duration-medium" data-path="work.projects[4]">
+        <div data-editable="image" data-path="work.projects[4].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&amp;w=2015&amp;auto=format&amp;fit=crop" alt="Editorial Design System" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[4].title" class="font-primary text-2xl font-normal">
+          Editorial Design System
+        </h3>
+        <p data-editable="text" data-path="work.projects[4].category" class="text-lg">
+          Design • Typography
+        </p>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" class="project-card border border-color-black rounded-md p-3 flex flex-col items-center gap-3 bg-color-green transition-all duration-medium" data-path="work.projects[5]">
+        <div data-editable="image" data-path="work.projects[5].image" class="w-full aspect-[1.56/1] border border-color-black rounded-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1492551557933-34265f7af79e?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Cultural Event Branding" class="w-full h-full object-cover">
+        </div>
+        <h3 data-editable="text" data-path="work.projects[5].title" class="font-primary text-2xl font-normal">
+          Cultural Event Branding
+        </h3>
+        <p data-editable="text" data-path="work.projects[5].category" class="text-lg">
+          Event Design • Experiential
+        </p>
+      </article>
+    </div>
+
+    <a data-editable="text" data-path="work.viewAllCTA" href="#" class="inline-flex items-center justify-center px-6 py-3 text-xl font-semibold rounded-lg bg-color-white text-color-black border border-color-black transition-transform duration-fast hover:scale-105">
+      View All Projects
+    </a>
+  </div>
+</section>
+
+<section class="py-24 px-6">
+  <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+    <h2 data-editable="text" data-path="services.title" class="font-primary text-4xl font-normal bg-color-yellow px-2 py-1 inline-block relative mb-24 section-title">
+      Creative Services
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full" data-editable-list="services.items">
+      <div data-animation-on-scroll="fadeInUp" data-path="services.items[0]" class="service-item flex-1 p-6 h-40 border border-color-black rounded-md font-primary text-2xl font-normal flex items-center justify-center text-center bg-color-blue relative overflow-hidden transition-transform duration-medium hover:scale-105">
+        <span data-editable="text" data-path="services.items[0].text">Brand Strategy &amp; Positioning</span>
+      </div>
+
+      <div data-animation-on-scroll="fadeInUp" data-path="services.items[1]" class="service-item flex-1 p-6 h-40 border border-color-black rounded-md font-primary text-2xl font-normal flex items-center justify-center text-center bg-color-yellow relative overflow-hidden transition-transform duration-medium hover:scale-105">
+        <span data-editable="text" data-path="services.items[1].text">Campaign Development</span>
+      </div>
+
+      <div data-animation-on-scroll="fadeInUp" data-path="services.items[2]" class="service-item flex-1 p-6 h-40 border border-color-black rounded-md font-primary text-2xl font-normal flex items-center justify-center text-center bg-color-green relative overflow-hidden transition-transform duration-medium hover:scale-105">
+        <span data-editable="text" data-path="services.items[2].text">Art Direction &amp; Photography</span>
+      </div>
+
+      <div data-animation-on-scroll="fadeInUp" data-path="services.items[3]" class="service-item flex-1 p-6 h-40 border border-color-black rounded-md font-primary text-2xl font-normal flex items-center justify-center text-center bg-color-blue relative overflow-hidden transition-transform duration-medium hover:scale-105">
+        <span data-editable="text" data-path="services.items[3].text">Creative Team Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6" id="about">
+  <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+    <h2 data-editable="text" data-path="experience.title" class="font-primary text-4xl font-normal bg-color-yellow px-2 py-1 inline-block relative mb-24 section-title">
+      Experience
+    </h2>
+
+    <div class="w-full max-w-3xl flex flex-col gap-4" data-editable-list="experience.items">
+      <article data-animation-on-scroll="fadeInUp" data-path="experience.items[0]" class="border-2 border-color-black rounded-md p-8 flex flex-row gap-6 bg-color-blue shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-medium hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <div class="flex-shrink-0 w-32">
+          <p data-editable="text" data-path="experience.items[0].period" class="text-lg font-semibold bg-color-white border border-color-black rounded px-3 py-2 text-center">
+            2020 - Present
+          </p>
+        </div>
+        <div class="flex-1 flex flex-col gap-3">
+          <h3 data-editable="text" data-path="experience.items[0].title" class="font-primary text-2xl font-normal">
+            Creative Director at Momentum Agency
+          </h3>
+          <p data-editable="text" data-path="experience.items[0].description" class="text-lg leading-relaxed">
+            Leading a team of 12 creatives, developing campaigns for Fortune 500 brands across fashion, automotive, and technology sectors. Responsible for strategic vision and creative execution from concept to delivery.
+          </p>
+        </div>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" data-path="experience.items[1]" class="border-2 border-color-black rounded-md p-8 flex flex-row gap-6 bg-color-yellow shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-medium hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <div class="flex-shrink-0 w-32">
+          <p data-editable="text" data-path="experience.items[1].period" class="text-lg font-semibold bg-color-white border border-color-black rounded px-3 py-2 text-center whitespace-nowrap">
+            2016 - 2020
+          </p>
+        </div>
+        <div class="flex-1 flex flex-col gap-3">
+          <h3 data-editable="text" data-path="experience.items[1].title" class="font-primary text-2xl font-normal">
+            Senior Art Director at Visionary Studio
+          </h3>
+          <p data-editable="text" data-path="experience.items[1].description" class="text-lg leading-relaxed">
+            Crafted award-winning campaigns for lifestyle and luxury brands. Specialized in brand repositioning and visual storytelling across print, digital, and experiential mediums.
+          </p>
+        </div>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" data-path="experience.items[2]" class="border-2 border-color-black rounded-md p-8 flex flex-row gap-6 bg-color-green shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-medium hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1">
+        <div class="flex-shrink-0 w-32">
+          <p data-editable="text" data-path="experience.items[2].period" class="text-lg font-semibold bg-color-white border border-color-black rounded px-3 py-2 text-center">
+            2012 - 2016
+          </p>
+        </div>
+        <div class="flex-1 flex flex-col gap-3">
+          <h3 data-editable="text" data-path="experience.items[2].title" class="font-primary text-2xl font-normal">
+            Art Director at Creative Collective
+          </h3>
+          <p data-editable="text" data-path="experience.items[2].description" class="text-lg leading-relaxed">
+            Developed visual identity systems and campaigns for emerging brands. Collaborated with cross-functional teams to deliver integrated marketing solutions.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6">
+  <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+    <h2 data-editable="text" data-path="testimonials.title" class="font-primary text-4xl font-normal bg-color-yellow px-2 py-1 inline-block relative mb-24 section-title">
+      Client Testimonials
+    </h2>
+
+    <div class="w-full max-w-3xl flex flex-col gap-6" data-editable-list="testimonials.items">
+      <article data-animation-on-scroll="fadeInUp" data-path="testimonials.items[0]" class="border border-color-black rounded-lg p-8 flex flex-col gap-6 bg-color-blue relative transition-all duration-medium hover:scale-[1.02]">
+        <div class="absolute top-6 left-6 text-6xl font-primary leading-none opacity-20">"</div>
+        <p data-editable="text" data-path="testimonials.items[0].quote" class="text-xl leading-relaxed italic pl-8">
+          "Jordan transformed our brand from the ground up. Their strategic vision and creative excellence delivered results beyond our expectations. A true visionary in the creative space."
+        </p>
+        <div class="flex items-center gap-4 mt-2">
+          <div class="h-px flex-1 bg-color-black"></div>
+          <h3 data-editable="text" data-path="testimonials.items[0].author" class="font-primary text-lg font-normal">
+            Sarah Chen, CMO at Luxe Fashion House
+          </h3>
+        </div>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" data-path="testimonials.items[1]" class="border border-color-black rounded-lg p-8 flex flex-col gap-6 bg-color-yellow relative transition-all duration-medium hover:scale-[1.02]">
+        <div class="absolute top-6 left-6 text-6xl font-primary leading-none opacity-20">"</div>
+        <p data-editable="text" data-path="testimonials.items[1].quote" class="text-xl leading-relaxed italic pl-8">
+          "Working with Jordan was a masterclass in creative leadership. They brought our product launch to life with campaigns that resonated across all demographics. Exceptional talent."
+        </p>
+        <div class="flex items-center gap-4 mt-2">
+          <div class="h-px flex-1 bg-color-black"></div>
+          <h3 data-editable="text" data-path="testimonials.items[1].author" class="font-primary text-lg font-normal">
+            Marcus Rodriguez, VP Marketing at TechFlow
+          </h3>
+        </div>
+      </article>
+
+      <article data-animation-on-scroll="fadeInUp" data-path="testimonials.items[2]" class="border border-color-black rounded-lg p-8 flex flex-col gap-6 bg-color-green relative transition-all duration-medium hover:scale-[1.02]">
+        <div class="absolute top-6 left-6 text-6xl font-primary leading-none opacity-20">"</div>
+        <p data-editable="text" data-path="testimonials.items[2].quote" class="text-xl leading-relaxed italic pl-8">
+          "Jordan's ability to translate brand essence into compelling visual narratives is unmatched. Our campaign saw a 300% increase in engagement. Highly recommend their expertise."
+        </p>
+        <div class="flex items-center gap-4 mt-2">
+          <div class="h-px flex-1 bg-color-black"></div>
+          <h3 data-editable="text" data-path="testimonials.items[2].author" class="font-primary text-lg font-normal">
+            Emma Thompson, Founder of Urban Lifestyle Co.
+          </h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 pb-32 px-6" id="contact">
+  <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+    <h2 data-editable="text" data-path="contact.title" class="font-primary text-4xl font-normal bg-color-yellow px-2 py-1 inline-block relative mb-24 section-title">
+      Let's Create Together
+    </h2>
+
+    <div data-animation-on-scroll="fadeInUp" class="w-full max-w-3xl border border-color-black rounded-md p-8 md:p-12 bg-color-blue text-center space-y-8">
+      <p data-editable="text" data-path="contact.description" class="text-2xl leading-relaxed">
+        I'm always interested in hearing about new projects and creative challenges. Whether you need strategic guidance or hands-on creative direction, let's talk.
+      </p>
+
+      <div class="space-y-4">
+        <p data-editable="text" data-path="contact.email" class="text-xl font-semibold">
+          hello@mayarivera.com
+        </p>
+        <p data-editable="text" data-path="contact.phone" class="text-xl">
+          +1 (555) 123-4567
+        </p>
+      </div>
+
+      <a data-editable="text" data-path="contact.cta" href="mailto:hello@mayarivera.com" class="inline-flex items-center justify-center px-8 py-4 text-xl font-semibold rounded-lg bg-color-black text-color-white border border-color-black transition-transform duration-fast hover:scale-105">
+        Send Me an Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+// Page-specific JavaScript for smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script></main>
+
+  <footer class="bg-color-black text-color-white rounded-t-md pt-12 pb-6">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+      <!-- Main Content Row -->
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+        <!-- Left Side: Maya Rivera Logo -->
+        <div class="space-y-2">
+          <a href="/" class="bg-color-green text-color-black px-4 py-1 rounded-lg text-lg font-semibold font-primary inline-block">
+            Maya Rivera
+          </a>
+          <p class="text-white/80 text-sm">Creative Director &amp; Brand Strategist</p>
+        </div>
+        
+        <!-- Center: Pages and Contact -->
+        <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+          <!-- Pages -->
+          <div class="space-y-2">
+            <h4 class="font-primary text-lg font-semibold">Pages</h4>
+            <nav class="flex flex-col gap-2">
+              <a href="#work" class="text-white/80 text-sm hover:text-white transition-colors">Work</a>
+              <a href="#about" class="text-white/80 text-sm hover:text-white transition-colors">About</a>
+              <a href="#contact" class="text-white/80 text-sm hover:text-white transition-colors">Contact</a>
+            </nav>
+          </div>
+          
+          <!-- Contact -->
+          <div class="space-y-2">
+            <h4 class="font-primary text-lg font-semibold">Contact</h4>
+            <div class="text-white/80 text-sm leading-relaxed space-y-1">
+              <p>New York, NY</p>
+              <p>hello@mayarivera.com</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Side: Follow -->
+        <div class="space-y-2">
+          <h4 class="font-primary text-lg font-semibold">Follow</h4>
+          <div class="flex items-center gap-4">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="transition-transform duration-fast hover:scale-110">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><use href="#icon-instagram"></use></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="transition-transform duration-fast hover:scale-110">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><use href="#icon-linkedin"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="flex justify-center items-center border-t border-white/10 pt-6">
+        <p class="text-white/60 text-sm text-center">
+          <span class="font-bold">Maya Rivera</span> © 2024 all rights reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SVG Icon Definitions -->
+  <svg style="display: none;">
+    <defs>
+      <symbol id="icon-instagram" viewBox="0 0 24 24">
+        <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM16.5 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0Zm7.5 14.25c0 1.8-.45 3-2.55 5.1-2.1 2.1-3.3 2.55-5.1 2.55-1.8 0-3-.45-5.1-2.55-2.1-2.1-2.55-3.3-2.55-5.1 0-1.8.45-3 2.55-5.1 2.1-2.1 3.3-2.55 5.1-2.55 1.8 0 3 .45 5.1 2.55 2.1 2.1 2.55 3.3 2.55 5.1Z"></path>
+      </symbol>
+      
+      <symbol id="icon-linkedin" viewBox="0 0 24 24">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+      </symbol>
+
+      <symbol id="icon-calendar" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M21 10H3m13-8v4M8 2v4m1 10 2 2 4.5-4.5M7.8 22h8.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C21 19.72 21 18.88 21 17.2V8.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C18.72 4 17.88 4 16.2 4H7.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C3 6.28 3 7.12 3 8.8v8.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C5.28 22 6.12 22 7.8 22Z"></path>
+      </symbol>
+
+      <symbol id="icon-location" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+        <path d="M12 22c4-4 8-7.582 8-12a8 8 0 1 0-16 0c0 4.418 4 8 8 12Z"></path>
+      </symbol>
+
+      <symbol id="accent-small" viewBox="0 0 16 16">
+        <path d="M 6.655 3.182 C 6.61 2.929 6.577 2.674 6.554 2.417 C 6.521 2.037 6.542 1.653 6.53 1.272 C 6.525 1.111 6.505 0.69 6.513 0.629 C 6.586 0.101 7.029 0.021 7.159 0.006 C 7.222 -0.003 7.866 -0.072 8.004 0.614 C 8.174 1.441 8.229 2.286 8.169 3.127 C 8.311 3.835 8.546 4.521 8.868 5.167 C 10.132 7.691 12.541 7.936 15.151 7.913 C 15.553 7.907 15.886 8.21 15.907 8.593 C 15.928 8.98 15.629 9.315 15.229 9.35 C 13.771 9.485 11.182 10.61 10.287 11.781 C 10.1 12.026 9.992 12.618 9.848 13.197 C 9.646 14.002 9.407 14.798 9.139 15.133 C 9.099 15.185 8.611 15.716 8.465 15.793 C 8.114 15.978 7.834 15.871 7.674 15.773 C 7.515 15.675 7.335 15.482 7.263 15.162 C 7.187 14.827 7.251 14.141 7.24 13.994 C 7.197 13.46 7.086 12.413 6.859 11.513 C 6.737 11.028 6.607 10.581 6.392 10.359 C 5.594 9.537 4.319 9.658 3.245 9.793 C 3.122 9.808 2.999 9.825 2.876 9.84 C 2.42 9.968 1.955 10.059 1.484 10.111 C 0.744 10.194 0.621 9.54 0.615 9.496 C 0.601 9.401 0.55 8.911 1.108 8.715 C 1.169 8.694 1.619 8.599 1.792 8.562 C 2.034 8.511 2.277 8.468 2.522 8.432 C 5.05 7.676 6.424 5.553 6.655 3.182 Z M 5.623 8.397 C 6.322 8.545 6.972 8.842 7.49 9.375 C 7.758 9.652 7.998 10.117 8.177 10.676 C 8.333 11.166 8.452 11.74 8.54 12.28 C 8.702 11.7 8.883 11.184 9.079 10.927 C 9.596 10.249 10.571 9.574 11.644 9.035 C 9.926 8.62 8.477 7.702 7.523 5.804 C 7.094 6.796 6.46 7.685 5.623 8.397 Z"></path>
+      </symbol>
+
+      <symbol id="accent-large" viewBox="0 0 50 50">
+        <path d="M 20.797 9.783 C 20.657 8.992 20.552 8.195 20.482 7.394 C 20.379 6.205 20.443 5.006 20.406 3.816 C 20.39 3.311 20.327 1.995 20.353 1.806 C 20.582 0.156 21.967 -0.096 22.373 -0.142 C 22.569 -0.169 24.58 -0.385 25.014 1.76 C 25.542 4.342 25.716 6.984 25.528 9.613 C 25.973 11.824 26.707 13.967 27.713 15.985 C 31.664 23.873 39.192 24.639 47.348 24.567 C 48.603 24.549 49.644 25.495 49.71 26.694 C 49.775 27.902 48.841 28.948 47.592 29.057 C 43.033 29.479 34.945 32.995 32.148 36.655 C 31.564 37.422 31.224 39.27 30.774 41.081 C 30.145 43.596 29.398 46.084 28.561 47.13 C 28.435 47.292 26.908 48.951 26.453 49.194 C 25.357 49.772 24.48 49.437 23.982 49.131 C 23.485 48.825 22.922 48.221 22.696 47.22 C 22.461 46.175 22.66 44.029 22.624 43.57 C 22.49 41.902 22.143 38.629 21.435 35.817 C 21.054 34.302 20.647 32.905 19.975 32.211 C 17.482 29.642 13.498 30.021 10.142 30.444 C 9.757 30.489 9.372 30.543 8.987 30.588 C 7.563 30.99 6.109 31.274 4.638 31.436 C 2.325 31.697 1.942 29.651 1.923 29.516 C 1.879 29.219 1.719 27.686 3.464 27.073 C 3.654 27.01 5.059 26.713 5.599 26.595 C 6.355 26.437 7.116 26.302 7.88 26.189 C 15.782 23.827 20.075 17.193 20.797 9.783 Z M 17.573 26.081 C 19.757 26.541 21.787 27.47 23.405 29.137 C 24.243 30.003 24.994 31.454 25.552 33.203 C 26.042 34.734 26.414 36.528 26.688 38.215 C 27.195 36.403 27.758 34.789 28.372 33.987 C 29.986 31.869 33.035 29.76 36.386 28.074 C 31.02 26.776 26.492 23.909 23.51 17.977 C 22.169 21.078 20.186 23.855 17.573 26.081 Z"></path>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          // Toggle mobile menu visibility
+          mobileNav.classList.toggle('hidden');
+          
+          // Animate hamburger icon
+          const lines = navToggle.querySelectorAll('span');
+          lines[0].classList.toggle('rotate-45');
+          lines[0].classList.toggle('translate-y-2');
+          lines[1].classList.toggle('opacity-0');
+          lines[2].classList.toggle('-rotate-45');
+          lines[2].classList.toggle('-translate-y-2');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('hidden');
+            const lines = navToggle.querySelectorAll('span');
+            lines[0].classList.remove('rotate-45', 'translate-y-2');
+            lines[1].classList.remove('opacity-0');
+            lines[2].classList.remove('-rotate-45', '-translate-y-2');
+          });
+        });
+      }
+
+      // Scroll Reveal Animation Logic
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-on-scroll-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+
+      document.querySelectorAll('[data-animation-on-scroll]').forEach(el => {
+        el.classList.add('animate-on-scroll-hidden');
+        observer.observe(el);
+      });
+    });
+  </script>
+
+
+</body></html>

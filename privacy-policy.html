@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Freminatos Children and Mothers' Resource Center - ASKBTM</title>
+  <meta name="description" content="Learn how Freminatos Children and Mothers' Resource Center (ASKBTM) collects, protects, and manages data.">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Policy - ASKBTM Center">
+  <meta property="og:description" content="Learn how Freminatos Children and Mothers' Resource Center (ASKBTM) collects, protects, and manages data.">
+  <meta property="og:image" content="assets/img/preview.png">
+
+  <!-- Fonts: Instrument Serif + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Remix Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'color-black': '#121212',
+            'color-white': '#ffffff',
+            'color-yellow': '#ffe68c',
+            'color-green': '#a0e8a0',
+            'color-blue': '#9ddcff',
+            'color-cream': '#faf8f2',
+            'color-pink': '#ffc5d3',
+          },
+          fontFamily: {
+            'primary': ['"Instrument Serif"', 'serif'],
+            'secondary': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'sm': '8px',
+            'md': '16px',
+            'lg': '32px',
+            'xl': '48px',
+          },
+          transitionDuration: {
+            'fast': '250ms',
+            'medium': '400ms',
+          },
+        }
+      }
+    };
+  </script>
+
+  <!-- Neo-Brutalist Styles -->
+  <style>
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 1v5m0 12v5m11-11h-5m-12 0H1"/></svg>');
+      background-size: 24px;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .btn-brutal {
+      box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+      transition: all 0.2s ease;
+    }
+    .btn-brutal:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    .card-brutal {
+      border: 2px solid #121212;
+      border-radius: 16px;
+      background-color: #ffffff;
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    /* Modal dialog */
+    .story-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .story-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+
+</head>
+<body class="font-secondary bg-color-cream text-color-black overflow-x-hidden selection:bg-color-yellow selection:text-color-black">
+  <div class="background-pattern"></div>
+  
+  <!--==================== FLOATING HEADER ====================-->
+  <header class="fixed top-4 left-0 right-0 w-full max-w-[1140px] mx-auto px-4 z-50">
+    <div class="header-wrapper">
+      <div class="flex justify-between items-center bg-color-white border-2 border-color-black rounded-xl px-4 md:px-8 py-3.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 bg-color-green border-2 border-color-black px-3.5 py-1.5 rounded-lg text-lg font-bold font-primary transition-transform hover:scale-105">
+          <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-6 h-6 object-contain">
+          <span class="tracking-wide">ASKBTM</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-7">
+          <ul class="flex gap-6 font-medium text-base">
+            <li><a href="index.html#home" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Home</a></li>
+            <li><a href="index.html#about" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">About</a></li>
+            <li><a href="index.html#video" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Our Story</a></li>
+            <li><a href="index.html#programs" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Programs</a></li>
+            <li><a href="index.html#gallery" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Gallery</a></li>
+            <li><a href="news-blogs.html" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Blog</a></li>
+            <li><a href="support.html" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Support</a></li>
+            <li><a href="index.html#contact" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Contact</a></li>
+          </ul>
+          
+          <div class="flex items-center gap-3">
+            <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-9 h-9 flex items-center justify-center rounded-lg border-2 border-color-black bg-color-blue hover:scale-105 transition-transform btn-brutal">
+              <i class="ri-telegram-fill text-lg"></i>
+            </a>
+            <a href="index.html#donate" class="bg-color-yellow text-color-black font-semibold px-4 py-2 rounded-lg border-2 border-color-black text-sm btn-brutal">
+              <i class="ri-heart-line mr-1"></i> Donate
+            </a>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-8 border-2 border-color-black rounded-md p-1 bg-color-yellow nav-toggle btn-brutal" aria-label="Toggle navigation menu">
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-opacity duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <nav class="mobile-nav hidden lg:hidden mt-3 bg-color-white border-2 border-color-black rounded-xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <ul class="flex flex-col gap-4 font-semibold text-lg">
+          <li><a href="index.html#home" class="block py-1 hover:text-blue-600">Home</a></li>
+          <li><a href="index.html#about" class="block py-1 hover:text-blue-600">About ASKBTM</a></li>
+          <li><a href="index.html#video" class="block py-1 hover:text-blue-600">Our Story in Motion</a></li>
+          <li><a href="index.html#programs" class="block py-1 hover:text-blue-600">Programs &amp; Support</a></li>
+          <li><a href="index.html#gallery" class="block py-1 hover:text-blue-600">Photo Gallery</a></li>
+          <li><a href="news-blogs.html" class="block py-1 hover:text-blue-600">News &amp; Blogs</a></li>
+          <li><a href="support.html" class="block py-1 hover:text-blue-600">Support Center</a></li>
+          <li><a href="index.html#contact" class="block py-1 hover:text-blue-600">Contact &amp; Banking</a></li>
+        </ul>
+        <div class="mt-6 pt-5 border-t-2 border-color-black flex gap-3">
+          <a href="index.html#donate" class="flex-1 bg-color-yellow text-center py-2.5 rounded-lg border-2 border-color-black font-bold btn-brutal">
+            <i class="ri-heart-line"></i> Donate Now
+          </a>
+          <a href="support.html" class="px-4 py-2.5 bg-color-blue text-center rounded-lg border-2 border-color-black font-bold btn-brutal">
+            Help
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="pt-32 md:pt-40 pb-12 px-6 relative">
+      <div class="max-w-[1200px] mx-auto text-center">
+        <div class="inline-flex items-center gap-2.5 bg-color-yellow border-2 border-color-black rounded-lg px-3.5 py-1.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] mb-6">
+          <span class="w-2.5 h-2.5 rounded-full bg-color-black"></span>
+          <span class="text-xs md:text-sm font-semibold tracking-wide uppercase">
+            Legal &amp; Data Protection · Effective October 2025
+          </span>
+        </div>
+
+        <h1 class="font-primary font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl mx-auto mb-6">
+          ASKBTM 
+          <span class="inline-block bg-color-pink px-3 py-0.5 -rotate-1 border-2 border-color-black mx-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            Privacy
+          </span> 
+          Policy
+        </h1>
+
+        <p class="text-base md:text-lg text-color-black/80 font-medium max-w-2xl mx-auto leading-relaxed">
+          We are deeply dedicated to transparency, safeguarding children's privacy, and securing personal data provided by families, volunteers, and donors.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-24 px-6">
+      <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Table of Contents Sidebar (4 cols) -->
+        <aside class="lg:col-span-4 sticky top-24 space-y-6">
+          <div class="bg-color-yellow border-2 border-color-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h3 class="font-primary text-2xl font-bold mb-3 flex items-center gap-2">
+              <i class="ri-list-check-3"></i> Document Sections
+            </h3>
+            <p class="text-xs text-black/70 mb-4">Click to jump directly to any policy section.</p>
+            <ul class="space-y-1.5 border-t-2 border-black/10 pt-3">
+              
+    <li>
+      <a href="#section-1" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        1. Introduction
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-2" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        2. Information We Collect
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-3" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        3. How We Use Your Information
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-4" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        4. Data Security
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-5" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        5. Your Data Protection Rights
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-6" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        6. Third-Party Services and Data Sharing
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-7" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        7. Children's Privacy
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-8" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        8. Changes to This Privacy Policy
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-9" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        9. Data Retention and Deletion
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-10" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        10. Your Choices and Opt-Out Options
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-11" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        11. Governing Law and Dispute Resolution
+      </a>
+    </li>
+  
+
+    <li>
+      <a href="#section-12" class="block py-1 text-sm text-black/75 hover:text-black hover:translate-x-1 transition-transform font-medium truncate">
+        12. Contact Us
+      </a>
+    </li>
+  
+            </ul>
+          </div>
+
+          <!-- Quick Trust Card -->
+          <div class="bg-white border-2 border-color-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div class="flex items-center gap-2 mb-2 text-color-green font-bold text-sm">
+              <i class="ri-shield-check-fill text-2xl text-green-600"></i>
+              <span class="text-black font-bold">Child Protection Guarantee</span>
+            </div>
+            <p class="text-xs text-black/70 leading-relaxed">
+              We never sell or distribute child or donor records. Media publication requires verified parent/guardian consent.
+            </p>
+          </div>
+        </aside>
+
+        <!-- Main Legal Body (8 cols) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+    <div id="section-1" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        1. Introduction
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>Welcome to ASKBTM (Aba Selama Kesate Brihan Terado Mehaber). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+                     <p>By using our website, you agree to the collection and use of information in accordance with this policy.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-2" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        2. Information We Collect
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>We collect several types of information from and about users of our website, including:</p>
+                     <ul class="privacy__list">
+                        <li><strong>Personal Information:</strong> Name, email address, phone number, mailing address, date of birth, and other contact details when you register, make a donation, or fill out forms on our website.</li>
+                        <li><strong>Payment Information:</strong> Credit card details, bank account information, and transaction history when you make donations or payments through our website.</li>
+                        <li><strong>Demographic Information:</strong> Age, gender, location, interests, and preferences that you choose to provide.</li>
+                        <li><strong>Usage Data:</strong> Information about how you access and use our website, including your IP address, browser type, device information, pages visited, time spent on pages, and other diagnostic data.</li>
+                        <li><strong>Cookies and Tracking Data:</strong> We use cookies, web beacons, and similar tracking technologies to track activity on our website and collect certain information.</li>
+                        <li><strong>Communication Data:</strong> Records of your communications with us, including emails, messages, and feedback.</li>
+                        <li><strong>Third-party Data:</strong> Information we receive from third parties, such as social media platforms when you interact with us through those services.</li>
+                     </ul>
+                     <p><strong>Special Categories of Data:</strong> In some cases, we may collect sensitive personal information such as health data or religious beliefs, but only when you explicitly provide this information and consent to its processing.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-3" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        3. How We Use Your Information
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>We use the collected data for various purposes:</p>
+                     <ul class="privacy__list">
+                        <li>To provide and maintain our services</li>
+                        <li>To notify you about changes to our services</li>
+                        <li>To allow you to participate in interactive features of our website</li>
+                        <li>To provide customer support</li>
+                        <li>To gather analysis or valuable information to improve our website</li>
+                        <li>To monitor the usage of our website</li>
+                        <li>To detect, prevent, and address technical issues</li>
+                     </ul>
+      </div>
+    </div>
+  
+
+    <div id="section-4" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        4. Data Security
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>The security of your data is important to us. We implement appropriate technical and organizational measures to protect your personal information. However, please remember that no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-5" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        5. Your Data Protection Rights
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+                     <ul class="privacy__list">
+                        <li>The right to access, update, or delete your information</li>
+                        <li>The right to rectification if your information is inaccurate or incomplete</li>
+                        <li>The right to object to our processing of your personal data</li>
+                        <li>The right to request restriction of processing your personal information</li>
+                        <li>The right to data portability</li>
+                        <li>The right to withdraw consent</li>
+                     </ul>
+      </div>
+    </div>
+  
+
+    <div id="section-6" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        6. Third-Party Services and Data Sharing
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>We may share your information with third parties in the following situations:</p>
+                     <ul class="privacy__list">
+                        <li><strong>Service Providers:</strong> We may employ third-party companies and individuals to facilitate our website, provide services on our behalf, or assist us in analyzing how our website is used. These third parties have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</li>
+                        <li><strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or asset sale, your personal data may be transferred. We will provide notice before your personal data is transferred and becomes subject to a different privacy policy.</li>
+                        <li><strong>Legal Requirements:</strong> We may disclose your information where required to do so by law or in response to valid requests by public authorities.</li>
+                        <li><strong>Affiliates:</strong> We may share your information with our affiliates, in which case we will require those affiliates to honor this privacy policy.</li>
+                     </ul>
+                     <p><strong>International Data Transfers:</strong> Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-7" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        7. Children's Privacy
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>Our website is not intended for children under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-8" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        8. Changes to This Privacy Policy
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date at the top of this Privacy Policy.</p>
+                     <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-9" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        9. Data Retention and Deletion
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.</p>
+                     <p>You can request deletion of your personal information by contacting us at the information provided below. We will respond to your request within 30 days.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-10" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        10. Your Choices and Opt-Out Options
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>You have several choices regarding the use of your information:</p>
+                     <ul class="privacy__list">
+                        <li>You can choose not to provide certain information, although it may be needed to take advantage of some features of our website.</li>
+                        <li>You can opt out of receiving promotional communications from us by following the unsubscribe link or instructions provided in any email we send.</li>
+                        <li>You can control cookies through your browser settings and other tools.</li>
+                        <li>You can update or correct your personal information through your account settings or by contacting us.</li>
+                     </ul>
+      </div>
+    </div>
+  
+
+    <div id="section-11" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        11. Governing Law and Dispute Resolution
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>This Privacy Policy shall be governed by and construed in accordance with the laws of Ethiopia. Any disputes arising under or in connection with this Privacy Policy shall be subject to the exclusive jurisdiction of the courts located in Ethiopia.</p>
+                     <p>If you have any concerns or complaints about our use of your personal information, please contact us first. We will investigate and attempt to resolve any complaints or disputes regarding the use and disclosure of personal information.</p>
+      </div>
+    </div>
+  
+
+    <div id="section-12" class="scroll-mt-32 border-2 border-black rounded-2xl bg-white p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="font-primary text-2xl sm:text-3xl font-bold mb-4 text-color-black">
+        12. Contact Us
+      </h2>
+      <div class="text-sm sm:text-base text-black/80 space-y-3 leading-relaxed font-normal">
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:</p>
+                     <ul class="privacy__contact">
+                        <li><i class="ri-mail-line"></i> Email: <a href="mailto:info@askbtm.org" class="privacy__link">info@askbtm.org</a></li>
+                        <li><i class="ri-phone-line"></i> Phone: <a href="tel:+251XXXXXXXXX" class="privacy__link">+251-XXX-XXXXXX</a></li>
+                        <li><i class="ri-map-pin-line"></i> Address: Legatofo, Ethiopia</li>
+                        <li><i class="ri-time-line"></i> Business Hours: Monday - Friday, 9:00 AM - 5:00 PM EAT</li>
+                     </ul>
+                     <p>We take your privacy concerns seriously and will respond to your inquiry within 7 business days.</p>
+      </div>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <!--==================== FOOTER ====================-->
+  <footer class="bg-color-black text-color-white rounded-t-xl border-t-2 border-color-black pt-14 pb-8">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+        <!-- Logo & Mission Summary -->
+        <div class="space-y-3 max-w-sm">
+          <a href="index.html#home" class="bg-color-green text-color-black border-2 border-color-white px-4 py-1.5 rounded-lg text-lg font-bold font-primary inline-flex items-center gap-2">
+            <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-5 h-5 object-contain">
+            <span>ASKBTM</span>
+          </a>
+          <p class="text-white/80 text-xs md:text-sm leading-relaxed">
+            Freminatos Children and Mothers' Resource Center · ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል. Protecting children, empowering mothers, and keeping families united in Legatafo.
+          </p>
+        </div>
+        
+        <!-- Navigation Columns -->
+        <div class="flex flex-wrap gap-8 md:gap-14">
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Explore</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="index.html#home" class="hover:text-white transition-colors">Home</a>
+              <a href="index.html#about" class="hover:text-white transition-colors">About Us</a>
+              <a href="index.html#programs" class="hover:text-white transition-colors">Programs</a>
+              <a href="index.html#gallery" class="hover:text-white transition-colors">Photo Gallery</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Resources</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="news-blogs.html" class="hover:text-white transition-colors">News &amp; Blogs</a>
+              <a href="support.html" class="hover:text-white transition-colors">Support Center</a>
+              <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="terms-services.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Connect</h4>
+            <div class="text-sm text-white/80 space-y-1">
+              <p>Legatafo Town, Ethiopia</p>
+              <p>+251 911 89 27 87</p>
+              <div class="flex items-center gap-3 pt-2">
+                <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-telegram-fill"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-instagram-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-t border-white/20 pt-6 text-xs text-white/60 gap-3">
+        <p>© 2026 ASKBTM (Freminatos Children and Mothers' Resource Center). All rights reserved.</p>
+        <p>Built with love in Legatafo, Ethiopia 🇪🇹</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" aria-label="Back to top" class="fixed bottom-6 right-6 z-50 bg-color-yellow text-color-black p-3.5 rounded-full shadow-lg border-2 border-black opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 btn-brutal flex items-center justify-center">
+    <i class="ri-arrow-up-line text-xl font-bold"></i>
+  </button>
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+          const lines = navToggle.querySelectorAll('span');
+          lines[0].classList.toggle('rotate-45');
+          lines[0].classList.toggle('translate-y-2');
+          lines[1].classList.toggle('opacity-0');
+          lines[2].classList.toggle('-rotate-45');
+          lines[2].classList.toggle('-translate-y-2');
+        });
+      }
+
+      // Scroll to Top
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+          }
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

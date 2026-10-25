@@ -1,2 +1,4 @@
 const video = document.getElementById("slowVideo");
-  video.playbackRate = 0.5; // 0.5 = 50% slower
+if (video) {
+  video.playbackRate = 1.0; // Normal speed (100%)
+}

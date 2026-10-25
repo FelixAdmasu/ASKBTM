@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#fcf9f2] text-stone-900 antialiased selection:bg-amber-300 selection:text-stone-900;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Neo-Brutalist scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5eedc;
+  border-left: 2px solid #1c1917;
+}
+::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border: 2px solid #1c1917;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}

@@ -1,0 +1,628 @@
+H) ACCESSIBILITY & SEO CHECKLIST
+- Accessibility
+  - Provide descriptive alt text for all meaningful images; mark decorative icons aria-hidden="true" where appropriate
+  - Ensure keyboard focus is visible on links/buttons; menu and accordion are keyboard operable
+  - Respect prefers-reduced-motion (already applied to loader/animations)
+  - ARIA for FAQ: optionally add aria-expanded and aria-controls on toggles
+- SEO
+  - Unique <title> and <meta name="description"> per page
+  - Open Graph and Twitter Card tags (og:title, og:description, og:image)
+  - Robots.txt and sitemap.xml on the host
+  - Use canonical URL if mirrored
+
+I) PERFORMANCE RECOMMENDATIONS
+- Convert heavy images to WebP/AVIF with PNG/JPG fallbacks
+- Add loading="lazy" and width/height attributes to images to reduce CLS
+- Minify and combine CSS/JS for production; use HTTP caching headers via host
+- Defer non-critical scripts when possible
+
+J) DEPLOYMENT GUIDE (STATIC HOSTING)
+1. Choose host: Netlify or Vercel (static site)
+2. Connect repository → auto‑builds on push
+3. Configure custom domain and HTTPS
+4. Set headers for caching; add redirects if needed (e.g., Support.html → /support)
+
+K) KNOWN ISSUES / TODOS
+- CSS: linter flagged empty rulesets; remove or complete them
+- CSS: duplicate .visa-card rules exist; consolidate into a single definition
+- CSS: legacy grid rules for .gallery__container may conflict with flex marquee; keep only marquee set
+- HTML: index <title> currently includes a <br> tag; remove inline HTML inside <title>
+- Contact layout: ensure only one breakpoint defines contact__container columns to avoid overrides
+
+L) CHANGELOG (HIGHLIGHTS)
+- Added dual sliding gallery and partners marquees (with reverse direction row)
+- Implemented 3D page loader with logo branding and safety timeout
+- Wired contact forms (Index, Support) to FormSubmit with SweetAlert
+- Replaced newsletter form with Telegram channel CTA
+- Centered and widened payment card section on desktop
+- Added full technical documentation file
+
+M) FILE TREE (ABRIDGED)
+responsive-travel-website-3-main/
+├─ index.html
+├─ Support.html
+├─ Technical_Documentation.txt
+├─ assets/
+│  ├─ css/
+│  │  ├─ styles.css
+│  │  └─ Support.css
+│  ├─ js/
+│  │  ├─ main.js
+│  │  ├─ loader.js
+│  │  ├─ contact.js
+│  │  └─ videospeed.js
+│  └─ img/ (site images and icons)
+
+G) CONTENT EDITING GUIDE
+1. Contact email destination
+   - In index.html and Support.html: the form action points to https://formsubmit.co/your_email
+   - In assets/js/contact.js: fetch URL uses /ajax/your_email — update both to change recipient
+2. Telegram CTA link
+   - Index Join section: update href="https://t.me/your_channel" with your real channel URL
+3. Partners marquee
+   - Edit labels inside the two .partners__track containers; keep duplicates to maintain seamless loop
+4. Gallery
+   - Add/remove <article class="gallery__card"><img ...></article> pairs in both rows; keep duplicates for looping
+5. Loader logo
+   - Page loader cube faces: replace assets/img/favicon1.png with your logo (prefer square PNG/SVG)
+6. Bank details
+   - Update labels/values in the Contact section; copy buttons read their data-text attribute
+F) EXTERNAL DEPENDENCIES (CDN)
+- Remix Icons CSS
+- Swiper CSS/JS
+- ScrollReveal.js
+- SweetAlert2
+- FormSubmit (no script; HTTP endpoint for form relay)
+E) JAVASCRIPT FUNCTION MAP (KEY LOGIC)
+- assets/js/main.js
+  - Menu: open/close (show-menu class), close on link click
+  - Active link on scroll: highlights nav item by current section in view
+  - Theme toggle: persists theme choice in localStorage
+  - Swiper: home and testimonial sliders with autoplay and nav arrows
+  - Copy buttons: copies bank details (SWIFT, account) with visual feedback
+  - ScrollReveal: multiple reveal setups for sections/cards with refined easing
+  - FAQ accordion: toggles .active and collapses siblings
+- assets/js/contact.js
+  - Intercepts form submit (id="contactForm")
+  - Sends JSON payload to FormSubmit AJAX endpoint for fadm94202@gmail.com
+  - SweetAlert success/error popups; disables/enables button; resets form; redirects to #contact anchor
+- assets/js/loader.js
+  - Waits for window load; fades out and removes loader overlay; safety timeout (8s)
+- assets/js/videospeed.js
+  - Sets #slowVideo playbackRate to 0.5 (if present)
+C) CSS BREAKPOINTS AND RESPONSIVE RULES
+- Common breakpoints used in styles:
+  - max-width: 320px — smallest devices
+  - max-width: 576px — small phones (used by gallery and partners adjustments)
+  - min-width: 768px — tablets (grid column changes)
+  - min-width: 993px — large devices (layout expansions, contact grid)
+  - 1024–1050px — specific layout tuning
+  - min-width: 1200px — wide desktops
+- Key responsive behaviors:
+  - Gallery/Partners: card size and gaps scale down on small screens; pause on hover desktop
+  - Contact: switches between single and two‑column layouts depending on viewport
+  - Join, Blog, Testimonials: grid/slider spacing adapts at breakpoints
+
+D) DESIGN TOKENS AND THEME (CSS CUSTOM PROPERTIES)
+- The theme uses CSS custom properties such as: --first-color, --first-color-rgb, --container-color, --body-color, --text-color, --title-color, --white-color, --black-color, --opacity-color-30, and typographic scale tokens (e.g., --h1-font-size, --small-font-size, --biggest2-font-size).
+- Dark theme: toggled via .dark-theme on body; many components adapt backgrounds, borders, and gradients accordingly.
+TECHNICAL DOCUMENTATION — ASKBTM WEBSITE (Freminatos Children and Mothers' Resource Center)
+
+NOTE ABOUT THIS DOCUMENT
+- File format: .txt (plain text)
+- Structure: Based on the outline you provided. Page numbers omitted since .txt is not paginated.
+- Scope: Technical documentation for the responsive front‑end website located in this repository.
+
+TABLE OF CONTENTS (HEADINGS ONLY)
+AKNOWLEDGMENT ........................................................................................................
+Abstract .................................................................................................................................
+CHAPTER ONE ...................................................................................................................
+INTRODUCTION ...............................................................................................................
+1.1. Background of the Project ...........................................................................................
+1.2. Statement of The Problem ...........................................................................................
+1.3. Objective of Project .....................................................................................................
+  1.3.1. General Objective ...................................................................................................
+  1.3.2. Specific Objectives .................................................................................................
+1.4. Significance of Project .................................................................................................
+1.5. Scopes of the Project ....................................................................................................
+1.6. Value Chain Analysis of the Technology Project .......................................................
+  1.6.1. The concept of value chain ......................................................................................
+  1.6.2. Value chain development in TVT (adapted for nonprofit web) ............................
+  1.6.3. Mapping Value Chain Activities ...........................................................................
+    1.6.3.1. Value Chain of ASKBTM Information Website ...........................................
+  1.6.4. Value Analysis ........................................................................................................
+CHAPTER TWO: ..................................................................................................................
+LITERATURE REVIEW ......................................................................................................
+2.1. Theoretical review .......................................................................................................
+  1) Data Management Theory ............................................................................................
+  2) Systems Development Life Cycle (SDLC) .................................................................
+  3) Human-Computer Interaction (HCI) ............................................................................
+  4) Information Security Frameworks ...............................................................................
+  5) Educational Technology Theory ..................................................................................
+  6) Organizational Information Systems Theory ..............................................................
+  7) Workflow Automation Theory .....................................................................................
+  8) Evaluation and Performance Measurement Frameworks ............................................
+  9) Legal and Ethical Theories ..........................................................................................
+2.2. Empirical review .........................................................................................................
+  1) Case Studies of Nonprofit Information Sites ..............................................................
+  2) Research Studies on Digital Engagement & Donor UX .............................................
+2.3. Conceptual framework ...............................................................................................
+  1) Core Components of the System .................................................................................
+  2) Key Relationships and Processes ................................................................................
+    - Trainee/Visitor Interaction .......................................................................................
+    - Staff/Administrator Interaction ...............................................................................
+    - Data Flow & Integration ..........................................................................................
+    - Automation & Reporting ..........................................................................................
+    - Security and Access Control ....................................................................................
+  3) Key Processes and Flow ..............................................................................................
+  4) Data Security and Privacy ...........................................................................................
+  5) Feedback and Continuous Improvement .....................................................................
+  6) Conceptual Framework Diagram (description) ..........................................................
+    2.3.1. Focus of the Framework ......................................................................................
+      - Data Management and Storage ...............................................................................
+      - User-Centric Design ...............................................................................................
+      - Automation and Process Optimization ...................................................................
+      - Security and Access Control ..................................................................................
+      - Integration and Interoperability .............................................................................
+      - Reporting and Analytics .........................................................................................
+      - Scalability and Flexibility ......................................................................................
+      - Compliance and Legal Requirements .....................................................................
+      - Continuous Improvement .......................................................................................
+CHAPTER THREE ................................................................................................................
+THE TECHNOLOGY DESIGN AND METHODOLOGY .....................................................
+3.1. The project method .....................................................................................................
+3.2. Source of data .............................................................................................................
+3.3. Data gathering tools ....................................................................................................
+3.4. Procedures of data collection .....................................................................................
+3.5. Method of data analysis .............................................................................................
+3.6. Identifying the need for the equipment or a machine ................................................
+CHAPTER FOUR ..................................................................................................................
+4. Implementation ...............................................................................................................
+CHAPTER FIVE ...................................................................................................................
+Conclusion ..........................................................................................................................
+References ..........................................................................................................................
+
+
+AKNOWLEDGMENT
+We acknowledge the contributions of the ASKBTM team and community, whose mission and content guide the purpose of this website. We also recognize open‑source libraries used: Swiper.js, ScrollReveal.js, SweetAlert2, FormSubmit, and Remix Icon.
+
+
+Abstract
+This technical documentation describes the design, implementation, and operation of the ASKBTM responsive website for Freminatos Children and Mothers' Resource Center. The site communicates the organization’s vision, showcases activities (gallery, blog), enables contact and donation pathways (bank details and external partner link), includes a partners marquee, and provides a support page with FAQ and a contact form. The front‑end uses HTML5, CSS3 with CSS variables and responsive design, and vanilla JavaScript enhanced by a few well‑chosen libraries. Accessibility, performance, security, and maintainability were considered throughout.
+
+
+CHAPTER ONE — INTRODUCTION
+1.1. Background of the Project
+ASKBTM (Aba Selama Kesate Brihan Terado Mehaber) needs a reliable, modern, and mobile‑friendly web presence to inform stakeholders (families, volunteers, donors), present programs, and provide contact/support channels. The project delivers a responsive, content‑rich site with clear CTAs, showcasing impact while aligning with the brand and mission.
+
+1.2. Statement of The Problem
+Prior to this build, online information was fragmented or hard to discover. Visitors lacked a single source for:
+- Engaging, trustworthy presentation of the organization and programs.
+- Seamless contact options and an easy way to send messages.
+- Clear donor information and a route to secure payments.
+- Useful FAQs and a structured support experience.
+
+1.3. Objective of Project
+1.3.1. General Objective
+Create and deploy a responsive, accessible, and maintainable public website for ASKBTM, improving communication, engagement, and conversion (inquiries, volunteers, donations).
+
+1.3.2. Specific Objectives
+- Present clear organizational information and vision/mission.
+- Provide a dynamic hero and rich gallery to convey activities and environment.
+- Offer robust contact channels (form, email, phone), partners, and donation paths.
+- Add a Support page with FAQ accordion and contact form.
+- Implement UI polish: 3D page loader, dark theme, scroll animations.
+- Ensure responsive design, performance, and basic SEO metadata.
+
+1.4. Significance of Project
+A strong web presence increases reach, transparency, and trust. It streamlines inquiries, supports fundraising, and fosters volunteer engagement. The site becomes the canonical source for up‑to‑date information.
+
+1.5. Scopes of the Project
+In scope: public site (index.html), support page (Support.html), stylesheets (styles.css, Support.css), and scripts (main.js, loader.js, contact.js, videospeed.js). Out of scope (for this iteration): custom CMS, backend database, admin portal, analytics and CRM integration.
+
+1.6. Value Chain Analysis of the Technology Project
+1.6.1. The concept of value chain
+A web value chain maps how content and digital capabilities transform inputs (content, media, donor programs) into desired outcomes (awareness, trust, donations, volunteer signups).
+
+1.6.2. Value chain development in TVT (adapted for nonprofit web)
+- Content creation (program descriptions, photos, stories)
+- Digital asset preparation (optimization, accessibility text)
+- Web presentation (responsive UI, navigation, media galleries)
+- Engagement (forms, CTAs, Telegram join, partners)
+- Conversion (donation flows, inquiry capture)
+- Feedback/analytics (future phase: insights to improve programs)
+
+1.6.3. Mapping Value Chain Activities
+Primary activities: content production → web publishing → engagement funnels → conversion pathways → follow‑up.
+Support activities: design system, dev tooling, documentation, training, governance.
+
+1.6.3.1. Value Chain of ASKBTM Information Website
+- Inputs: text content, images, program info, bank details, partner names
+- Processing: curation, formatting, image optimization, UI assembly
+- Outputs: responsive pages (Home, Gallery, Partners, Blog, Support), forms, CTAs
+- Outcomes: more inquiries/volunteers/donations; improved reputation and trust
+
+1.6.4. Value Analysis
+- Low friction: clear CTAs (Donate, Contact, Join Telegram)
+- Trust: partners marquee, testimonials section, bank details with copy buttons
+- UX: dark theme, animations, loader; accessible structure
+- Maintainability: vanilla stack, minimal dependencies, modular CSS/JS
+
+
+CHAPTER TWO — LITERATURE REVIEW
+2.1. Theoretical review
+1) Data Management Theory: Content (text/media) is structured, versioned, and deployed consistently. Even without a CMS, organization and naming conventions reduce entropy.
+2) SDLC: Iterative development—plan → implement → test (visual, responsive, accessibility) → deploy → improve.
+3) HCI: Consistency (buttons, forms), recognition over recall (icons + labels), clear feedback (SweetAlert), readable typography, high contrast in dark theme.
+4) Information Security Frameworks: Principle of least privilege (no secrets in front‑end), externalized secure payment flow, rel="noopener" for external links, honeypot anti‑spam.
+5) Educational Technology Theory: Content clarity and media support improve comprehension for parents/guardians exploring services.
+6) Organizational IS Theory: The website as an information hub that connects stakeholders (families, staff, donors, partners).
+7) Workflow Automation: FormSubmit relays messages without a custom backend; SweetAlert provides human feedback; potential future integrations (mailing lists, CRMs).
+8) Evaluation/Performance: Use web performance heuristics (lazy loading, compression, caching) and later analytics for continuous improvement.
+9) Legal/Ethical Theories: Privacy for form data, consent for analytics (future), accessible design standards (WCAG reference).
+
+2.2. Empirical review
+1) Nonprofit sites: Emphasize storytelling and trust signals (partners, testimonials) to increase conversions.
+2) Research on digital engagement: Clear CTAs, fast page loads, and mobile‑first design correlate with improved engagement and donor intent.
+
+2.3. Conceptual framework
+1) Core Components of the System
+- Presentation: HTML templates (index, support) and CSS (styles.css, Support.css)
+- Interaction: JavaScript modules (main.js for UI/scroll; contact.js for forms; loader.js for UX)
+- Media: images and icons; Swiper sliders; marquee galleries
+- Integrations: FormSubmit (email relay), SweetAlert2 (alerts), Swiper, ScrollReveal
+
+2) Key Relationships and Processes
+- Visitor → reads content → engages CTA (Contact/Donate/Join) → conversion → follow‑up via email
+- Staff/Administrator → updates static content → processes incoming messages
+- Data Flow: browser → FormSubmit → email inbox (no on‑prem data store)
+- Automation: copy buttons, loader removal, scroll animations
+- Security: no secrets in repo; externalized payments; harmless failure states
+
+3) Key Processes and Flow
+- Content discovery via nav; scroll‑activated section highlighting
+- Engagement through contact form, donation info, partners, Telegram join
+- Smooth UX with loader, animations, and responsive design
+
+4) Data Security and Privacy
+- Avoid storing personal data on the front‑end or local storage (beyond theme preference)
+- Spam protection via honeypot and FormSubmit safeguards
+- rel="noopener" on target="_blank" links
+
+5) Feedback and Continuous Improvement
+- Plan to add privacy‑compliant analytics
+- Track contact volume and response times offline
+- Iterate on CTAs based on engagement
+
+6) Conceptual Framework Diagram (description)
+[Visitor] → [Homepage/Support] → [CTA: Contact/Donate/Join] → [FormSubmit or External Payment/Telegram] → [Email Inbox or Channel] → [Staff Response/Engagement] → [Impact]
+
+2.3.1. Focus of the Framework
+- Data Management and Storage: static assets, version control, offsite email relay
+- User‑Centric Design: clear headings, icons, spacing, readable fonts, dark theme
+- Automation and Process Optimization: SweetAlert, ScrollReveal, copy buttons, loader
+- Security and Access Control: no API keys; safe external links; limited inputs
+- Integration and Interoperability: modular libraries with CDN fallbacks
+- Reporting and Analytics: to be added (privacy‑first)
+- Scalability and Flexibility: static hosting scales well; modular CSS/JS
+- Compliance and Legal: privacy policy pages, content rights, alt text for images
+- Continuous Improvement: release → feedback → refine
+
+
+CHAPTER THREE — THE TECHNOLOGY DESIGN AND METHODOLOGY
+3.1. The project method
+- Technology choices: HTML5, CSS3 (variables, responsive, dark theme), Vanilla JS
+- Libraries: Swiper (sliders), ScrollReveal (animations), SweetAlert2 (alerts), FormSubmit (forms), Remix Icon (icons)
+- Approach: Mobile‑first responsive layout; progressive enhancement; minimal dependencies
+
+3.2. Source of data
+- Organizational content: mission, programs, addresses, bank details
+- Media library: photos for hero and gallery
+- Partner labels and example names; optional logos
+
+3.3. Data gathering tools
+- Draft content from ASKBTM staff
+- Image compression/optimization tools (future): Squoosh or similar
+- Browser DevTools for testing and performance checks
+
+3.4. Procedures of data collection
+- Collect and validate textual content
+- Prepare imagery (size, compression, alt text)
+- Insert and test across breakpoints and themes
+
+3.5. Method of data analysis
+- Heuristic evaluation of UX, accessibility, and performance
+- Future: analytics (traffic, conversion rates), heatmaps (if approved)
+
+3.6. Identifying the need for the equipment or a machine
+- Hosting: static hosting platform (Netlify/Vercel or shared hosting)
+- CI/CD (optional): Git‑based deployments
+- CDN for libraries and images where appropriate
+
+
+CHAPTER FOUR — Implementation
+A) Information Architecture & Pages
+- index.html: Hero (Swiper), About, Testimonials, Gallery (sliding rows), Partners (marquee), Blog cards, Join (Telegram CTA), Contact (info + bank details + credit card CTA + contact form), Map, Footer.
+- Support.html: Hero, Contact form, Contact info cards, FAQ accordion, Footer.
+
+B) CSS Architecture
+- assets/css/styles.css: global variables, sections layouts, components (buttons, forms), responsive breakpoints, dark theme toggles, gallery/partners marquees, 3D loader styles.
+- assets/css/Support.css: page‑specific styles (support hero, contact layout, FAQ UI).
+- Theming: CSS custom properties (e.g., --first-color), dark theme class toggled on body.
+
+C) JavaScript Modules
+- assets/js/main.js
+  - Nav open/close; active link highlighting on scroll
+  - Swiper instances (home, testimonial)
+  - ScrollReveal animations (carefully tuned durations and easing)
+  - Copy buttons for bank details (clipboard API)
+  - FAQ accordion (open one, close others)
+- assets/js/contact.js
+  - AJAX form submission via FormSubmit (index and support page forms)
+  - SweetAlert2 success/error handling; button state management; hash redirect
+- assets/js/loader.js
+  - 3D logo cube + rings loader overlay; fade out on window load; safety timeout
+- assets/js/videospeed.js
+  - Optional: controls media playback speed (present in repo)
+
+D) UI/UX Components
+- 3D Loader: animated cube with logo on all faces + orbiting rings
+- Gallery: twin marquee rows (one reversed) with pause‑on‑hover, edge gradients
+- Partners: marquee pills with icons, reverse row; logo variant supported
+- Join: Telegram channel CTA button with safe external linking
+- Contact: FormSubmit relay + SweetAlert, honeypot, copy-to-clipboard bank details
+- Support FAQ: accordion with plus icon and smooth expand/collapse
+
+E) Accessibility & Internationalization
+- Semantic HTML sections; descriptive alt text (ensure all images updated)
+- Keyboard and focus considerations for menu/accordion/buttons
+- Reduced motion respected for loader/animations (@media prefers-reduced-motion)
+- Future: language toggle and i18n content files if needed
+
+F) Performance
+- Static site advantages; CDN‑hosted libraries
+- Suggested: convert heavy images to AVIF/WebP with fallbacks; use loading="lazy"
+- Cache headers via host; minify CSS/JS in production
+
+G) Security
+- External links use rel="noopener"; no secrets stored in front‑end
+- Payment handled by trusted external provider
+- Anti‑spam via honeypot; FormSubmit rate limiting
+
+H) SEO & Social
+- Unique titles and descriptions per page
+- Open Graph/Twitter Card metadata (add in head as next step)
+- Human‑readable URLs for content pages
+
+I) Testing
+- Cross‑browser: Chromium, Firefox, Safari
+- Devices: mobile, tablet, desktop breakpoints
+- Functional: forms, copy buttons, sliders, accordions, loader dismissal
+
+Deployment (recommended)
+- Host on Netlify or Vercel with automatic builds from Git
+- Enforce HTTPS; configure custom domain and redirects
+
+
+CHAPTER FIVE — Conclusion
+The ASKBTM website implements a modern, accessible, and maintainable front‑end that meets the organization’s communication needs. It offers clear CTAs, trustworthy visuals, and low‑friction forms. The modular design (HTML/CSS/JS) and minimal library set keep performance high and maintenance simple. Future steps include analytics, image optimization pipeline, SEO metadata expansion, and optional migration to a CMS if editorial workflow grows.
+
+References
+- MDN Web Docs (HTML/CSS/JS): https://developer.mozilla.org/
+- Swiper.js: https://swiperjs.com/
+- ScrollReveal.js: https://scrollrevealjs.org/
+  - SweetAlert2: https://sweetalert2.github.io/
+  - FormSubmit: https://formsubmit.co/
+  - Remix Icon: https://remixicon.com/
+  - W3C WCAG Overview: https://www.w3.org/WAI/standards-guidelines/wcag/
+  - Web.dev (performance & accessibility): https://web.dev/
+
+APPENDIX A — PER-SECTION COMPONENT MAP (CLASSES, KEY STYLES, BEHAVIORS)
+
+- Header / Navigation
+  - Classes: header, nav, container, nav__logo, nav__menu, nav__list, nav__item, nav__link, nav__close, nav__buttons, nav__toggle, nav__theme
+  - Key styles: responsive container, icon buttons, logo image
+  - Behaviors: static navigation; when site JS is included, theme toggle and link highlighting may apply
+
+- Home (Hero)
+  - Classes: home, section, home__bg, home__blur, home__container, home__data, home__swiper, home__article, home__img
+  - Key styles: background image with blur overlay, large title, CTA button
+  - Behaviors: Swiper slider with prev/next arrows for .home__swiper
+
+- About
+  - Classes: about, section, about__container, about__content, about__title, about__description, about__cards, about__vision, about__daycare, about__mission, about__subtitle, about__list
+  - Key styles: stacked content with subsections and list bullets
+  - Behaviors: elements reveal on scroll (ScrollReveal)
+
+- Video
+  - Classes: video, video__container, video__wrapper, video__player
+  - Key styles: centered media with rounded corners
+  - Behaviors: video#slowVideo uses videospeed.js to set playbackRate = 0.5
+
+- Partners (Marquee)
+  - Classes: partners, partners__marquee, partners__marquee--reverse, partners__track, partners__item, partners__item--logo, partners__logo, partners__cta
+  - Key styles: full-bleed marquee (100vw), pill items, edge gradients; dark-theme support
+  - Behaviors: CSS animation partnersScroll; reverse row uses reverse direction and duration; pause on hover
+
+- Support (Cards)
+  - Classes: support, support__container, support__card, support__img-container, support__img, support__overlay, support__data, support__title, support__description, support__list
+  - Key styles: grid cards with overlay CTA and icons
+  - Behaviors: ScrollReveal on cards
+
+- FAQ (Index page)
+  - Classes: faq, section, faq__container, faq__item, faq__question, faq__icon, faq__answer
+  - Key styles: card-like items, smooth max-height expand
+  - Behaviors: JS toggles .active on a single item at a time
+
+- Support page sections
+  - Hero: support__section, support__grid, support__content, support__title, support__description, support__cta, support__image
+  - Contact: contact__section, contact__container, form.form#contactForm
+  - FAQ: faq__section, faq__container, faq__item, faq__question, faq__icon, faq__answer
+
+- Gallery (Dual rows)
+  - Classes: gallery, section, gallery__wrapper, gallery__container, gallery__container--reverse, gallery__card, gallery__img
+  - Key styles: horizontal flex rows, animated translate, gap scaling at small screens
+  - Behaviors: continuous scroll; second row reverses direction; pause on hover
+
+- Testimonial
+  - Classes: testimonial, section, testimonial__container, testimonial__img, testimonial__swiper, testimonial__card, testimonial__profile, testimonial__info
+  - Key styles: two-column layout with illustration and slider
+  - Behaviors: Swiper slider with nav arrows
+
+- Blog (News & Blogs page)
+  - Classes: blog, blog__header, blog__categories, blog__container, blog__card, blog__img-container, blog__img, blog__date, blog__badge, blog__meta, blog__title, blog__content, blog__excerpt, blog__full-content, blog__footer, blog__read-more, blog__share-btn
+  - Key styles: card grid, featured card variant
+  - Behaviors: read-more modal triggers (HTML-driven), copy-to-clipboard buttons use JS
+
+- Join (Telegram CTA)
+  - Classes: join, section, join__container, join__data, join__button, join__img
+  - Key styles: CTA button with icon; illustrative image
+  - Behaviors: external link target _blank to https://t.me/your_channel
+
+- Contact
+  - Classes (index): contact (section), contact__container, contact__form-container, contact__form, form#contactForm, form__group, form__input, form__label, form__select, form__textarea, contact__image
+  - Key styles: two-column layout on large screens
+  - Behaviors: contact.js intercepts submit, posts to FormSubmit via AJAX, SweetAlert success/error, hash redirect to #contact; copy buttons for bank details (if present) handled in main.js
+
+- Map
+  - Classes: map, map__container, map__header, map__wrapper, map__info, map__info-item, map__direction
+  - Key styles: rounded iframe, info cards
+  - Behaviors: Google Maps embed loads lazily
+
+- Footer
+  - Classes: footer, footer__container, footer__logo, footer__logo-img, footer__content, footer__title, footer__links, footer__link, footer__social, footer__social-link, footer__copy
+  - Key styles: grid columns, icon links
+  - Behaviors: static links and social icons
+
+
+APPENDIX B — IMAGE INVENTORY WITH ALT-TEXT SUGGESTIONS
+
+- Common/Brand
+  - assets/img/favicon1.png — Site logo (favicon, header/footer, loader)
+    Alt: "ASKBTM logo"
+
+- Home (Hero)
+  - assets/img/home-bg.png — Decorative background
+    Alt: "" (decorative)
+  - assets/img/SlideShow25.jpg, SlideShow22.jpg, SlideShow16.jpg, SlideShow20.jpg, SlideShow18.jpg — Hero slider images
+    Alt: "Children and families at ASKBTM" (tailor per photo)
+
+- Testimonial
+  - assets/img/testimonial-img.svg — Illustration
+    Alt: "Testimonial illustration"
+  - assets/img/testimonial-profile-1.png, -2.png, -3.png — Profile photos
+    Alt: "Photo of [Name], [Role]"
+
+- Gallery (Marquee rows)
+  - assets/img/SlideShow1.jpg … SlideShow10.jpg — Gallery items (both rows)
+    Alt: "Gallery photo from ASKBTM program"
+
+- Support section (Index)
+  - assets/img/volunteer.svg — Volunteer illustration
+    Alt: "Volunteer support"
+  - assets/img/fundraiser.svg — Fundraising illustration
+    Alt: "Fundraising"
+  - assets/img/gifts.svg — Donation gifts illustration
+    Alt: "Donations and gifts"
+
+- Contact (Index)
+  - assets/img/contact-image.svg — Illustration
+    Alt: "Contact us"
+
+- Join (Telegram)
+  - assets/img/join-img.svg — Illustration
+    Alt: "Join our Telegram channel"
+
+- Support page
+  - assets/img/support-hero.svg — Illustration
+    Alt: "Support illustration"
+
+- News & Blogs page
+  - assets/img/Children learning at ASKBTM.svg — Feature image
+  - assets/img/volunteer.svg — Volunteers at work
+  - assets/img/community-event.svg — Community event
+  - assets/img/education-tech.svg — Children using technology
+  - assets/img/success-story.svg — Success story
+  - assets/img/reading-group.svg — Reading group
+  - assets/img/fundraiser.svg — Fundraising event
+  - assets/img/volunteer-team.svg — Volunteer team
+  - assets/img/graduation.svg — Graduation
+  - assets/img/art-class.svg — Art class
+  - assets/img/fundraising.svg — Fundraising event
+    Alt: Use the descriptive text already present in each tag; refine per story
+
+Notes
+- Some additional images exist in assets/img (e.g., SlideShow11–26.jpg, Celebrates.svg, Volunteer Support.svg) and can be used for future content.
+- Prefer WebP/AVIF versions with PNG/JPG fallback for production.
+
+
+APPENDIX C — ASCII DIAGRAMS (STRUCTURE & LAYOUT)
+
+1) Site Map (high level)
+
+  index.html
+  ├─ Header (nav)
+  ├─ Home (hero slider)
+  ├─ About
+  ├─ Video
+  ├─ Partners (marquee x2)
+  ├─ Support (cards)
+  ├─ FAQ (accordion)
+  ├─ Testimonial (slider)
+  ├─ Gallery (marquee rows x2)
+  ├─ Blog (teaser)
+  ├─ Join (Telegram CTA)
+  ├─ Contact (info + form)
+  ├─ Map (Google embed)
+  └─ Footer
+
+  Support.html
+  ├─ Header (nav)
+  ├─ Support hero
+  ├─ Contact section (form + info)
+  ├─ FAQ section (accordion)
+  └─ Footer
+
+2) Loader Overlay
+
+  .page-loader
+   └─ .loader__inner
+       ├─ .loader__cube
+       │   ├─ .loader__face--front (logo)
+       │   ├─ .loader__face--back (logo)
+       │   ├─ .loader__face--left (logo)
+       │   ├─ .loader__face--right (logo)
+       │   ├─ .loader__face--top (logo)
+       │   └─ .loader__face--bottom (logo)
+       ├─ .loader__ring--outer
+       └─ .loader__ring--inner
+
+3) Gallery (Marquee)
+
+  .gallery
+   ├─ .gallery__wrapper
+   │   └─ .gallery__container  → → → (scrolls left)
+   └─ .gallery__wrapper
+       └─ .gallery__container.gallery__container--reverse  ← ← ← (scrolls right)
+
+4) Partners (Marquee)
+
+  .partners
+   ├─ .partners__marquee
+   │   └─ .partners__track  → → →  [items...]
+   └─ .partners__marquee.partners__marquee--reverse
+       └─ .partners__track  ← ← ←  [items...]
+
+5) Contact (Index)
+
+  .contact
+   └─ .contact__container (grid)
+       ├─ .contact__form-container → form#contactForm
+       └─ .contact__image → img.contact__img
+
+6) FAQ (Accordion behavior)
+
+  [faq__item]
+    ├─ [button.faq__question + i.faq__icon]
+    └─ [div.faq__answer]
+  Toggle: add/remove .active; close siblings when one opens

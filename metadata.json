@@ -1,0 +1,5 @@
+{
+  "name": "Freminatos Children and Mothers' Resource Center",
+  "description": "Official website for Freminatos Children and Mothers' Resource Center (ASKBTM) - Aba Selama Kesate Brihan Terado Mehaber.",
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

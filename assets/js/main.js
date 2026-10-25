@@ -699,3 +699,90 @@ faqItems.forEach(item => {
         });
     });
 });
+
+/*=============== GALLERY LIGHTBOX ===============*/
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const galleryCards = document.querySelectorAll('.gallery__card');
+
+    if (lightbox && lightboxImg) {
+        galleryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxCaption.textContent = img.alt && img.alt !== 'image' ? img.alt : 'Freminatos Children and Mothers\' Resource Center (ASKBTM)';
+                    lightbox.classList.add('active');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                }
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+        };
+
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', closeLightbox);
+        }
+
+        const backdrop = lightbox.querySelector('.lightbox__backdrop');
+        if (backdrop) {
+            backdrop.addEventListener('click', closeLightbox);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    /*=============== IMPACT GIVING TIERS ===============*/
+    const tierButtons = document.querySelectorAll('.impact-tier-btn');
+    const tierDesc = document.getElementById('tierDescription');
+    const donorInput = document.getElementById('donorNameInput');
+    const generatedRefCode = document.getElementById('generatedRefCode');
+    const copyRefBtn = document.getElementById('copyRefBtn');
+
+    let currentTierCode = 'Meals';
+
+    const updateReference = () => {
+        if (!generatedRefCode) return;
+        const rawName = donorInput ? donorInput.value.trim().replace(/[^a-zA-Z0-9]/g, '') : '';
+        const namePart = rawName ? rawName : 'Donation';
+        const code = `FREM-2025-${currentTierCode}-${namePart}`;
+        generatedRefCode.textContent = code;
+        if (copyRefBtn) {
+            copyRefBtn.setAttribute('data-text', code);
+        }
+    };
+
+    if (tierButtons.length > 0) {
+        tierButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tierButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTierCode = btn.getAttribute('data-code') || 'Donation';
+                const purpose = btn.getAttribute('data-purpose');
+                const amount = btn.getAttribute('data-amount');
+                if (tierDesc) {
+                    const descSpan = tierDesc.querySelector('span');
+                    if (descSpan) {
+                        descSpan.textContent = `${purpose} (${amount})`;
+                    }
+                }
+                updateReference();
+            });
+        });
+    }
+
+    if (donorInput) {
+        donorInput.addEventListener('input', updateReference);
+    }
+});
+

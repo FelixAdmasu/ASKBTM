@@ -1,301 +1,596 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!--=============== FAVICON ===============-->
-      <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
-      <!--=============== REMIXICONS ===============-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-      <!--=============== SWIPER CSS ===============-->
-      <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/styles.css">
-      <link rel="stylesheet" href="assets/css/Support.css">
-      <title>Support - ASKBTM</title>
-   </head>
-   <body>
-      <!--==================== HEADER ====================-->
-      <header class="header" id="header">
-         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
-               <img src="assets/img/favicon1.png" alt="image">
-               <span>ASKBTM</span>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support & Contact | Freminatos Children and Mothers' Resource Center - ASKBTM</title>
+  <meta name="description" content="Get support, inquire about volunteer opportunities, donations, and visiting our childcare and mother empowerment center in Legatafo, Ethiopia.">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Support & Contact - ASKBTM Center">
+  <meta property="og:description" content="Reach our dedicated team in Legatafo, Ethiopia. FAQs, banking details, visit requests, and contact forms.">
+  <meta property="og:image" content="assets/img/preview.png">
+
+  <!-- Fonts: Instrument Serif + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Remix Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'color-black': '#121212',
+            'color-white': '#ffffff',
+            'color-yellow': '#ffe68c',
+            'color-green': '#a0e8a0',
+            'color-blue': '#9ddcff',
+            'color-cream': '#faf8f2',
+            'color-pink': '#ffc5d3',
+          },
+          fontFamily: {
+            'primary': ['"Instrument Serif"', 'serif'],
+            'secondary': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'sm': '8px',
+            'md': '16px',
+            'lg': '32px',
+            'xl': '48px',
+          },
+          transitionDuration: {
+            'fast': '250ms',
+            'medium': '400ms',
+          },
+        }
+      }
+    };
+  </script>
+
+  <!-- Neo-Brutalist & Foundation Styles -->
+  <style>
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 1v5m0 12v5m11-11h-5m-12 0H1"/></svg>');
+      background-size: 24px;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .btn-brutal {
+      box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+      transition: all 0.2s ease;
+    }
+    .btn-brutal:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    .card-brutal {
+      border: 2px solid #121212;
+      border-radius: 16px;
+      background-color: #ffffff;
+      box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    }
+
+    /* FAQ accordion styling */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+
+<body class="font-secondary bg-color-cream text-color-black overflow-x-hidden selection:bg-color-yellow selection:text-color-black">
+
+  <!-- Background decorative pattern -->
+  <div class="background-pattern"></div>
+
+  <!--==================== FLOATING HEADER ====================-->
+  <header class="fixed top-4 left-0 right-0 w-full max-w-[1140px] mx-auto px-4 z-50">
+    <div class="header-wrapper">
+      <div class="flex justify-between items-center bg-color-white border-2 border-color-black rounded-xl px-4 md:px-8 py-3.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 bg-color-green border-2 border-color-black px-3.5 py-1.5 rounded-lg text-lg font-bold font-primary transition-transform hover:scale-105">
+          <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-6 h-6 object-contain">
+          <span class="tracking-wide">ASKBTM</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-7">
+          <ul class="flex gap-6 font-medium text-base">
+            <li><a href="index.html#home" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Home</a></li>
+            <li><a href="index.html#about" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">About</a></li>
+            <li><a href="index.html#video" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Our Story</a></li>
+            <li><a href="index.html#programs" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Programs</a></li>
+            <li><a href="index.html#gallery" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Gallery</a></li>
+            <li><a href="news-blogs.html" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Blog</a></li>
+            <li><a href="support.html" class="font-bold underline underline-offset-4 decoration-2 decoration-color-yellow">Support</a></li>
+            <li><a href="index.html#contact" class="hover:underline underline-offset-4 decoration-2 decoration-color-yellow">Contact</a></li>
+          </ul>
+          
+          <div class="flex items-center gap-3">
+            <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-9 h-9 flex items-center justify-center rounded-lg border-2 border-color-black bg-color-blue hover:scale-105 transition-transform btn-brutal">
+              <i class="ri-telegram-fill text-lg"></i>
             </a>
-            <div class="nav__buttons">
-               <!-- Theme Button  -->
-                <i class="ri-contrast-2-fill nav__theme" id="theme-button"></i>
-                <!-- Toogle button  -->
-                 <div class="nav__toggle" id="nav-toggle">
-                  <!-- <i class="ri-apps-fill"></i> -->
-                   <i class="ri-menu-line"></i>
-                 </div>
-            </div>
-         </nav>
-      </header>
-      <!--==================== MAIN ====================-->
-      <main class="main">
-         <!-- ===== SUPPORT HERO ===== -->
-         <section class="support__section">
-            <div class="support__grid container">
-               <div class="support__content">
-                  <h1 class="support__title">How Can We Help You?</h1>
-                  <p class="support__description">Our dedicated support team is here to assist you with any questions or concerns you may have. We're committed to providing you with the best possible service.</p>
-                  <div class="support__cta">
-                     <a href="#contact" class="button">Contact Us</a>
-                     <a href="#faq" class="button button--ghost">View FAQs</a>
-                  </div>
-               </div>
-               <div class="support__image">
-                  <img src="assets/img/support-hero.svg" alt="Support illustration" class="support__img">
-               </div>
-            </div>
-         </section>
-         <!-- ===== CONTACT FORM ===== -->
-         <section class="contact__section" id="contact">
-            <div class="contact__container container grid">
-               <div class="contact__form">
-                  <h2 class="section__title">Send Us a Message</h2>
-                  <form id="contactForm" action="https://formsubmit.co/fadm94202@gmail.com" method="POST" class="form">
-                     <!-- FormSubmit helpers -->
-                     <input type="hidden" name="_subject" value="New Message from ASKBTM Website">
-                     <input type="hidden" name="_template" value="table">
-                     <input type="hidden" name="_captcha" value="false">
-                     <!-- Honeypot -->
-                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                     <div class="form__group">
-                        <input type="text" placeholder=" " class="form__input" id="name" name="name" required>
-                        <label for="name" class="form__label">Full Name</label>
-                     </div>
-                     <div class="form__group">
-                        <input type="email" placeholder=" " class="form__input" id="email" name="email" required>
-                        <label for="email" class="form__label">Email</label>
-                     </div>
-                     <div class="form__group">
-                        <select class="form__select" id="subject" name="subject" required>
-                           <option value="" disabled selected>Select a subject</option>
-                           <option value="general">General Inquiry</option>
-                           <option value="donation">Donation Questions</option>
-                           <option value="volunteer">Volunteer Opportunities</option>
-                           <option value="technical">Technical Support</option>
-                           <option value="other">Other</option>
-                        </select>
-                     </div>
-                     <div class="form__group">
-                        <textarea id="message" name="message" class="form__textarea" placeholder=" " required></textarea>
-                        <label for="message" class="form__label">Your Message</label>
-                     </div>
-                     <button type="submit" class="button">Send Message <i class="ri-send-plane-line"></i></button>
-                  </form>
-               </div>
-
-               <div class="contact__info">
-                  <div class="info__card">
-                     <i class="ri-map-pin-line info__icon"></i>
-                     <h3 class="info__title">Our Location</h3>
-                     <p class="info__text">Legatofo, Ethiopia</p>
-                  </div>
-                  <div class="info__card">
-                     <i class="ri-mail-line info__icon"></i>
-                     <h3 class="info__title">Email Us</h3>
-                     <p class="info__text">support@askbtm.org</p>
-                     <p class="info__text">info@askbtm.org</p>
-                  </div>
-                  <div class="info__card">
-                     <i class="ri-phone-line info__icon"></i>
-                     <h3 class="info__title">Call Us</h3>
-                     <p class="info__text">+251 911 111 111</p>
-                     <p class="info__text">+251 922 222 222</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         <!-- ===== FAQ SECTION ===== -->
-         <section class="faq__section" id="faq">
-            <div class="container">
-               <h2 class="section__title">Frequently Asked Questions</h2>
-               <p class="section__subtitle">Find answers to common questions about our services</p>
-               
-               <div class="faq__container">
-                  <div class="faq__item">
-                     <div class="faq__question">
-                        <h3>How can I make a donation to support ASKBTM's initiatives?</h3>
-                        <i class="ri-add-line faq__icon"></i>
-                     </div>
-                     <div class="faq__answer">
-                        <p>We offer multiple secure donation methods to support our mission:</p>
-                        <ul>
-                           <li><strong>Online Donation:</strong> Visit our secure donation portal where you can make a one-time or recurring donation using major credit/debit cards or digital wallets.</li>
-                           <li><strong>Bank Transfer:</strong> You can directly transfer funds to our official bank account (account details available upon request).</li>
-                           <li><strong>In-Person:</strong> Visit our office during working hours to make a donation in person.</li>
-                           <li><strong>Check/Money Order:</strong> Mail your contribution to our headquarters.</li>
-                        </ul>
-                        <p>All donations are tax-deductible to the fullest extent allowed by law, and you'll receive a receipt for your records. For donations above $5,000, we offer the opportunity to direct your contribution to specific programs or initiatives.</p>
-                     </div>
-                  </div>
-
-                  <div class="faq__item">
-                     <div class="faq__question">
-                        <h3>What volunteer opportunities are available at ASKBTM?</h3>
-                        <i class="ri-add-line faq__icon"></i>
-                     </div>
-                     <div class="faq__answer">
-                        <p>We offer diverse volunteer opportunities across multiple departments:</p>
-                        <ul>
-                           <li><strong>Program Support:</strong> Assist with our educational and community outreach programs.</li>
-                           <li><strong>Professional Services:</strong> Offer your expertise in areas like marketing, IT, or legal services.</li>
-                           <li><strong>Event Volunteers:</strong> Help organize and run our fundraising and community events.</li>
-                           <li><strong>Administrative Support:</strong> Assist with office tasks, data entry, and donor communications.</li>
-                           <li><strong>Field Work:</strong> Participate in our on-ground initiatives and community development projects.</li>
-                        </ul>
-                        <p>Our volunteer program includes orientation, training, and ongoing support. We require background checks for certain positions. Minimum time commitments vary by role, starting from 4 hours per month. Visit our Volunteer page to view current openings and submit an application.</p>
-                     </div>
-                  </div>
-
-                  <div class="faq__item">
-                     <div class="faq__question">
-                        <h3>What are your operating hours and how can I reach your support team?</h3>
-                        <i class="ri-add-line faq__icon"></i>
-                     </div>
-                     <div class="faq__answer">
-                        <p><strong>Office Hours:</strong></p>
-                        <ul>
-                           <li>Monday - Friday: 9:00 AM to 6:00 PM EAT</li>
-                           <li>Saturday: 10:00 AM to 2:00 PM EAT</li>
-                           <li>Sunday: Closed (Emergency contact available)</li>
-                        </ul>
-                        <p><strong>Contact Methods:</strong></p>
-                        <ul>
-                           <li><strong>Phone:</strong> +251 911 111 111 (General Inquiries)</li>
-                           <li><strong>Emergency:</strong> +251 922 222 222 (24/7 Support)</li>
-                           <li><strong>Email:</strong> support@askbtm.org (Response within 24 hours)</li>
-                           <li><strong>Live Chat:</strong> Available on our website during business hours</li>
-                        </ul>
-                        <p>For specific department contacts or after-hours emergencies, please visit our Contact page. We strive to respond to all inquiries within one business day.</p>
-                     </div>
-                  </div>
-
-                  <div class="faq__item">
-                     <div class="faq__question">
-                        <h3>How does ASKBTM utilize donations and ensure financial transparency?</h3>
-                        <i class="ri-add-line faq__icon"></i>
-                     </div>
-                     <div class="faq__answer">
-                        <p>At ASKBTM, we are committed to financial transparency and accountability:</p>
-                        <p><strong>Financial Allocation:</strong></p>
-                        <ul>
-                           <li>80% of funds directly support our programs and services</li>
-                           <li>12% goes to administrative costs</li>
-                           <li>8% is allocated to fundraising efforts</li>
-                        </ul>
-                        <p><strong>Our Commitment:</strong></p>
-                        <ul>
-                           <li>Annual financial audits conducted by independent firms</li>
-                           <li>Detailed annual reports available on our website</li>
-                           <li>Regular updates to donors about the impact of their contributions</li>
-                           <li>Compliance with all local and international financial regulations</li>
-                        </ul>
-                        <p>We encourage donors to review our annual reports and financial statements available in the 'About Us' section of our website. For specific inquiries about our financials, please contact our Finance Department at finance@askbtm.org.</p>
-                     </div>
-                  </div>
-
-                  <div class="faq__item">
-                     <div class="faq__question">
-                        <h3>What are the requirements and process for becoming a corporate partner?</h3>
-                        <i class="ri-add-line faq__icon"></i>
-                     </div>
-                     <div class="faq__answer">
-                        <p>We welcome partnerships with corporations that share our vision for community development. Our corporate partnership program offers several engagement levels:</p>
-                        <p><strong>Partnership Tiers:</strong></p>
-                        <ul>
-                           <li><strong>Bronze Partner:</strong> Annual contribution of $5,000-$10,000</li>
-                           <li><strong>Silver Partner:</strong> Annual contribution of $10,001-$25,000</li>
-                           <li><strong>Gold Partner:</strong> Annual contribution of $25,001-$50,000</li>
-                           <li><strong>Platinum Partner:</strong> Annual contribution of $50,001+</li>
-                        </ul>
-                        <p><strong>Benefits Include:</strong></p>
-                        <ul>
-                           <li>Brand visibility on our website and marketing materials</li>
-                           <li>Employee engagement opportunities</li>
-                           <li>Customized impact reports</li>
-                           <li>Exclusive event invitations</li>
-                           <li>Media recognition</li>
-                        </ul>
-                        <p>To begin the partnership process, please contact our Corporate Relations team at partnerships@askbtm.org. We'll schedule an initial consultation to discuss alignment of values, partnership goals, and customized engagement opportunities.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-      </main>
-      <!--==================== FOOTER ====================-->
-      <footer class="footer">
-         <div class="footer__container container grid">
-            <a href="#" class="footer__logo">
-               <img src="assets/img/favicon1.png" alt="image" class="footer__logo-img">
-               ASKBTM
+            <a href="index.html#donate" class="bg-color-yellow text-color-black font-semibold px-4 py-2 rounded-lg border-2 border-color-black text-sm btn-brutal">
+              <i class="ri-heart-line mr-1"></i> Donate
             </a>
-            <div class="footer__content grid">
-               <div class=""><!--1-->
-                  <h3 class="footer__title">About</h3>
-                  <ul class="footer__links">
-                     <!-- <li><a href="#" class="footer__link">About Us</a></li> -->
-                     <!-- <li><a href="Features.html" class="footer__link">Features</a></li> -->
-                     <li><a href="News & Blogs.html" class="footer__link">News & Blogs</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Contact</h3>
-                  <ul class="footer__links">
-                     <li><a href="#contact" class="footer__link">Call Center</a></li>
-                     <li><a href="Support.html" class="footer__link">Support</a></li>
-                     <li><a href="#contact" class="footer__link">Contact Us</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Support</h3>
-                  <ul class="footer__links">
-                     <li><a href="Privacy Policy.html" class="footer__link">Privacy Policy</a></li>
-                     <li><a href="Terms & Services.html" class="footer__link">Terms & Services</a></li>
-                     <li><a href="Payments.html" class="footer__link">Payments</a></li>
-                  </ul>
-               </div>
-               <div class=""><!--1-->
-                  <h3 class="footer__title">Social</h3>
-                  <div class="footer__social">
-                     <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-facebook-circle-fill"></i>
-                     </a>
-                     <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-instagram-fill"></i>
-                     </a>
-                     <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                        <i class="ri-twitter-fill"></i>
-                     </a>
-                  </div>
-               </div>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-8 border-2 border-color-black rounded-md p-1 bg-color-yellow nav-toggle btn-brutal" aria-label="Toggle navigation menu">
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-opacity duration-300"></span>
+          <span class="bg-color-black h-0.5 w-full rounded-sm transition-transform duration-300"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <nav class="mobile-nav hidden lg:hidden mt-3 bg-color-white border-2 border-color-black rounded-xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <ul class="flex flex-col gap-4 font-semibold text-lg">
+          <li><a href="index.html#home" class="block py-1 hover:text-blue-600">Home</a></li>
+          <li><a href="index.html#about" class="block py-1 hover:text-blue-600">About ASKBTM</a></li>
+          <li><a href="index.html#video" class="block py-1 hover:text-blue-600">Our Story in Motion</a></li>
+          <li><a href="index.html#programs" class="block py-1 hover:text-blue-600">Programs &amp; Support</a></li>
+          <li><a href="index.html#gallery" class="block py-1 hover:text-blue-600">Photo Gallery</a></li>
+          <li><a href="news-blogs.html" class="block py-1 hover:text-blue-600">News &amp; Blogs</a></li>
+          <li><a href="support.html" class="block py-1 font-bold text-amber-700">Support Center</a></li>
+          <li><a href="index.html#contact" class="block py-1 hover:text-blue-600">Contact &amp; Banking</a></li>
+        </ul>
+        <div class="mt-6 pt-5 border-t-2 border-color-black flex gap-3">
+          <a href="index.html#donate" class="flex-1 bg-color-yellow text-center py-2.5 rounded-lg border-2 border-color-black font-bold btn-brutal">
+            <i class="ri-heart-line"></i> Donate Now
+          </a>
+          <a href="support.html" class="px-4 py-2.5 bg-color-blue text-center rounded-lg border-2 border-color-black font-bold btn-brutal">
+            Help
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="pt-32 md:pt-40 pb-16 px-6 relative">
+      <div class="max-w-[1200px] mx-auto text-center">
+        <!-- Status Tag -->
+        <div class="inline-flex items-center gap-2.5 bg-color-yellow border-2 border-color-black rounded-lg px-3.5 py-1.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] mb-6">
+          <span class="w-2.5 h-2.5 rounded-full bg-color-black"></span>
+          <span class="text-xs md:text-sm font-semibold tracking-wide uppercase">
+            Community Support &amp; Resource Desk · Legatafo
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-primary font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl mx-auto mb-6">
+          How Can We 
+          <span class="inline-block bg-color-green px-3 py-0.5 -rotate-1 border-2 border-color-black mx-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            Support
+          </span> 
+          You Today?
+        </h1>
+
+        <p class="text-base md:text-lg text-color-black/80 font-medium max-w-2xl mx-auto leading-relaxed mb-10">
+          Whether you want to visit our center in Legatafo, partner as a corporate donor, volunteer your time, or need assistance navigating our programs, our team is ready to help.
+        </p>
+
+        <!-- Fast Contact Cards (3-column Neo-Brutalist Grid) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+          <!-- Card 1 -->
+          <div class="bg-color-yellow border-2 border-color-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-brutal">
+            <div class="w-12 h-12 rounded-lg bg-white border-2 border-black flex items-center justify-center text-2xl mb-4">
+              <i class="ri-phone-fill"></i>
             </div>
-         </div>
-         <span class="footer__copy">
-            2025 &#169; All Rights Reserved By Fraol Admasu
-         </span>
-      </footer>
-      <!--========== SCROLL UP ==========-->
-      <a href="#" class="scrollup" id="scroll-up">
-         <i class="ri-arrow-drop-up-fill"></i>
-      </a>
-      <!--=============== SCROLLREVEAL ===============-->
-      <script src="assets/js/scrollreveal.min.js"></script>
-      <!--=============== SWIPER JS ===============-->
-      <script src="assets/js/swiper-bundle.min.js"></script>
-      <!--=============== SWEETALERT2 ===============-->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <!--=============== CONTACT FORM JS ===============-->
-      <script src="assets/js/contact.js"></script>
+            <h3 class="font-primary text-2xl font-bold mb-1">Direct Lines</h3>
+            <p class="text-xs text-black/70 mb-3">Reach our office or 24/7 care desk</p>
+            <p class="font-bold text-sm text-color-black">+251 911 89 27 87</p>
+            <p class="text-xs text-black/80">+251 922 222 222 (Emergency)</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-color-green border-2 border-color-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-brutal">
+            <div class="w-12 h-12 rounded-lg bg-white border-2 border-black flex items-center justify-center text-2xl mb-4">
+              <i class="ri-map-pin-2-fill"></i>
+            </div>
+            <h3 class="font-primary text-2xl font-bold mb-1">Center Campus</h3>
+            <p class="text-xs text-black/70 mb-3">Legatafo Town, Oromia, Ethiopia</p>
+            <p class="font-bold text-sm text-color-black">Mon – Fri: 8:30 AM – 5:30 PM</p>
+            <p class="text-xs text-black/80">Saturday: 9:00 AM – 1:00 PM</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-color-blue border-2 border-color-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-brutal">
+            <div class="w-12 h-12 rounded-lg bg-white border-2 border-black flex items-center justify-center text-2xl mb-4">
+              <i class="ri-mail-send-fill"></i>
+            </div>
+            <h3 class="font-primary text-2xl font-bold mb-1">Electronic Mail</h3>
+            <p class="text-xs text-black/70 mb-3">Average response time under 24 hours</p>
+            <p class="font-bold text-sm text-color-black truncate">support@askbtm.org</p>
+            <p class="text-xs text-black/80 truncate">info@askbtm.org</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT FORM & OPERATIONAL DETAILS ===== -->
+    <section class="py-12 px-6" id="contact">
+      <div class="max-w-[1200px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Contact Form (7 cols) -->
+          <div class="lg:col-span-7 bg-white border-2 border-color-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div class="inline-block bg-color-pink px-3 py-1 rounded-md border-2 border-black font-bold text-xs uppercase mb-3">
+              Direct Contact
+            </div>
+            <h2 class="font-primary text-3xl sm:text-4xl font-normal tracking-tight mb-3">
+              Send Our Team a Message
+            </h2>
+            <p class="text-sm text-black/70 mb-6 leading-relaxed">
+              Have questions regarding donations, child sponsorship, volunteer onboarding, or visiting Legatafo? Fill out the form below and we'll connect with you directly.
+            </p>
+
+            <form id="supportContactForm" action="https://formsubmit.co/fadm94202@gmail.com" method="POST" class="space-y-4">
+              <!-- FormSubmit config -->
+              <input type="hidden" name="_subject" value="New Inquiry from ASKBTM Support Center">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block text-xs font-bold uppercase tracking-wider mb-1.5">Your Full Name *</label>
+                  <input type="text" id="name" name="name" required placeholder="Abebe Bikila" class="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-bold uppercase tracking-wider mb-1.5">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="abebe@example.com" class="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                </div>
+              </div>
+
+              <div>
+                <label for="subject" class="block text-xs font-bold uppercase tracking-wider mb-1.5">Inquiry Topic *</label>
+                <select id="subject" name="subject" required class="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                  <option value="" disabled selected>Select an inquiry category</option>
+                  <option value="donation">Donation &amp; Bank Transfer Verification</option>
+                  <option value="volunteer">Volunteer Opportunities &amp; Internships</option>
+                  <option value="visit">Center Visitation &amp; Tours in Legatafo</option>
+                  <option value="corporate">Corporate Partnership &amp; CSR Initiatives</option>
+                  <option value="other">General Community Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-bold uppercase tracking-wider mb-1.5">Your Message *</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Please provide any details about how we can help or collaborate..." class="w-full bg-color-cream border-2 border-color-black rounded-lg px-4 py-3 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-black"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-color-yellow text-color-black font-bold py-3.5 px-6 rounded-xl border-2 border-color-black text-base btn-brutal flex items-center justify-center gap-2 hover:bg-yellow-300">
+                <span>Send Message</span>
+                <i class="ri-send-plane-2-fill text-lg"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Banking & Direct Info Sidebar (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- Donation Banking Box -->
+            <div class="bg-color-cream border-2 border-color-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-3 h-3 rounded-full bg-color-green border border-black"></span>
+                <h3 class="font-primary text-2xl font-bold">Official Donation Accounts</h3>
+              </div>
+              <p class="text-xs text-black/70 mb-4 leading-relaxed">
+                Direct contributions support our daily food program and school supplies for children in Legatafo.
+              </p>
+
+              <!-- CBE Card -->
+              <div class="bg-white border-2 border-black rounded-xl p-3.5 mb-3 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-2 py-0.5 rounded border border-purple-300">
+                    Commercial Bank of Ethiopia
+                  </span>
+                  <p class="font-mono font-bold text-sm mt-1 text-black">1000 488 291 034</p>
+                  <p class="text-[11px] text-black/60">Freminatos Children &amp; Mothers Center</p>
+                </div>
+                <button type="button" class="copy-btn px-2.5 py-1.5 bg-color-yellow border border-black rounded-lg text-xs font-bold btn-brutal" data-text="1000488291034">
+                  <i class="ri-file-copy-line"></i> Copy
+                </button>
+              </div>
+
+              <!-- Telebirr Card -->
+              <div class="bg-white border-2 border-black rounded-xl p-3.5 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded border border-blue-300">
+                    Telebirr Fast Pay
+                  </span>
+                  <p class="font-mono font-bold text-sm mt-1 text-black">+251 911 89 27 87</p>
+                  <p class="text-[11px] text-black/60">Registered ASKBTM Account</p>
+                </div>
+                <button type="button" class="copy-btn px-2.5 py-1.5 bg-color-green border border-black rounded-lg text-xs font-bold btn-brutal" data-text="+251911892787">
+                  <i class="ri-file-copy-line"></i> Copy
+                </button>
+              </div>
+            </div>
+
+            <!-- Map Card -->
+            <div class="bg-white border-2 border-color-black rounded-2xl p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h4 class="font-primary text-xl font-bold mb-2">Center Location Map</h4>
+              <div class="border-2 border-color-black rounded-xl overflow-hidden h-[220px]">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3939.5712172329654!2d38.94571!3d9.102767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDYnMTAuMCJOIDM4wrA1Nic0NC42IkU!5e0!3m2!1sen!2set!4v1762429431323!5m2!1sen!2set" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+              <p class="text-xs text-black/70 mt-2 text-center">
+                Legatafo Center, Oromia Region (near Addis Ababa outskirts)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ACCORDION SECTION ===== -->
+    <section class="py-16 px-6 bg-white border-t-2 border-color-black" id="faq">
+      <div class="max-w-[900px] mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-block bg-color-green px-3.5 py-1 rounded-md border-2 border-black font-bold text-xs uppercase mb-3">
+            Got Questions?
+          </div>
+          <h2 class="font-primary text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight mb-3">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-base text-black/70 font-medium">
+            Clear answers on donations, financial audits, volunteer onboarding, and community operations.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-cream shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <button type="button" class="faq-question w-full flex justify-between items-center text-left font-bold text-lg text-color-black">
+              <span>How can I make a donation to support ASKBTM's initiatives?</span>
+              <span class="faq-icon text-2xl transition-transform duration-300 font-bold ml-4">+</span>
+            </button>
+            <div class="faq-answer text-sm text-black/80 space-y-2 leading-relaxed">
+              <p>We provide multiple secure donation options suited for both local supporters in Ethiopia and international donors:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Local Bank Transfer:</strong> Direct deposit to our Commercial Bank of Ethiopia (CBE) account: <code>1000 488 291 034</code>.</li>
+                <li><strong>Telebirr:</strong> Quick mobile transfer to <code>+251 911 89 27 87</code>.</li>
+                <li><strong>In-Person Delivery:</strong> Supplies (food, clothing, educational toys, hygiene packs) can be brought directly to our Legatafo campus.</li>
+              </ul>
+              <p>Every single contribution is acknowledged with an official receipt and financial report.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-cream shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <button type="button" class="faq-question w-full flex justify-between items-center text-left font-bold text-lg text-color-black">
+              <span>What volunteer opportunities are available at ASKBTM?</span>
+              <span class="faq-icon text-2xl transition-transform duration-300 font-bold ml-4">+</span>
+            </button>
+            <div class="faq-answer text-sm text-black/80 space-y-2 leading-relaxed">
+              <p>We welcome volunteers from all walks of life. Core roles include:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Daytime Classroom Helpers:</strong> Assisting educators with early literacy, arts, and games.</li>
+                <li><strong>Meal Preparation &amp; Distribution:</strong> Helping our kitchen staff serve nutritious hot meals twice a day.</li>
+                <li><strong>Skills Workshops for Mothers:</strong> Sharing vocational crafts, business basics, or tailoring skills.</li>
+                <li><strong>Professional Support:</strong> Photography, medical/dental checkup volunteering, and translation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-cream shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <button type="button" class="faq-question w-full flex justify-between items-center text-left font-bold text-lg text-color-black">
+              <span>What are your operating hours and how can I visit?</span>
+              <span class="faq-icon text-2xl transition-transform duration-300 font-bold ml-4">+</span>
+            </button>
+            <div class="faq-answer text-sm text-black/80 space-y-2 leading-relaxed">
+              <p>Our daytime center runs from <strong>Monday through Friday, 8:30 AM to 5:30 PM EAT</strong>. Children are welcomed in the morning, receive breakfast, educational play, lunch, afternoon naps, and creative activities before mothers return after work.</p>
+              <p>If you wish to visit our Legatafo center, please email or call us at least 24 hours in advance so our staff can prepare a safe, organized tour for you.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-cream shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <button type="button" class="faq-question w-full flex justify-between items-center text-left font-bold text-lg text-color-black">
+              <span>How does ASKBTM ensure financial transparency?</span>
+              <span class="faq-icon text-2xl transition-transform duration-300 font-bold ml-4">+</span>
+            </button>
+            <div class="faq-answer text-sm text-black/80 space-y-2 leading-relaxed">
+              <p>Over 82% of all resources go directly toward child nutrition, learning supplies, and staff care. 10% is used for facility maintenance and utility costs, and 8% for community outreach.</p>
+              <p>We publish an annual audited report detailing fund usage, donor contributions, and child enrollment growth, which is available upon request.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item border-2 border-color-black rounded-xl p-5 bg-color-cream shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <button type="button" class="faq-question w-full flex justify-between items-center text-left font-bold text-lg text-color-black">
+              <span>Can businesses or schools become corporate partners?</span>
+              <span class="faq-icon text-2xl transition-transform duration-300 font-bold ml-4">+</span>
+            </button>
+            <div class="faq-answer text-sm text-black/80 space-y-2 leading-relaxed">
+              <p>Yes! We collaborate with local businesses, private schools, and international non-profits for sponsorships, supply drives, and employee volunteer days.</p>
+              <p>Reach out to <code>partnerships@askbtm.org</code> to discuss custom collaboration plans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--==================== FOOTER ====================-->
+  <footer class="bg-color-black text-color-white rounded-t-xl border-t-2 border-color-black pt-14 pb-8">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+        <!-- Logo & Mission Summary -->
+        <div class="space-y-3 max-w-sm">
+          <a href="index.html#home" class="bg-color-green text-color-black border-2 border-color-white px-4 py-1.5 rounded-lg text-lg font-bold font-primary inline-flex items-center gap-2">
+            <img src="assets/img/favicon1.png" alt="ASKBTM" class="w-5 h-5 object-contain">
+            <span>ASKBTM</span>
+          </a>
+          <p class="text-white/80 text-xs md:text-sm leading-relaxed">
+            Freminatos Children and Mothers' Resource Center · ፍሬሚናጦስ የልጆች እና የእናቶች መርጃ ማዕከል. Protecting children, empowering mothers, and keeping families united in Legatafo.
+          </p>
+        </div>
+        
+        <!-- Navigation Columns -->
+        <div class="flex flex-wrap gap-8 md:gap-14">
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Explore</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="index.html#home" class="hover:text-white transition-colors">Home</a>
+              <a href="index.html#about" class="hover:text-white transition-colors">About Us</a>
+              <a href="index.html#programs" class="hover:text-white transition-colors">Programs</a>
+              <a href="index.html#gallery" class="hover:text-white transition-colors">Photo Gallery</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Resources</h4>
+            <nav class="flex flex-col gap-1.5 text-sm text-white/80">
+              <a href="news-blogs.html" class="hover:text-white transition-colors">News &amp; Blogs</a>
+              <a href="support.html" class="hover:text-white transition-colors">Support Center</a>
+              <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="terms-services.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </nav>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-primary text-xl font-normal text-color-yellow">Connect</h4>
+            <div class="text-sm text-white/80 space-y-1">
+              <p>Legatafo Town, Ethiopia</p>
+              <p>+251 911 89 27 87</p>
+              <div class="flex items-center gap-3 pt-2">
+                <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-telegram-fill"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded border border-white flex items-center justify-center hover:bg-color-yellow hover:text-color-black transition-colors">
+                  <i class="ri-instagram-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <!--=============== MAIN JS ===============-->
-      <script src="assets/js/main.js"></script>
-     
-   </body>
+      <!-- Copyright -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-t border-white/20 pt-6 text-xs text-white/60 gap-3">
+        <p>© 2026 ASKBTM (Freminatos Children and Mothers' Resource Center). All rights reserved.</p>
+        <p>Built with love in Legatafo, Ethiopia 🇪🇹</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top / Back Up Button -->
+  <button id="scrollToTopBtn" aria-label="Back to top" class="fixed bottom-6 right-6 z-50 bg-color-yellow text-color-black p-3.5 rounded-full shadow-lg border-2 border-black opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 btn-brutal flex items-center justify-center">
+    <i class="ri-arrow-up-line text-xl font-bold"></i>
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Menu Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+          const lines = navToggle.querySelectorAll('span');
+          lines[0].classList.toggle('rotate-45');
+          lines[0].classList.toggle('translate-y-2');
+          lines[1].classList.toggle('opacity-0');
+          lines[2].classList.toggle('-rotate-45');
+          lines[2].classList.toggle('-translate-y-2');
+        });
+      }
+
+      // 2. FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            item.classList.toggle('active');
+            faqItems.forEach(other => {
+              if (other !== item) other.classList.remove('active');
+            });
+          });
+        }
+      });
+
+      // 3. Clipboard Copy Buttons
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const text = this.getAttribute('data-text');
+          const original = this.innerHTML;
+          if (navigator.clipboard && text) {
+            navigator.clipboard.writeText(text).then(() => {
+              this.innerHTML = '<i class="ri-check-line text-green-700"></i> Copied!';
+              setTimeout(() => {
+                this.innerHTML = original;
+              }, 2000);
+            });
+          }
+        });
+      });
+
+      // 4. Scroll to Top
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+          }
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+</body>
 </html>
