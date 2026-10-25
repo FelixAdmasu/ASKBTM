@@ -55,9 +55,6 @@ export default function Footer() {
                 <Link href="/terms" className="hover:text-white transition-colors">
                   Terms of Service
                 </Link>
-                <Link href="/admin" className="hover:text-color-yellow transition-colors flex items-center gap-1 text-xs text-white/50 pt-1">
-                  <i className="ri-shield-user-line"></i> Staff Portal
-                </Link>
               </nav>
             </div>
 

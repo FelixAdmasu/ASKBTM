@@ -209,7 +209,7 @@ export default function NewsPage() {
             accomplishments, and community celebrations directly from our Legatafo center.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-3xl mx-auto mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto mb-4">
             {[
               { id: 'all', label: 'All Stories' },
               { id: 'education', label: 'Education' },
@@ -228,15 +228,6 @@ export default function NewsPage() {
                 {tab.label}
               </button>
             ))}
-
-            <Link
-              href="/admin"
-              className="px-3.5 py-2 bg-color-pink text-color-black border-2 border-black rounded-xl font-bold text-xs btn-brutal inline-flex items-center gap-1.5 hover:bg-pink-200"
-              title="Staff Publisher Portal (PIN protected)"
-            >
-              <i className="ri-add-line text-sm font-bold"></i>
-              <span>Post New Story</span>
-            </Link>
           </div>
         </div>
       </section>
