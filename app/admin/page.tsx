@@ -35,6 +35,11 @@ export default function AdminPage() {
   // Action status message
   const [feedback, setFeedback] = useState<string | null>(null);
 
+  // Search & Filter state
+  const [inquirySearch, setInquirySearch] = useState('');
+  const [inquiryStatusFilter, setInquiryStatusFilter] = useState<'all' | 'new' | 'in-progress' | 'replied'>('all');
+  const [storyPreviewTab, setStoryPreviewTab] = useState<'edit' | 'preview'>('edit');
+
   // New Blog Form
   const [newBlog, setNewBlog] = useState({
     title: '',
@@ -45,6 +50,16 @@ export default function AdminPage() {
     excerpt: '',
     fullContent: '',
   });
+
+  const insertFormatting = (tag: string) => {
+    let snippet = '';
+    if (tag === 'p') snippet = '<p>Write your paragraph here...</p>\n';
+    if (tag === 'strong') snippet = '<strong>Bold text</strong>';
+    if (tag === 'ul') snippet = '<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>\n';
+    if (tag === 'quote') snippet = '<blockquote>"Inspiring quote from Sister Sirgutemikael..."</blockquote>\n';
+    if (tag === 'h3') snippet = '<h3>Section Heading</h3>\n';
+    setNewBlog((prev) => ({ ...prev, fullContent: prev.fullContent + snippet }));
+  };
 
   // Load data once authenticated & set up polling
   useEffect(() => {
@@ -513,129 +528,187 @@ export default function AdminPage() {
 
       {/* ==================== TAB 1: INBOX & DIRECT MESSAGES ==================== */}
       {activeTab === 'inbox' && (
-        <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div className="space-y-5">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white border-2 border-black rounded-2xl p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div>
-              <h2 className="font-primary text-2xl font-bold text-color-black">
+              <h2 className="font-primary text-2xl font-bold text-color-black flex items-center gap-2">
+                <i className="ri-inbox-archive-line text-color-yellow"></i>
                 Direct Inquiries &amp; Messages
               </h2>
-              <p className="text-xs text-black/70">
-                Messages submitted through the homepage or support contact forms.
+              <p className="text-xs text-black/70 mt-0.5">
+                Saved directly to database from homepage &amp; support contact forms.
               </p>
             </div>
-            <button
-              onClick={fetchAdminData}
-              className="px-3 py-1.5 bg-white border-2 border-black rounded-lg text-xs font-bold btn-brutal hover:bg-color-yellow inline-flex items-center gap-1.5"
-            >
-              <i className="ri-refresh-line"></i> Refresh Inbox
-            </button>
+
+            <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+              <div className="relative flex-1 md:w-64">
+                <i className="ri-search-line absolute left-3 top-2.5 text-black/50 text-sm"></i>
+                <input
+                  type="text"
+                  value={inquirySearch}
+                  onChange={(e) => setInquirySearch(e.target.value)}
+                  placeholder="Search sender, topic, message..."
+                  className="w-full pl-9 pr-3 py-1.5 bg-color-cream border-2 border-black rounded-xl text-xs font-medium outline-none focus:bg-white"
+                />
+              </div>
+
+              <button
+                onClick={fetchAdminData}
+                className="px-3 py-1.5 bg-color-yellow border-2 border-black rounded-xl text-xs font-bold btn-brutal inline-flex items-center gap-1.5"
+              >
+                <i className="ri-refresh-line"></i> Refresh
+              </button>
+            </div>
           </div>
 
-          {inquiries.length === 0 ? (
-            <div className="bg-white border-2 border-color-black rounded-xl p-8 text-center text-sm font-medium text-black/60">
-              No inquiries received yet.
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-4">
-              {inquiries.map((inq) => (
-                <div
-                  key={inq.id}
-                  className={`border-2 border-color-black rounded-xl p-5 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row justify-between gap-4 ${
-                    inq.status === 'new' ? 'border-l-8 border-l-yellow-400' : ''
-                  }`}
-                >
-                  <div className="space-y-2 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs font-bold bg-color-cream px-2 py-0.5 rounded border border-black/40">
-                        {inq.id}
-                      </span>
-                      <span className="text-xs font-bold bg-color-blue px-2.5 py-0.5 rounded border border-black uppercase">
-                        {inq.subject}
-                      </span>
-                      <span
-                        className={`text-[11px] font-bold px-2 py-0.5 rounded border border-black ${
-                          inq.status === 'new'
-                            ? 'bg-yellow-200 text-yellow-900'
-                            : inq.status === 'in-progress'
-                            ? 'bg-blue-100 text-blue-900'
-                            : 'bg-green-200 text-green-900'
-                        }`}
-                      >
-                        Status: {inq.status.toUpperCase()}
-                      </span>
-                      <span className="text-[11px] text-black/60 ml-auto">
-                        {new Date(inq.createdAt).toLocaleString()}
-                      </span>
-                    </div>
+          {/* Filter Status Tabs */}
+          <div className="flex flex-wrap items-center gap-2">
+            {[
+              { id: 'all', label: `All (${inquiries.length})` },
+              { id: 'new', label: `New / Unread (${inquiries.filter((i) => i.status === 'new').length})` },
+              { id: 'in-progress', label: `In Progress (${inquiries.filter((i) => i.status === 'in-progress').length})` },
+              { id: 'replied', label: `Replied (${inquiries.filter((i) => i.status === 'replied').length})` },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setInquiryStatusFilter(tab.id as any)}
+                className={`px-3.5 py-1.5 rounded-xl border-2 border-black text-xs font-bold transition-all ${
+                  inquiryStatusFilter === tab.id
+                    ? 'bg-color-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-white text-black hover:bg-color-cream'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
-                    <div className="text-sm">
-                      <strong className="text-black text-base">{inq.name}</strong>{' '}
-                      <span className="text-black/70">(&lt;{inq.email}&gt;)</span>
-                      {inq.phone && (
-                        <span className="ml-2 text-xs font-mono font-bold bg-green-50 px-2 py-0.5 rounded border border-green-300">
-                          Tel: {inq.phone}
-                        </span>
-                      )}
-                    </div>
+          {/* Filtered Inquiries List */}
+          {(() => {
+            const filteredInquiries = inquiries.filter((inq) => {
+              const matchesStatus =
+                inquiryStatusFilter === 'all' || inq.status === inquiryStatusFilter;
+              const q = inquirySearch.toLowerCase().trim();
+              const matchesSearch =
+                !q ||
+                inq.name.toLowerCase().includes(q) ||
+                inq.email.toLowerCase().includes(q) ||
+                inq.subject.toLowerCase().includes(q) ||
+                inq.message.toLowerCase().includes(q);
+              return matchesStatus && matchesSearch;
+            });
 
-                    <p className="text-sm text-black/85 leading-relaxed bg-color-cream p-3 rounded-lg border border-black/20">
-                      {inq.message}
-                    </p>
-                  </div>
-
-                  {/* Actions column */}
-                  <div className="flex flex-row md:flex-col justify-end gap-2 flex-shrink-0 pt-2 md:pt-0">
-                    <a
-                      href={`mailto:${inq.email}?subject=Re: ASKBTM Inquiries - ${encodeURIComponent(
-                        inq.subject
-                      )}`}
-                      className="px-3 py-2 bg-color-yellow border-2 border-black rounded-lg text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1"
-                    >
-                      <i className="ri-mail-send-line"></i>
-                      <span>Reply Email</span>
-                    </a>
-
-                    {inq.phone ? (
-                      <a
-                        href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
-                          inq.name
-                        )}%2C%20thank%20you%20for%20contacting%20Freminatos%20Center%20(ASKBTM).`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-2 bg-color-green border-2 border-black rounded-lg text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1"
-                      >
-                        <i className="ri-whatsapp-line"></i>
-                        <span>WhatsApp</span>
-                      </a>
-                    ) : null}
-
-                    <div className="flex gap-1.5">
-                      <select
-                        value={inq.status}
-                        onChange={(e) =>
-                          handleUpdateInquiryStatus(inq.id, e.target.value as any)
-                        }
-                        className="flex-1 text-xs font-bold p-1.5 border-2 border-black rounded-lg bg-white"
-                      >
-                        <option value="new">New</option>
-                        <option value="in-progress">In Progress</option>
-                        <option value="replied">Replied</option>
-                      </select>
-
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteInquiry(inq.id)}
-                        className="p-1.5 text-xs bg-red-100 hover:bg-red-200 border-2 border-black rounded-lg text-red-700"
-                        title="Delete inquiry"
-                      >
-                        <i className="ri-delete-bin-line"></i>
-                      </button>
-                    </div>
-                  </div>
+            if (filteredInquiries.length === 0) {
+              return (
+                <div className="bg-white border-2 border-color-black rounded-2xl p-8 text-center text-sm font-medium text-black/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                  <i className="ri-inbox-line text-3xl block text-black/40"></i>
+                  <p>No direct inquiries found matching your search and filter settings.</p>
                 </div>
-              ))}
-            </div>
-          )}
+              );
+            }
+
+            return (
+              <div className="grid grid-cols-1 gap-4">
+                {filteredInquiries.map((inq) => (
+                  <div
+                    key={inq.id}
+                    className={`border-2 border-color-black rounded-2xl p-5 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row justify-between gap-4 transition-all ${
+                      inq.status === 'new' ? 'border-l-8 border-l-yellow-400' : ''
+                    }`}
+                  >
+                    <div className="space-y-2.5 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-xs font-bold bg-color-cream px-2.5 py-0.5 rounded-lg border border-black/40">
+                          {inq.id}
+                        </span>
+                        <span className="text-xs font-bold bg-color-blue px-2.5 py-0.5 rounded-lg border border-black uppercase">
+                          {inq.subject}
+                        </span>
+                        <span
+                          className={`text-[11px] font-bold px-2.5 py-0.5 rounded-lg border border-black ${
+                            inq.status === 'new'
+                              ? 'bg-yellow-200 text-yellow-900'
+                              : inq.status === 'in-progress'
+                              ? 'bg-blue-100 text-blue-900'
+                              : 'bg-green-200 text-green-900'
+                          }`}
+                        >
+                          Status: {inq.status.toUpperCase()}
+                        </span>
+                        <span className="text-[11px] text-black/60 font-mono ml-auto">
+                          {new Date(inq.createdAt).toLocaleString()}
+                        </span>
+                      </div>
+
+                      <div className="text-sm">
+                        <strong className="text-black text-base font-bold">{inq.name}</strong>{' '}
+                        <span className="text-black/70 font-mono text-xs">(&lt;{inq.email}&gt;)</span>
+                        {inq.phone && (
+                          <span className="ml-2 text-xs font-mono font-bold bg-green-50 px-2 py-0.5 rounded border border-green-300 text-green-800">
+                            Tel: {inq.phone}
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-sm text-black/90 leading-relaxed bg-color-cream/60 p-3.5 rounded-xl border border-black/20">
+                        {inq.message}
+                      </p>
+                    </div>
+
+                    {/* Actions Column */}
+                    <div className="flex flex-row md:flex-col justify-end gap-2 flex-shrink-0 pt-2 md:pt-0">
+                      <a
+                        href={`mailto:${inq.email}?subject=Re: ASKBTM Inquiries - ${encodeURIComponent(
+                          inq.subject
+                        )}`}
+                        className="px-3.5 py-2 bg-color-yellow border-2 border-black rounded-xl text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1.5"
+                      >
+                        <i className="ri-mail-send-line text-sm"></i>
+                        <span>Reply Email</span>
+                      </a>
+
+                      {inq.phone ? (
+                        <a
+                          href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(
+                            inq.name
+                          )}%2C%20thank%20you%20for%20contacting%20Freminatos%20Center%20(ASKBTM).`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-2 bg-color-green border-2 border-black rounded-xl text-xs font-bold text-center btn-brutal inline-flex items-center justify-center gap-1.5"
+                        >
+                          <i className="ri-whatsapp-line text-sm"></i>
+                          <span>WhatsApp</span>
+                        </a>
+                      ) : null}
+
+                      <div className="flex gap-1.5">
+                        <select
+                          value={inq.status}
+                          onChange={(e) =>
+                            handleUpdateInquiryStatus(inq.id, e.target.value as any)
+                          }
+                          className="flex-1 text-xs font-bold p-1.5 border-2 border-black rounded-xl bg-white outline-none"
+                        >
+                          <option value="new">Mark New</option>
+                          <option value="in-progress">In Progress</option>
+                          <option value="replied">Replied</option>
+                        </select>
+
+                        <button
+                          onClick={() => handleDeleteInquiry(inq.id)}
+                          className="p-1.5 bg-red-100 text-red-700 border-2 border-black rounded-xl hover:bg-red-200 transition-colors"
+                          title="Delete message"
+                        >
+                          <i className="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
         </div>
       )}
 
@@ -736,17 +809,95 @@ export default function AdminPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase mb-1">
-                  Full Story Content (HTML or Paragraphs) *
-                </label>
-                <textarea
-                  rows={6}
-                  required
-                  value={newBlog.fullContent}
-                  onChange={(e) => setNewBlog({ ...newBlog, fullContent: e.target.value })}
-                  placeholder="Share details about the program, quotes from mothers, and impact details..."
-                  className="w-full px-3 py-2 bg-color-cream border-2 border-color-black rounded-lg text-sm font-medium outline-none"
-                ></textarea>
+                <div className="flex justify-between items-center mb-1.5">
+                  <label className="block text-xs font-bold uppercase">
+                    Full Article Content (Rich HTML Format) *
+                  </label>
+
+                  <div className="flex gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setStoryPreviewTab('edit')}
+                      className={`px-2.5 py-0.5 rounded text-[11px] font-bold border border-black ${
+                        storyPreviewTab === 'edit'
+                          ? 'bg-color-black text-white'
+                          : 'bg-white text-black hover:bg-color-cream'
+                      }`}
+                    >
+                      Editor
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setStoryPreviewTab('preview')}
+                      className={`px-2.5 py-0.5 rounded text-[11px] font-bold border border-black ${
+                        storyPreviewTab === 'preview'
+                          ? 'bg-color-black text-white'
+                          : 'bg-white text-black hover:bg-color-cream'
+                      }`}
+                    >
+                      Live Preview
+                    </button>
+                  </div>
+                </div>
+
+                {/* Quick Insert Toolbar */}
+                <div className="flex flex-wrap items-center gap-1.5 p-2 bg-color-cream border-2 border-b-0 border-black rounded-t-xl text-xs font-bold">
+                  <span className="text-[10px] uppercase text-black/50 font-bold px-1">Insert:</span>
+                  <button
+                    type="button"
+                    onClick={() => insertFormatting('p')}
+                    className="px-2 py-0.5 bg-white border border-black rounded-md hover:bg-color-yellow text-[11px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    + Paragraph
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertFormatting('strong')}
+                    className="px-2 py-0.5 bg-white border border-black rounded-md hover:bg-color-yellow text-[11px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    + Bold
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertFormatting('quote')}
+                    className="px-2 py-0.5 bg-white border border-black rounded-md hover:bg-color-yellow text-[11px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    + Quote
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertFormatting('ul')}
+                    className="px-2 py-0.5 bg-white border border-black rounded-md hover:bg-color-yellow text-[11px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    + Bullet List
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertFormatting('h3')}
+                    className="px-2 py-0.5 bg-white border border-black rounded-md hover:bg-color-yellow text-[11px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    + Heading
+                  </button>
+                </div>
+
+                {storyPreviewTab === 'edit' ? (
+                  <textarea
+                    rows={7}
+                    required
+                    value={newBlog.fullContent}
+                    onChange={(e) => setNewBlog({ ...newBlog, fullContent: e.target.value })}
+                    placeholder="Share program details, quotes, and impact news..."
+                    className="w-full px-3 py-2 bg-color-cream/40 border-2 border-color-black rounded-b-xl text-xs font-mono font-medium outline-none focus:bg-white"
+                  ></textarea>
+                ) : (
+                  <div className="p-4 bg-white border-2 border-black rounded-b-xl text-xs text-black leading-relaxed space-y-2.5 max-h-60 overflow-y-auto">
+                    {newBlog.fullContent ? (
+                      <div dangerouslySetInnerHTML={{ __html: newBlog.fullContent }}></div>
+                    ) : (
+                      <p className="text-black/50 italic">No story text entered yet. Type text or click formatting buttons above.</p>
+                    )}
+                  </div>
+                )}
               </div>
 
               <button
