@@ -7,6 +7,12 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Hide public navbar on admin dashboard
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
+
   const isHome = pathname === '/';
 
   const getLink = (hash: string) => {

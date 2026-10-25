@@ -1,7 +1,16 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Hide public footer on admin dashboard
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
   return (
     <footer className="bg-color-black text-color-white rounded-t-xl border-t-2 border-color-black pt-14 pb-8 mt-auto">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">

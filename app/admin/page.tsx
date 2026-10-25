@@ -289,10 +289,10 @@ export default function AdminPage() {
   const unreadCount = inquiries.filter((i) => i.status === 'new').length;
 
   return (
-    <div className="pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-[1400px] mx-auto">
+    <div className="pt-8 md:pt-12 pb-20 px-4 sm:px-6 max-w-[1400px] mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* ==================== LEFT SIDEBAR ==================== */}
-        <aside className="lg:col-span-3 space-y-5 lg:sticky lg:top-32">
+        <aside className="lg:col-span-3 space-y-5 lg:sticky lg:top-8">
           {/* Executive Profile Card */}
           <div className="bg-color-black text-white border-2 border-black rounded-2xl p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-center gap-3.5 mb-3.5">
