@@ -664,80 +664,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== PARTNERS MARQUEE ==================== */}
-      <section className="py-14 bg-color-yellow border-y-2 border-color-black overflow-hidden">
+      {/* ==================== PARTNERS & SUPPORTERS MARQUEE ==================== */}
+      <section className="py-14 bg-color-yellow border-y-2 border-color-black overflow-hidden relative">
         <div className="max-w-[1200px] mx-auto px-6 mb-6 text-center">
-          <h3 className="font-primary text-3xl font-normal">Our Dedicated Partners &amp; Supporters</h3>
+          <div className="inline-flex items-center gap-2 bg-color-black text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+            <i className="ri-heart-3-fill text-color-pink"></i> Community Ecosystem
+          </div>
+          <h3 className="font-primary text-3xl sm:text-4xl font-normal">Our Dedicated Partners &amp; Supporters</h3>
         </div>
 
-        {/* Track 1: Forward */}
-        <div className="overflow-hidden w-full mb-4">
+        {/* Track 1: Leftward Scroll */}
+        <div className="marquee-container mb-4">
           <div className="marquee-track">
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-hand-heart-line text-lg"></i> Health Alliance
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-bank-line text-lg"></i> Commercial Bank of Ethiopia
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-graduation-cap-line text-lg"></i> EduTech Africa
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-community-line text-lg"></i> Mothers United
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-restaurant-line text-lg"></i> Food For All Network
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-home-heart-line text-lg"></i> ChildCare Network
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-leaf-line text-lg"></i> Green Growth Initiative
-            </span>
-            {/* Duplicates for infinite scroll */}
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-hand-heart-line text-lg"></i> Health Alliance
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-bank-line text-lg"></i> Commercial Bank of Ethiopia
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-graduation-cap-line text-lg"></i> EduTech Africa
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-white border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-community-line text-lg"></i> Mothers United
-            </span>
+            {[
+              { icon: 'ri-hand-heart-line', name: 'Health Alliance' },
+              { icon: 'ri-bank-line', name: 'Commercial Bank of Ethiopia (CBE)' },
+              { icon: 'ri-graduation-cap-line', name: 'EduTech Africa' },
+              { icon: 'ri-community-line', name: 'Mothers United' },
+              { icon: 'ri-restaurant-line', name: 'Food For All Network' },
+              { icon: 'ri-home-heart-line', name: 'ChildCare Network' },
+              { icon: 'ri-leaf-line', name: 'Green Growth Initiative' },
+            ].map((item, idx) => (
+              <span
+                key={`track1-a-${idx}`}
+                className="inline-flex items-center gap-2.5 bg-color-white border-2 border-color-black px-4 py-2.5 rounded-xl font-bold text-sm btn-brutal flex-shrink-0 hover:bg-color-cream transition-colors"
+              >
+                <i className={`${item.icon} text-lg text-black`}></i>
+                <span>{item.name}</span>
+              </span>
+            ))}
+
+            {/* Exact Duplicates for Seamless -50% Loop */}
+            {[
+              { icon: 'ri-hand-heart-line', name: 'Health Alliance' },
+              { icon: 'ri-bank-line', name: 'Commercial Bank of Ethiopia (CBE)' },
+              { icon: 'ri-graduation-cap-line', name: 'EduTech Africa' },
+              { icon: 'ri-community-line', name: 'Mothers United' },
+              { icon: 'ri-restaurant-line', name: 'Food For All Network' },
+              { icon: 'ri-home-heart-line', name: 'ChildCare Network' },
+              { icon: 'ri-leaf-line', name: 'Green Growth Initiative' },
+            ].map((item, idx) => (
+              <span
+                key={`track1-b-${idx}`}
+                className="inline-flex items-center gap-2.5 bg-color-white border-2 border-color-black px-4 py-2.5 rounded-xl font-bold text-sm btn-brutal flex-shrink-0 hover:bg-color-cream transition-colors"
+              >
+                <i className={`${item.icon} text-lg text-black`}></i>
+                <span>{item.name}</span>
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Track 2: Reverse */}
-        <div className="overflow-hidden w-full">
+        {/* Track 2: Rightward Scroll */}
+        <div className="marquee-container">
           <div className="marquee-track marquee-track-reverse">
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-hospital-line text-lg"></i> Saint Mary Hospital
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-team-line text-lg"></i> Hope Foundation
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-global-line text-lg"></i> Global Relief Network
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-book-open-line text-lg"></i> Learning Bridge
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-shield-check-line text-lg"></i> Safe Kids Org
-            </span>
-            {/* Duplicates */}
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-hospital-line text-lg"></i> Saint Mary Hospital
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-team-line text-lg"></i> Hope Foundation
-            </span>
-            <span className="inline-flex items-center gap-2 bg-color-green border-2 border-color-black px-4 py-2 rounded-lg font-bold text-sm btn-brutal">
-              <i className="ri-global-line text-lg"></i> Global Relief Network
-            </span>
+            {[
+              { icon: 'ri-hospital-line', name: 'Saint Mary Hospital' },
+              { icon: 'ri-team-line', name: 'Hope Foundation' },
+              { icon: 'ri-global-line', name: 'Global Relief Network' },
+              { icon: 'ri-book-open-line', name: 'Learning Bridge' },
+              { icon: 'ri-shield-check-line', name: 'Safe Kids Org' },
+              { icon: 'ri-scales-3-line', name: 'Legatafo Civic Desk' },
+            ].map((item, idx) => (
+              <span
+                key={`track2-a-${idx}`}
+                className="inline-flex items-center gap-2.5 bg-color-green border-2 border-color-black px-4 py-2.5 rounded-xl font-bold text-sm btn-brutal flex-shrink-0 hover:bg-green-200 transition-colors"
+              >
+                <i className={`${item.icon} text-lg text-black`}></i>
+                <span>{item.name}</span>
+              </span>
+            ))}
+
+            {/* Exact Duplicates for Seamless -50% Loop */}
+            {[
+              { icon: 'ri-hospital-line', name: 'Saint Mary Hospital' },
+              { icon: 'ri-team-line', name: 'Hope Foundation' },
+              { icon: 'ri-global-line', name: 'Global Relief Network' },
+              { icon: 'ri-book-open-line', name: 'Learning Bridge' },
+              { icon: 'ri-shield-check-line', name: 'Safe Kids Org' },
+              { icon: 'ri-scales-3-line', name: 'Legatafo Civic Desk' },
+            ].map((item, idx) => (
+              <span
+                key={`track2-b-${idx}`}
+                className="inline-flex items-center gap-2.5 bg-color-green border-2 border-color-black px-4 py-2.5 rounded-xl font-bold text-sm btn-brutal flex-shrink-0 hover:bg-green-200 transition-colors"
+              >
+                <i className={`${item.icon} text-lg text-black`}></i>
+                <span>{item.name}</span>
+              </span>
+            ))}
           </div>
         </div>
       </section>

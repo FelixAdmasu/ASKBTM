@@ -286,83 +286,230 @@ export default function AdminPage() {
   }
 
   // ==================== MAIN DASHBOARD ====================
+  const unreadCount = inquiries.filter((i) => i.status === 'new').length;
+
   return (
-    <div className="pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-[1240px] mx-auto space-y-6">
-      {/* Top Banner & Quick Links */}
-      <div className="bg-color-black text-white rounded-2xl p-6 sm:p-8 border-2 border-color-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 bg-color-green text-black px-2.5 py-0.5 rounded font-bold text-xs uppercase mb-2">
-            <span className="w-2 h-2 rounded-full bg-black"></span>
-            Center Management Operations
+    <div className="pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-[1400px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* ==================== LEFT SIDEBAR ==================== */}
+        <aside className="lg:col-span-3 space-y-5 lg:sticky lg:top-32">
+          {/* Executive Profile Card */}
+          <div className="bg-color-black text-white border-2 border-black rounded-2xl p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center gap-3.5 mb-3.5">
+              <div className="w-12 h-12 rounded-xl bg-color-yellow border-2 border-white overflow-hidden flex-shrink-0 flex items-center justify-center text-black font-bold text-lg shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                <img
+                  src="/assets/img/testimonial-profile-2.png"
+                  alt="Sister Sirgutemikael"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <h3 className="font-primary text-lg font-bold text-white truncate leading-tight">
+                  Sister Sirgutemikael
+                </h3>
+                <p className="text-xs text-white/70 truncate">Executive Director</p>
+                <div className="inline-flex items-center gap-1.5 text-[10px] text-color-green font-mono font-bold mt-1">
+                  <span className="w-2 h-2 rounded-full bg-color-green animate-pulse"></span>
+                  <span>Active Session</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-white/20 text-xs text-white/80 space-y-1.5">
+              <p className="flex items-center justify-between">
+                <span className="text-white/60">Location:</span>
+                <strong className="text-white">Legatafo, Ethiopia</strong>
+              </p>
+              <p className="flex items-center justify-between">
+                <span className="text-white/60">Center:</span>
+                <strong className="text-white">Freminatos Resource Center</strong>
+              </p>
+            </div>
           </div>
-          <h1 className="font-primary text-3xl sm:text-4xl font-normal tracking-tight text-white">
-            ASKBTM Director Dashboard
-          </h1>
-          <p className="text-xs sm:text-sm text-white/75 mt-1">
-            Legatafo Center, Ethiopia · Registered Charitable Resource Organization
-          </p>
-        </div>
 
-        <div className="flex flex-wrap gap-2.5">
-          <Link
-            href="/"
-            target="_blank"
-            className="px-3.5 py-2 bg-white text-black font-bold text-xs rounded-lg border border-white hover:bg-color-yellow transition-colors inline-flex items-center gap-1.5"
-          >
-            <i className="ri-external-link-line"></i>
-            <span>View Live Site</span>
-          </Link>
-          <button
-            onClick={handleLogout}
-            className="px-3.5 py-2 bg-red-600 text-white font-bold text-xs rounded-lg border border-red-700 hover:bg-red-700 transition-colors inline-flex items-center gap-1.5"
-          >
-            <i className="ri-logout-box-r-line"></i>
-            <span>Log Out</span>
-          </button>
-        </div>
-      </div>
+          {/* Navigation Menu */}
+          <nav className="bg-white border-2 border-black rounded-2xl p-3 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] space-y-2">
+            <div className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-black/50 border-b border-black/10 mb-1">
+              Dashboard Navigation
+            </div>
 
-      {/* Navigation Tabs */}
-      <div className="flex flex-wrap gap-2 border-b-2 border-color-black pb-3">
-        {[
-          {
-            id: 'inbox',
-            label: `Messages & Inquiries (${inquiries.length})`,
-            icon: 'ri-mail-unread-line',
-            badge: inquiries.filter((i) => i.status === 'new').length,
-          },
-          { id: 'blogs', label: `Stories & Blogs (${blogs.length})`, icon: 'ri-article-line' },
-          { id: 'stats', label: 'Impact Counts & Goals', icon: 'ri-bar-chart-box-line' },
-          { id: 'visitors', label: 'Visitor Notice Banner', icon: 'ri-notification-3-line' },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setActiveTab(tab.id as any)}
-            className={`px-4 py-2.5 rounded-xl border-2 border-color-black font-bold text-xs sm:text-sm flex items-center gap-2 btn-brutal transition-all ${
-              activeTab === tab.id
-                ? 'bg-color-yellow text-color-black font-black'
-                : 'bg-white text-color-black/80 hover:bg-color-cream'
-            }`}
-          >
-            <i className={tab.icon}></i>
-            <span>{tab.label}</span>
-            {tab.badge && tab.badge > 0 ? (
-              <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1">
-                {tab.badge}
+            <button
+              type="button"
+              onClick={() => setActiveTab('inbox')}
+              className={`w-full text-left px-3.5 py-3 rounded-xl border-2 border-black font-bold text-xs sm:text-sm flex items-center justify-between transition-all ${
+                activeTab === 'inbox'
+                  ? 'bg-color-yellow text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black/80 hover:bg-color-cream'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <i className="ri-mail-unread-line text-lg"></i>
+                <span>Direct Inquiries</span>
+              </div>
+              {unreadCount > 0 ? (
+                <span className="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
+                  {unreadCount}
+                </span>
+              ) : (
+                <span className="text-xs font-mono text-black/50">{inquiries.length}</span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('blogs')}
+              className={`w-full text-left px-3.5 py-3 rounded-xl border-2 border-black font-bold text-xs sm:text-sm flex items-center justify-between transition-all ${
+                activeTab === 'blogs'
+                  ? 'bg-color-yellow text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black/80 hover:bg-color-cream'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <i className="ri-article-line text-lg"></i>
+                <span>Stories &amp; Blogs</span>
+              </div>
+              <span className="text-xs font-mono text-black/50">{blogs.length}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('stats')}
+              className={`w-full text-left px-3.5 py-3 rounded-xl border-2 border-black font-bold text-xs sm:text-sm flex items-center justify-between transition-all ${
+                activeTab === 'stats'
+                  ? 'bg-color-yellow text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black/80 hover:bg-color-cream'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <i className="ri-bar-chart-box-line text-lg"></i>
+                <span>Impact Counters</span>
+              </div>
+              <i className="ri-arrow-right-s-line text-black/40"></i>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('visitors')}
+              className={`w-full text-left px-3.5 py-3 rounded-xl border-2 border-black font-bold text-xs sm:text-sm flex items-center justify-between transition-all ${
+                activeTab === 'visitors'
+                  ? 'bg-color-yellow text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black/80 hover:bg-color-cream'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <i className="ri-notification-3-line text-lg"></i>
+                <span>Visitor Banner</span>
+              </div>
+              <span
+                className={`w-2.5 h-2.5 rounded-full border border-black ${
+                  announcement.enabled ? 'bg-color-green' : 'bg-gray-300'
+                }`}
+              ></span>
+            </button>
+          </nav>
+
+          {/* Controls Card */}
+          <div className="bg-color-cream border-2 border-black rounded-2xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+            <button
+              onClick={fetchAdminData}
+              className="w-full py-2.5 bg-white text-black font-bold text-xs rounded-xl border-2 border-black btn-brutal flex items-center justify-center gap-2 hover:bg-color-yellow"
+            >
+              <i className="ri-refresh-line"></i>
+              <span>Refresh Inquiries</span>
+            </button>
+
+            <Link
+              href="/"
+              target="_blank"
+              className="w-full py-2.5 bg-color-blue text-black font-bold text-xs rounded-xl border-2 border-black btn-brutal flex items-center justify-center gap-2"
+            >
+              <i className="ri-external-link-line"></i>
+              <span>View Public Website</span>
+            </Link>
+
+            <button
+              onClick={handleLogout}
+              className="w-full py-2.5 bg-red-100 text-red-900 font-bold text-xs rounded-xl border-2 border-black hover:bg-red-200 transition-colors flex items-center justify-center gap-2"
+            >
+              <i className="ri-logout-box-r-line"></i>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </aside>
+
+        {/* ==================== RIGHT MAIN CONTENT ==================== */}
+        <main className="lg:col-span-9 space-y-6">
+          {/* Top Director Header & KPI Grid */}
+          <div className="bg-color-black text-white rounded-2xl p-6 sm:p-8 border-2 border-color-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] space-y-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/20 pb-5">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-color-green text-black px-2.5 py-0.5 rounded font-bold text-xs uppercase mb-2">
+                  <span className="w-2 h-2 rounded-full bg-black"></span>
+                  Director Console Operations
+                </div>
+                <h1 className="font-primary text-3xl sm:text-4xl font-normal tracking-tight text-white">
+                  ASKBTM Executive Dashboard
+                </h1>
+                <p className="text-xs sm:text-sm text-white/75 mt-1">
+                  Legatafo Center, Ethiopia · Registered Charitable Resource Organization
+                </p>
+              </div>
+
+              <span className="px-3 py-1 bg-color-yellow text-black border border-white rounded-lg text-xs font-mono font-bold">
+                PIN: Protected
               </span>
-            ) : null}
-          </button>
-        ))}
-      </div>
+            </div>
 
-      {/* Feedback Toast Notification */}
-      {feedback && (
-        <div className="p-4 bg-color-green border-2 border-color-black rounded-xl text-black font-bold text-xs sm:text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
-          <i className="ri-checkbox-circle-fill text-lg"></i>
-          <span>{feedback}</span>
-        </div>
-      )}
+            {/* Quick KPI Stat Cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              <div className="bg-white/10 border border-white/20 rounded-xl p-3.5">
+                <span className="text-[10px] uppercase font-bold text-white/60 block mb-0.5">
+                  Direct Inquiries
+                </span>
+                <span className="text-2xl font-black text-color-yellow">{inquiries.length}</span>
+                <span className="text-[10px] text-white/70 block mt-0.5">
+                  {unreadCount} Unread
+                </span>
+              </div>
+
+              <div className="bg-white/10 border border-white/20 rounded-xl p-3.5">
+                <span className="text-[10px] uppercase font-bold text-white/60 block mb-0.5">
+                  Published Stories
+                </span>
+                <span className="text-2xl font-black text-color-green">{blogs.length}</span>
+                <span className="text-[10px] text-white/70 block mt-0.5">Live on Blog</span>
+              </div>
+
+              <div className="bg-white/10 border border-white/20 rounded-xl p-3.5">
+                <span className="text-[10px] uppercase font-bold text-white/60 block mb-0.5">
+                  Children Supported
+                </span>
+                <span className="text-2xl font-black text-color-pink">{stats.childrenFed}</span>
+                <span className="text-[10px] text-white/70 block mt-0.5">Daily Care</span>
+              </div>
+
+              <div className="bg-white/10 border border-white/20 rounded-xl p-3.5">
+                <span className="text-[10px] uppercase font-bold text-white/60 block mb-0.5">
+                  Notice Banner
+                </span>
+                <span
+                  className={`text-sm font-bold block mt-1 ${
+                    announcement.enabled ? 'text-color-green' : 'text-gray-400'
+                  }`}
+                >
+                  {announcement.enabled ? '● Active Bar' : '○ Disabled'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Feedback Toast Notification */}
+          {feedback && (
+            <div className="p-4 bg-color-green border-2 border-color-black rounded-xl text-black font-bold text-xs sm:text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
+              <i className="ri-checkbox-circle-fill text-lg"></i>
+              <span>{feedback}</span>
+            </div>
+          )}
 
       {/* ==================== TAB 1: INBOX & DIRECT MESSAGES ==================== */}
       {activeTab === 'inbox' && (
@@ -876,6 +1023,8 @@ export default function AdminPage() {
           </form>
         </div>
       )}
+        </main>
+      </div>
     </div>
   );
 }
