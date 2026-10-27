@@ -399,14 +399,20 @@ export default function HomePage() {
           <div className="w-full border-2 border-color-black rounded-xl p-3 md:p-5 bg-color-yellow shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
             <div className="relative w-full overflow-hidden rounded-lg border-2 border-color-black bg-color-black">
               <video
-                src="/assets/vid/freminatos  children & mothers.webm"
+                controls
                 autoPlay
                 loop
                 muted
-                controls
                 playsInline
+                preload="metadata"
+                poster="/assets/img/slideshow1.jpg"
                 className="w-full h-auto max-h-[580px] mx-auto block object-cover"
-              ></video>
+              >
+                <source src="/assets/vid/freminatos-children-and-mothers.webm" type="video/webm" />
+                <p className="text-white text-center py-4">
+                  Your browser does not support HTML5 webm video playback.
+                </p>
+              </video>
             </div>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm font-semibold text-color-black/80">
               <span>
